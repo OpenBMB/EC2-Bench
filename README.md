@@ -138,18 +138,6 @@ Per-task outputs land under `output/<run>/<task_id>/...` (scores, token/cost usa
 
 ---
 
-## Citation
-
-```bibtex
-@inproceedings{acebench2026,
-  title     = {Empowering Edge Agents: A Systematic Analysis of Edge-Cloud
-               Collaboration in LLM Agent Execution},
-  author    = {Anonymous},
-  booktitle = {Proceedings of the Association for Computational Linguistics (ACL)},
-  year      = {2026},
-  note      = {Under review}
-}
-```
 
 ## Acknowledgements
 
