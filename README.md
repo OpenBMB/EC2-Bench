@@ -91,8 +91,6 @@ hf download chengpingan/AceBench \
 tar -xzf workspace/ACE_Bench.tar.gz      # extracts into workspace/ACE_Bench/
 
 docker load -i Images/acebench-openclaw-v1.0.tar.gz   # loads acebench-openclaw:v1.0 (must match DOCKER_IMAGE in .env)
-
-
 ```
 
 **2. Configure keys** — copy `.env.example` to `.env` and fill in:
