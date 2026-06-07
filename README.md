@@ -78,13 +78,21 @@ AceBench runs each task in an isolated Docker container bundling the OpenClaw ha
 The prebuilt container image is hosted on Hugging Face as a `docker save` tarball (Hugging Face is not a Docker registry, so download + `docker load` instead of `docker pull`):
 
 ```bash
+cd AceBench
+conda create -n acebench python=3.13 -y
 pip install -r requirements.txt
-pip install openai json_repair        # used by judge-based graders
-
-pip install -U "huggingface_hub[cli]"
-huggingface-cli download chengpingan/AceBench \
+# download the image
+hf download chengpingan/AceBench \
     Images/acebench-openclaw-v1.0.tar.gz --repo-type dataset --local-dir .
+
+# download the workspaces (single tarball) and extract
+hf download chengpingan/AceBench \
+    workspace/ACE_Bench.tar.gz --repo-type dataset --local-dir .
+tar -xzf workspace/ACE_Bench.tar.gz      # extracts into workspace/ACE_Bench/
+
 docker load -i Images/acebench-openclaw-v1.0.tar.gz   # loads acebench-openclaw:v1.0 (must match DOCKER_IMAGE in .env)
+
+
 ```
 
 **2. Configure keys** — copy `.env.example` to `.env` and fill in:
