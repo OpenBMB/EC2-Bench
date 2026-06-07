@@ -1,0 +1,9 @@
+{
+  "id": "orchestrator-v1",
+  "name": "Orchestrator v1",
+  "description": "Cloud-driven, edge-executed mode via SYNCHRONOUS OpenClaw subagent. Main agent (cloud) is restricted by a before_tool_call hook to: sessions_spawn/sessions_send/sessions_list + exec (read-only discovery whitelist: ls / find -maxdepth N / stat / curl localhost / which, no shell metacharacters) + read (soft-audited: every read is logged, PII-zone heuristic matches are warned but never blocked; the read policy is enforced at prompt level via the 'read protocols, not payloads' principle). `write`/`edit` etc. remain blocked. sessions_spawn is wrapped synchronously: hook calls api.runtime.subagent.run/waitForRun/getSessionMessages and returns the child's final text as the toolResult.",
+  "configSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

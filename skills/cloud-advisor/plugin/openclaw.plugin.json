@@ -1,0 +1,9 @@
+{
+  "id": "cloud-advisor",
+  "name": "Cloud Advisor",
+  "description": "Intercept advisor tool calls, build context from chat.jsonl, route to cloud LLM, return advice as tool result",
+  "configSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

@@ -1,0 +1,7 @@
+weasyprint
+pymupdf
+requests
+yt-dlp
+modelscope
+python-dotenv
+pyyaml
