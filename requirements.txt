@@ -2,6 +2,7 @@ weasyprint
 pymupdf
 requests
 yt-dlp
+huggingface_hub
 modelscope
 python-dotenv
 pyyaml
