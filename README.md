@@ -1,85 +1,164 @@
 <div align="center">
 
+# EC²-Bench
 
-# AceBench
+**Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution**
 
-<img src="assets/fig.png" width="560" alt="AceBench"/>
-
-[![tasks](https://img.shields.io/badge/tasks-128-1f72c1)](tasks/ACE_Bench)
+[![tasks](https://img.shields.io/badge/tasks-128-1f72c1)](#tasks)
 [![privacy](https://img.shields.io/badge/privacy_annotated-100-8a3ffc)](#tasks)
-[![strategies](https://img.shields.io/badge/strategies-6-2ea44f)](#quick-start)
+[![units](https://img.shields.io/badge/sensitivity_units-3385-6f42c1)](#tasks)
+[![strategies](https://img.shields.io/badge/collaboration_strategies-4-2ea44f)](#quick-start)
 [![harness](https://img.shields.io/badge/harness-OpenClaw-f08c00)](https://openclaw.ai/)
-[![paper](https://img.shields.io/badge/paper-arXiv-b31b1b)](#citation)
+[![page](https://img.shields.io/badge/project-page-0d9488)](https://passionate11.github.io/ace-bench-project-page/)
+[![paper](https://img.shields.io/badge/paper-PDF-b31b1b)](https://passionate11.github.io/ace-bench-project-page/paper.pdf)
 [![license](https://img.shields.io/badge/license-MIT-e8b500)](LICENSE)
 
-> **Empowering Edge Agents:** A Multi-Dimensional Benchmark for Agentic Edge-Cloud Collaboration.
+> 128 executable tasks · 100 privacy-annotated · 4 collaboration strategies · Task Performance · Resource Usage · Privacy Exposure
 
-> 128 executable tasks · 100 privacy-annotated · 6 strategies · Utility · Cost · Privacy.
+<img src="assets/overview.png" width="95%" alt="EC²-Bench overview: a long-horizon edge-cloud collaborative trajectory, four collaboration strategies, and three research questions"/>
 
 </div>
 
 ---
 
-**AceBench** is a benchmark for **edge-cloud collaboration** in LLM agents. Cloud models reason best but see all your data; on-device edge models keep data local but are weaker — collaboration promises the best of both, *if* you organize it well. AceBench measures exactly that, but in a setting prior edge-cloud studies skip: **real agent execution**, where agents work over live workspaces (files, tools, commands, APIs, app states) and every cloud call *mid-trajectory* can expose accumulated local context.
+**EC²-Bench** (**E**dge–**C**loud **C**ollaborative Agent Benchmark) is a benchmark for **edge–cloud collaboration in long-horizon LLM agent execution**. Edge-side models keep data local and cost little but are weak at demanding planning and tool use. Cloud-hosted frontier models are far more capable, but they are expensive and see everything they are sent. Prior edge–cloud systems coordinate the two **once per query**. In long-horizon agent execution, cloud participation is instead **interleaved throughout the trajectory**. That creates trajectory-level effects: each cloud call shapes later steps, accumulates cost, and decides how much workspace information leaves the device.
 
-We evaluate six execution strategies — pure edge, pure cloud, and four edge-cloud collaboration patterns — across **128 executable tasks** (100 with fine-grained **privacy annotations**) on an [OpenClaw](https://openclaw.ai/) harness, scoring every run on three axes at once: **task utility**, **resource cost**, and **privacy exposure**. The result exposes how *when* the cloud is invoked and *what* context is sent trade capability against cost and leakage.
+EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grained **sensitivity annotations**) with a unified [OpenClaw](https://openclaw.ai/) execution and evaluation environment. It scores every run on three axes at once: **task performance**, **resource usage**, and **privacy exposure**. We use it to study four representative collaboration strategies across edge models of increasing capability.
+
+> [!NOTE]
+> EC²-Bench was previously released as *AceBench*. Internal identifiers keep the legacy name, so every command below works unchanged: the `ACE_Bench` task category, the `chengpingan/AceBench` Hugging Face dataset, and the `acebench-openclaw:v1.0` image.
+
+### Key Findings
+
+1. **Edge–cloud collaboration works for long-horizon agents (RQ1).** Partial cloud participation improves performance over edge-only execution at a fraction of cloud-only cost and exposure. With Qwen3.5-2B, Per-step Routing lifts completion from 12.75 to 39.97 at 22.7% of cloud-only cost, and many configurations beat a linear edge↔cloud interpolation.
+2. **Stronger edges close the performance gap, not the privacy gap (RQ2).** The best collaborative configuration climbs from 39.97 (2B) to 76.84 (Qwen3.7-Plus), approaching cloud-only's 82.70. The completion spread across strategies shrinks from 25.22 to 3.67 points, but privacy exposure stays strongly strategy-dependent (at 27B: 4.60 vs. 35.93 points).
+3. **The best collaboration mode shifts with edge capability (RQ3).** Weak edges benefit most from external routing and direct cloud execution; stronger edges benefit more from edge-controlled invocation and cloud advisory. Two edge-side abilities underlie the shift: **deciding when to invoke the cloud** (up to +4.4 over a matched random-invocation baseline) and **following cloud guidance** (instruction-following training raises advisory completion from 24.8 to 28.8).
 
 ### Design Highlights
 
 | | What we test | Why it matters |
 | --- | --- | --- |
-| 🦞 **OpenClaw-native** | The real OpenClaw agent loop — bash, browser, file ops, APIs, and reusable `SKILL.md` skills — driving a live local workspace | Tasks need long-horizon planning, state tracking, and error recovery; cloud calls land *mid-trajectory* over accumulated workspace context, not on a static prompt |
-| 🔐 **Privacy-aware** | 100 tasks annotated with sensitivity units (PII + org secrets) | Every cloud invocation is a potential leakage channel — we audit what crosses the boundary |
-| ⚖️ **Multi-dimensional** | Utility · Cost · Privacy, reported jointly | No single number hides the trade-off; you see the whole Pareto picture |
-| 🔀 **Strategy-centric** | 6 edge / cloud / edge-cloud strategies, one task suite | Isolates *how* collaboration is organized from *which* models are used |
-| 📦 **Reproducible** | Each task runs in its own Docker container | Graders are injected only after the agent finishes — never visible during execution |
+| 🦞 **OpenClaw-native** | The real OpenClaw agent loop (bash, browser, file ops, APIs, and reusable `SKILL.md` skills) driving a live local workspace | Tasks need long-horizon planning, state tracking, and error recovery. Cloud calls land *mid-trajectory* over accumulated workspace context, not on a static prompt |
+| 🔀 **Collaboration-centric** | 4 strategies spanning *who decides* when the cloud joins (external router vs. edge agent) and *what the cloud does* (execute vs. advise) | Isolates *how* collaboration is organized from *which* models are used |
+| 🔐 **Privacy exposure** | 100 tasks with 3,385 sensitivity units (personal + organizational, 12 categories); an LLM judge reaches 96.9% F1 against human labels | Every cloud invocation is a potential leakage channel, so we audit what crosses the boundary over the whole trajectory |
+| ⚖️ **Multi-dimensional** | Task performance · Resource usage · Privacy exposure, reported jointly | No single number hides the trade-off |
+| 📦 **Reproducible** | Each task runs in its own Docker container | Graders are injected only after the agent finishes and are never visible during execution |
 
 ---
 
 ## Tasks
 
-**128 executable tasks** across **6 categories** (Chinese & English); **100** carry fine-grained privacy annotations. Each is a self-contained Markdown file under [`tasks/ACE_Bench/`](tasks/ACE_Bench/) — a prompt, an inline `grade()` verifier, and a workspace path.
+**128 executable tasks** across **6 categories** (Chinese & English); **100** carry fine-grained privacy annotations. Each is a self-contained Markdown file under [`tasks/ACE_Bench/`](tasks/ACE_Bench/) containing a prompt, an inline `grade()` verifier, and a workspace path.
 
 | Category | # | Example tasks | Core challenges |
 | --- | --- | --- | --- |
 | **Office & Daily Tasks** | 36 | ambiguous contact email, meeting notes, expense report, daily summary | Multi-source aggregation, clarification, structured output |
 | **Information Search & Gathering** | 34 | email search, competitive intelligence, paper affiliation lookup, CRM bug hunt | Web + local data reconciliation, source verification |
 | **Safety & Security** | 21 | leaked API-key detection, prompt injection, malicious skill, HIPAA/PHI referral | Adversarial robustness, credential awareness, refusal |
-| **Data Analysis** | 14 | order-profit analysis, month-end reconciliation, quarterly business insight | Spreadsheet reasoning, state verification |
-| **Development & Operations** | 13 | system health check, automation-failure recovery, LLM API gateway skill | Undocumented setups, debugging, skill creation |
+| **Development & Operations** | 14 | system health check, automation-failure recovery, LLM API gateway skill | Undocumented setups, debugging, skill creation |
+| **Data Analysis** | 13 | order-profit analysis, month-end reconciliation, quarterly business insight | Spreadsheet reasoning, state verification |
 | **Automation** | 10 | flight booking, n8n workflow report, scheduled-briefing skill | Long-horizon orchestration, recovery |
+
+Tasks are adapted from six executable agent benchmarks: Claw-Eval (68), WildClawBench (22), QwenClawBench (21), LiveClawBench (4), PinchBench (3), and ClawBench (3). Seven more tasks were curated to cover under-represented scenarios. Every task was standardized to one runtime and evaluation interface, then filtered so that edge-only, cloud-only, and collaborative execution can meaningfully differ.
 
 **Scoring.** Every run is graded on **three dimensions at once**:
 
-- **Utility** — completion score + `Pass³` (3-trial consistency), from each task's own verifier.
-- **Cost** — cloud tokens & USD, plus edge-side FLOPs.
-- **Privacy** — how much annotated sensitive context (PII / org secrets) reaches the cloud.
+- **Task Performance**: completion score (weighted, task-specific checks combining rule-based validation, environment-state auditing, and rubric-based LLM-as-a-judge) plus `Pass³`, the fraction of tasks with score > 0.7 in all 3 runs.
+- **Resource Usage**: cloud input / cache-read / output tokens with USD cost, plus edge-side FLOPs.
+- **Privacy Exposure**: the fraction of annotated sensitivity units that become visible to the cloud anywhere along the trajectory (**lower is better**).
 
 ---
 
 ## Leaderboard
 
-Edge = **Qwen3.5-9B / 27B**, Cloud = **GPT-5.4**, judge = **GPT-5.4-mini**, averaged over 3 runs. Cloud Tok. = raw / cache / output (millions); Cost in USD; Edge FLOPs in PetaFLOPs; Utility & Privacy in %.
+Edge = **Qwen3.5-2B / 9B / 27B** and **Qwen3.7-Plus** (27B and Plus serve as proxies for future, stronger edge models); Cloud = **GLM-5.3**; judge = **GPT-5.4-mini**; averaged over 3 runs. Cloud Tok. = raw / cache-read / output (millions); Cloud Cost in USD (OpenRouter pricing); Edge FLOPs in PetaFLOPs (not reported for Qwen3.7-Plus, whose parameter count is unavailable); Completion, Pass³, and Privacy Exposure in %.
 
-<div align="center">
-<img src="assets/leaderboard.png" width="95%" alt="AceBench main results"/>
-</div>
+| Method | Completion ↑ | Pass³ ↑ | Cloud Tok. (R/C/O) | Cloud Cost ↓ | Edge FLOPs ↓ | Privacy Exp. ↓ |
+| --- | ---: | ---: | :---: | ---: | ---: | ---: |
+| ***Edge-only*** | | | | | | |
+| Qwen3.5-2B | 12.75 | 2.34 | – | – | 142.98 | 0.00 |
+| Qwen3.5-9B | 39.12 | 9.38 | – | – | 121.64 | 0.00 |
+| Qwen3.5-27B | 61.79 | 30.47 | – | – | 564.49 | 0.00 |
+| Qwen3.7-Plus | 71.34 | 53.12 | – | – | – | 0.00 |
+| ***Cloud-only*** | | | | | | |
+| DeepSeek-v4-Pro | 72.90 | 53.12 | 5.81 / 50.20 / 1.60 | 16.41 | – | 86.66 |
+| GLM-5.3 | 82.70 | 71.88 | 13.52 / 65.76 / 4.64 | 56.42 | – | 87.01 |
+| ***Edge-cloud collaboration*** | | | | | | |
+| *Qwen3.5-2B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 23.98 | 12.50 | 1.81 / 10.49 / 0.79 | 8.76 | 156.30 | 12.59 |
+| &nbsp;&nbsp;Per-step Routing | 39.97 | 7.81 | 3.84 / 17.29 / 0.67 | 12.80 | 57.05 | 41.29 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 15.86 | 2.34 | 0.41 / 0.49 / 0.11 | 1.19 | 172.74 | 2.71 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 14.75 | 1.56 | 0.67 / 0.51 / 0.29 | 2.36 | 240.28 | 6.07 |
+| *Qwen3.5-9B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 43.60 | 17.97 | 2.13 / 11.28 / 0.78 | 9.33 | 162.88 | 12.59 |
+| &nbsp;&nbsp;Per-step Routing | 52.71 | 21.88 | 1.98 / 7.46 / 0.31 | 6.07 | 29.96 | 27.52 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 52.88 | 17.19 | 0.83 / 1.03 / 0.36 | 3.01 | 184.98 | 16.45 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 60.46 | 26.56 | 2.02 / 2.61 / 1.19 | 8.73 | 332.43 | 45.46 |
+| *Qwen3.5-27B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 65.53 | 38.28 | 2.69 / 14.29 / 0.75 | 10.76 | 649.92 | 12.53 |
+| &nbsp;&nbsp;Per-step Routing | 68.42 | 42.19 | 1.76 / 6.51 / 0.26 | 5.29 | 88.58 | 35.81 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 69.06 | 44.53 | 1.00 / 1.50 / 0.71 | 4.93 | 455.76 | 42.42 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 70.13 | 47.66 | 1.32 / 0.75 / 0.83 | 5.71 | 822.23 | 48.46 |
+| *Qwen3.7-Plus* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 73.17 | 60.16 | 4.39 / 15.60 / 0.88 | 14.03 | – | 12.51 |
+| &nbsp;&nbsp;Per-step Routing | 72.08 | 59.22 | 3.35 / 14.23 / 0.40 | 10.14 | – | 29.63 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 74.24 | 60.94 | 1.65 / 1.08 / 0.33 | 4.03 | – | 43.36 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 76.84 | 67.19 | 1.97 / 0.53 / 0.88 | 6.80 | – | 78.74 |
 
-Edge-cloud collaboration beats both single-side extremes on the utility–privacy trade-off; **Sketch-Guided** keeps privacy at 100%, **Task-Routing** is the most balanced, and **Adaptive Assistance** gets the best `Pass³` at <10% of Cloud-only cost.
+<details>
+<summary><b>Alternative cloud model: DeepSeek-V4.1-Flash</b> (paper Appendix A.8)</summary>
+
+<br>
+
+| Method | Completion ↑ | Pass³ ↑ | Cloud Tok. (R/C/O) | Cloud Cost ↓ | Edge FLOPs ↓ | Privacy Exp. ↓ |
+| --- | ---: | ---: | :---: | ---: | ---: | ---: |
+| ***Edge-only*** | | | | | | |
+| Qwen3.5-2B | 12.75 | 2.34 | – | – | 142.98 | 0.00 |
+| Qwen3.5-9B | 39.12 | 9.38 | – | – | 121.64 | 0.00 |
+| Qwen3.5-27B | 61.79 | 30.47 | – | – | 564.49 | 0.00 |
+| Qwen3.7-Plus | 71.34 | 53.12 | – | – | – | 0.00 |
+| ***Cloud-only*** | | | | | | |
+| DeepSeek-v4-Pro | 72.90 | 53.12 | 5.81 / 50.20 / 1.60 | 16.41 | – | 86.66 |
+| DeepSeek-v4.1-Flash | 81.42 | 71.88 | 14.35 / 90.32 / 2.77 | 4.08 | – | 90.85 |
+| ***Edge-cloud collaboration*** | | | | | | |
+| *Qwen3.5-2B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 23.46 | 13.28 | 2.60 / 8.96 / 0.38 | 0.64 | 139.06 | 13.08 |
+| &nbsp;&nbsp;Per-step Routing | 42.70 | 10.94 | 8.11 / 17.72 / 0.51 | 1.57 | 70.04 | 46.31 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 19.20 | 2.34 | 1.00 / 0.74 / 0.10 | 0.21 | 145.46 | 9.52 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 15.53 | 3.12 | 0.70 / 0.88 / 0.19 | 0.22 | 178.10 | 7.87 |
+| *Qwen3.5-9B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 45.66 | 21.88 | 2.08 / 11.69 / 0.35 | 0.56 | 196.51 | 13.03 |
+| &nbsp;&nbsp;Per-step Routing | 50.36 | 19.53 | 2.57 / 4.15 / 0.14 | 0.48 | 31.20 | 28.74 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 51.79 | 17.19 | 1.66 / 1.17 / 0.29 | 0.43 | 204.07 | 21.18 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 56.00 | 24.22 | 2.82 / 2.50 / 0.62 | 0.80 | 340.08 | 39.25 |
+| *Qwen3.5-27B* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 63.51 | 39.84 | 3.68 / 28.34 / 0.52 | 0.95 | 601.08 | 13.07 |
+| &nbsp;&nbsp;Per-step Routing | 67.24 | 42.97 | 3.96 / 8.47 / 0.27 | 0.78 | 85.38 | 38.47 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 67.11 | 41.41 | 2.34 / 1.45 / 0.47 | 0.63 | 605.25 | 46.19 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 69.50 | 46.09 | 1.73 / 1.31 / 0.55 | 0.59 | 636.49 | 49.02 |
+| *Qwen3.7-Plus* | | | | | | |
+| &nbsp;&nbsp;Query Routing | 73.88 | 60.16 | 4.07 / 14.97 / 0.48 | 0.94 | – | 12.67 |
+| &nbsp;&nbsp;Per-step Routing | 71.77 | 49.22 | 4.24 / 17.73 / 0.50 | 0.99 | – | 31.08 |
+| &nbsp;&nbsp;Edge-Ctrl. Delegation | 75.04 | 59.38 | 2.41 / 2.75 / 0.41 | 0.61 | – | 44.54 |
+| &nbsp;&nbsp;Edge-Ctrl. Advisory | 75.31 | 61.72 | 1.99 / 1.11 / 0.52 | 0.61 | – | 65.56 |
+
+</details>
+
+An interactive version, with a cost / privacy trade-off plot, is on the [project page](https://passionate11.github.io/ace-bench-project-page/#leaderboard).
 
 ---
 
 ## Quick Start
 
-AceBench runs each task in an isolated Docker container bundling the OpenClaw harness and per-task mock services.
+EC²-Bench runs each task in an isolated Docker container bundling the OpenClaw harness and per-task mock services.
 
 **1. Install dependencies & load the image**
 
-The prebuilt container image is hosted on Hugging Face as a `docker save` tarball (Hugging Face is not a Docker registry, so download + `docker load` instead of `docker pull`):
+The prebuilt container image is hosted on Hugging Face as a `docker save` tarball. Hugging Face is not a Docker registry, so download it and `docker load` instead of `docker pull`:
 
 ```bash
-cd AceBench
-conda create -n acebench python=3.13 -y
+cd EC2-Bench
+conda create -n ec2bench python=3.13 -y
 pip install -r requirements.txt
 # download the image
 hf download chengpingan/AceBench \
@@ -93,32 +172,34 @@ tar -xzf workspace/ACE_Bench.tar.gz      # extracts into workspace/ACE_Bench/
 docker load -i Images/acebench-openclaw-v1.0.tar.gz   # loads acebench-openclaw:v1.0 (must match DOCKER_IMAGE in .env)
 ```
 
-**2. Configure keys** — copy `.env.example` to `.env` and fill in:
+**2. Configure keys**: copy `.env.example` to `.env` and fill in:
 
 ```bash
 OPENROUTER_API_KEY=...                 # cloud collaborator (any OpenAI-compatible provider)
-JUDGE_API_KEY=...                      # LLM-as-a-judge for utility & privacy
+JUDGE_API_KEY=...                      # LLM-as-a-judge for task checks & privacy exposure
 JUDGE_MODEL=gpt-5.4-mini
 ```
 
-Edge / cloud model endpoints live in [`my_api.json`](my_api.json) (e.g. a local vLLM server) and are passed via `--models-config`.
+Edge / cloud model endpoints (e.g. a local vLLM server) live in [`my_api.json`](my_api.json) and are passed via `--models-config`.
 
 **3. Prepare task assets**
 
 ```bash
-bash script/prepare.sh         
+bash script/prepare.sh
 ```
 
-**4. Run** — pick a strategy via `--run-mode`. Six strategies share one suite (full commands in [`script/run.sh`](script/run.sh)):
+**4. Run**: pick a strategy via `--run-mode`. All strategies share one task suite (more examples in [`script/run.sh`](script/run.sh)):
 
-| Strategy | `--run-mode` | Cloud use | Idea |
+| Strategy | `--run-mode` | Who decides when the cloud joins | What the cloud does |
 | --- | --- | --- | --- |
-| **Edge-only** | `local-only` | none | All steps on the edge model |
-| **Cloud-only** | `cloud-only` | every step | Capability upper bound; highest exposure |
-| **Sketch-Guided** | `pipeline-plan-executor` | once, upfront | Cloud drafts a high-level sketch; edge executes |
-| **Task-Routing** | `query-router` | once, offline | RouteLLM routes the whole task to edge or cloud |
-| **Step-Routing** | `step-router` | per uncertain step | Edge-first; escalate to cloud on high token entropy |
-| **Adaptive Assistance** | `advisor` | on demand | Edge asks the cloud for a plan/hint when stuck |
+| **Edge-only** | `local-only` | (never) | Nothing; every action comes from the edge model |
+| **Cloud-only** | `cloud-only` | (always) | Generates every action; capability upper bound, highest exposure |
+| **Query Routing** | `query-router` | External router, once per task (RouteLLM MF over the task instruction) | Runs the whole trajectory when the task is routed to it |
+| **Per-step Routing** | `step-router` | External router, every step (edge next-token entropy, GlimpRouter-style) | Generates the routed steps |
+| **Edge-Ctrl. Cloud Delegation** | *not included in this release* | Edge agent, via a delegation tool | Generates the delegated step, then hands control back |
+| **Edge-Ctrl. Cloud Advisory** | `advisor` | Edge agent, via an advisor tool | Returns plans / suggestions / corrections; the edge still acts |
+
+In all collaborative modes, the cloud receives the task instruction plus the OpenClaw execution history (previous actions, tool calls, observations). No redaction is applied, matching the paper's setting.
 
 ```bash
 # Edge-only baseline
@@ -126,29 +207,74 @@ python3 eval/run_batch.py --category ACE_Bench --parallel 16 --repeat 3 \
   --edge-model vllm/Qwen/Qwen3.5-27B --models-config my_api.json \
   --output-dir output/edge_only/qwen3.5-27b
 
-# Edge-cloud (e.g. adaptive cloud assistance)
+# Cloud-only baseline
+python3 eval/run_batch.py --category ACE_Bench --parallel 16 --repeat 3 \
+  --cloud-model your-provider/glm-5.3 --models-config my_api.json \
+  --output-dir output/cloud_only/glm-5.3
+
+# Query Routing: first materialize a task-level route table (requires `pip install "routellm[serve,eval]"`),
+# calibrated to the target cloud ratio (≈15% in the paper; use --calibration-tasks-dir to calibrate on a held-out set)
+python3 utils/query_router.py build --category ACE_Bench --target-cloud-ratio 0.15 \
+  --edge-label Qwen3.5-27B --cloud-label glm-5.3 \
+  --output utils/query_router_routes.json
+python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
+  --run-mode query-router --query-router-table utils/query_router_routes.json \
+  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
+  --models-config my_api.json \
+  --output-dir output/query-routing/qwen3.5-27b_to_glm-5.3
+
+# Per-step Routing: tune GLIMPSE_ENTROPY_THRESHOLD per edge model to hit your target cloud-call rate
+GLIMPSE_ENTROPY_THRESHOLD=1.5 \
+python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
+  --run-mode step-router --no-redact \
+  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
+  --models-config my_api.json \
+  --output-dir output/per-step-routing/qwen3.5-27b_to_glm-5.3
+
+# Edge-Controlled Cloud Advisory
 python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
   --run-mode advisor \
-  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/gpt-5.4 \
+  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
   --models-config my_api.json \
-  --output-dir output/adaptive-assistant/qwen3.5-27b_to_gpt5.4
+  --output-dir output/edge-ctrl-advisory/qwen3.5-27b_to_glm-5.3
 ```
 
 Single-task runs (`--task tasks/ACE_Bench/ACE_Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
+
+<details>
+<summary>Other run modes in this codebase (not evaluated in the paper)</summary>
+
+- `pipeline-plan-executor`: the cloud drafts a task-level sketch once, and the edge executes locally.
+- `on-demand`: the edge agent queries a cloud assistant through a shell helper (`ask_cloud.sh`) for guidance.
+- `orchestrator-v1`: the cloud model acts as the main agent / orchestrator and dispatches work to an edge worker.
+
+</details>
 
 ---
 
 ## Check the Results
 
-Per-task outputs land under `output/<run>/<task_id>/...` (scores, token/cost usage, agent trace, produced files), with a per-category and global summary generated automatically once the run finishes.
+Per-task outputs land under `output/<run>/<task_id>/...` (scores, token/cost usage, agent trace, produced files). A per-category and global summary is generated automatically once the run finishes.
 
 ---
 
+## Citation
+
+If you find EC²-Bench useful, please cite:
+
+```bibtex
+@misc{huang2026ec2bench,
+  title  = {Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution},
+  author = {Huang, Pengcheng and Liu, Zhenghao and Ren, Shixin and Yu, Shi and Yao, Sijia and Yan, Yukun and Xiao, Chaojun and Sun, Maosong},
+  year   = {2026},
+  url    = {https://github.com/OpenBMB/EC2-Bench}
+}
+```
 
 ## Acknowledgements
 
-AceBench stands on the shoulders of a remarkable open-source agent community, and we are deeply grateful for it. The **OpenClaw** harness gives us a real, full-featured agent runtime — tools, skills, and a live workspace — to build on. Our tasks and evaluation design draw inspiration and adapted material from a series of outstanding agent benchmarks: **Claw-Eval**, **WildClawBench**, **QwenClawBench**, **LiveClawBench**, **PinchBench**, and **ClawBench**. Their meticulous task curation, rigorous grading, and reproducible harness design set the bar for trustworthy agent evaluation, and made the privacy-aware, edge-cloud extension in AceBench possible.
+EC²-Bench stands on the shoulders of a remarkable open-source agent community, and we are deeply grateful for it. The **OpenClaw** harness gives us a real, full-featured agent runtime (tools, skills, and a live workspace) to build on. Our tasks and evaluation design draw inspiration and adapted material from a series of outstanding agent benchmarks: **Claw-Eval**, **WildClawBench**, **QwenClawBench**, **LiveClawBench**, **PinchBench**, and **ClawBench**. Their task curation, grading, and reproducible harness design set the bar for trustworthy agent evaluation and made the privacy-aware, edge–cloud extension in EC²-Bench possible.
 
 ## License
 
-Released under the [MIT License](LICENSE).
+Released under the [MIT License](LICENSE). Adapted tasks are used under the licenses of their source benchmarks: Claw-Eval, WildClawBench, QwenClawBench, LiveClawBench, and PinchBench are MIT-licensed, and ClawBench is Apache-2.0. Attribution to the original benchmarks is preserved.
