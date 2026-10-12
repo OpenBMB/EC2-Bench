@@ -80,8 +80,6 @@ Edge = **Qwen3.5-2B / 9B / 27B** and **Qwen3.7-Plus** (27B and Plus serve as pro
 
 </details>
 
-An interactive version, with a cost / privacy trade-off plot, is on the [project page](https://passionate11.github.io/ec2-bench-project-page/#leaderboard).
-
 ---
 
 ## Quick Start
