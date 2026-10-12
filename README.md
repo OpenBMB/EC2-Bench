@@ -4,11 +4,6 @@
 
 **Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution**
 
-[![tasks](https://img.shields.io/badge/tasks-128-1f72c1)](#tasks)
-[![privacy](https://img.shields.io/badge/privacy_annotated-100-8a3ffc)](#tasks)
-[![units](https://img.shields.io/badge/sensitivity_units-3385-6f42c1)](#tasks)
-[![strategies](https://img.shields.io/badge/collaboration_strategies-4-2ea44f)](#quick-start)
-[![harness](https://img.shields.io/badge/harness-OpenClaw-f08c00)](https://openclaw.ai/)
 [![page](https://img.shields.io/badge/project-page-0d9488)](https://passionate11.github.io/ec2-bench-project-page/)
 [![paper](https://img.shields.io/badge/paper-PDF-b31b1b)](https://passionate11.github.io/ec2-bench-project-page/paper.pdf)
 [![license](https://img.shields.io/badge/license-MIT-e8b500)](LICENSE)
@@ -24,9 +19,6 @@
 **EC²-Bench** (**E**dge–**C**loud **C**ollaborative Agent Benchmark) is a benchmark for **edge–cloud collaboration in long-horizon LLM agent execution**. Edge-side models keep data local and cost little but are weak at demanding planning and tool use. Cloud-hosted frontier models are far more capable, but they are expensive and see everything they are sent. Prior edge–cloud systems coordinate the two **once per query**. In long-horizon agent execution, cloud participation is instead **interleaved throughout the trajectory**. That creates trajectory-level effects: each cloud call shapes later steps, accumulates cost, and decides how much workspace information leaves the device.
 
 EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grained **sensitivity annotations**) with a unified [OpenClaw](https://openclaw.ai/) execution and evaluation environment. It scores every run on three axes at once: **task performance**, **resource usage**, and **privacy exposure**. We use it to study four representative collaboration strategies across edge models of increasing capability.
-
-> [!NOTE]
-> EC²-Bench was previously released as *AceBench*. Internal identifiers keep the legacy name, so every command below works unchanged: the `ACE_Bench` task category, the `chengpingan/AceBench` Hugging Face dataset, and the `acebench-openclaw:v1.0` image.
 
 ### Key Findings
 
@@ -73,74 +65,18 @@ Tasks are adapted from six executable agent benchmarks: Claw-Eval (68), WildClaw
 
 Edge = **Qwen3.5-2B / 9B / 27B** and **Qwen3.7-Plus** (27B and Plus serve as proxies for future, stronger edge models); Cloud = **GLM-5.3**; judge = **GPT-5.4-mini**; averaged over 3 runs. Cloud Tok. = raw / cache-read / output (millions); Cloud Cost in USD (OpenRouter pricing); Edge FLOPs in PetaFLOPs (not reported for Qwen3.7-Plus, whose parameter count is unavailable); Completion, Pass³, and Privacy Exposure in %.
 
-| Method | Completion ↑ | Pass³ ↑ | Cloud Tok. (R/C/O) | Cloud Cost ↓ | Edge FLOPs ↓ | Privacy Exp. ↓ |
-| --- | ---: | ---: | :---: | ---: | ---: | ---: |
-| ***Edge-only*** | | | | | | |
-| Qwen3.5-2B | 12.75 | 2.34 | – | – | 142.98 | 0.00 |
-| Qwen3.5-9B | 39.12 | 9.38 | – | – | 121.64 | 0.00 |
-| Qwen3.5-27B | 61.79 | 30.47 | – | – | 564.49 | 0.00 |
-| Qwen3.7-Plus | 71.34 | 53.12 | – | – | – | 0.00 |
-| ***Cloud-only*** | | | | | | |
-| DeepSeek-v4-Pro | 72.90 | 53.12 | 5.81 / 50.20 / 1.60 | 16.41 | – | 86.66 |
-| GLM-5.3 | 82.70 | 71.88 | 13.52 / 65.76 / 4.64 | 56.42 | – | 87.01 |
-| ***Edge-cloud collaboration*** | | | | | | |
-| *Qwen3.5-2B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 23.98 | 12.50 | 1.81 / 10.49 / 0.79 | 8.76 | 156.30 | 12.59 |
-| &nbsp;&nbsp;Per-step Routing | 39.97 | 7.81 | 3.84 / 17.29 / 0.67 | 12.80 | 57.05 | 41.29 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 15.86 | 2.34 | 0.41 / 0.49 / 0.11 | 1.19 | 172.74 | 2.71 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 14.75 | 1.56 | 0.67 / 0.51 / 0.29 | 2.36 | 240.28 | 6.07 |
-| *Qwen3.5-9B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 43.60 | 17.97 | 2.13 / 11.28 / 0.78 | 9.33 | 162.88 | 12.59 |
-| &nbsp;&nbsp;Per-step Routing | 52.71 | 21.88 | 1.98 / 7.46 / 0.31 | 6.07 | 29.96 | 27.52 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 52.88 | 17.19 | 0.83 / 1.03 / 0.36 | 3.01 | 184.98 | 16.45 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 60.46 | 26.56 | 2.02 / 2.61 / 1.19 | 8.73 | 332.43 | 45.46 |
-| *Qwen3.5-27B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 65.53 | 38.28 | 2.69 / 14.29 / 0.75 | 10.76 | 649.92 | 12.53 |
-| &nbsp;&nbsp;Per-step Routing | 68.42 | 42.19 | 1.76 / 6.51 / 0.26 | 5.29 | 88.58 | 35.81 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 69.06 | 44.53 | 1.00 / 1.50 / 0.71 | 4.93 | 455.76 | 42.42 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 70.13 | 47.66 | 1.32 / 0.75 / 0.83 | 5.71 | 822.23 | 48.46 |
-| *Qwen3.7-Plus* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 73.17 | 60.16 | 4.39 / 15.60 / 0.88 | 14.03 | – | 12.51 |
-| &nbsp;&nbsp;Per-step Routing | 72.08 | 59.22 | 3.35 / 14.23 / 0.40 | 10.14 | – | 29.63 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 74.24 | 60.94 | 1.65 / 1.08 / 0.33 | 4.03 | – | 43.36 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 76.84 | 67.19 | 1.97 / 0.53 / 0.88 | 6.80 | – | 78.74 |
+<div align="center">
+<img src="assets/leaderboard.png" width="95%" alt="EC²-Bench main results (paper Table 2, cloud = GLM-5.3)"/>
+</div>
 
 <details>
 <summary><b>Alternative cloud model: DeepSeek-V4.1-Flash</b> (paper Appendix A.8)</summary>
 
 <br>
 
-| Method | Completion ↑ | Pass³ ↑ | Cloud Tok. (R/C/O) | Cloud Cost ↓ | Edge FLOPs ↓ | Privacy Exp. ↓ |
-| --- | ---: | ---: | :---: | ---: | ---: | ---: |
-| ***Edge-only*** | | | | | | |
-| Qwen3.5-2B | 12.75 | 2.34 | – | – | 142.98 | 0.00 |
-| Qwen3.5-9B | 39.12 | 9.38 | – | – | 121.64 | 0.00 |
-| Qwen3.5-27B | 61.79 | 30.47 | – | – | 564.49 | 0.00 |
-| Qwen3.7-Plus | 71.34 | 53.12 | – | – | – | 0.00 |
-| ***Cloud-only*** | | | | | | |
-| DeepSeek-v4-Pro | 72.90 | 53.12 | 5.81 / 50.20 / 1.60 | 16.41 | – | 86.66 |
-| DeepSeek-v4.1-Flash | 81.42 | 71.88 | 14.35 / 90.32 / 2.77 | 4.08 | – | 90.85 |
-| ***Edge-cloud collaboration*** | | | | | | |
-| *Qwen3.5-2B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 23.46 | 13.28 | 2.60 / 8.96 / 0.38 | 0.64 | 139.06 | 13.08 |
-| &nbsp;&nbsp;Per-step Routing | 42.70 | 10.94 | 8.11 / 17.72 / 0.51 | 1.57 | 70.04 | 46.31 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 19.20 | 2.34 | 1.00 / 0.74 / 0.10 | 0.21 | 145.46 | 9.52 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 15.53 | 3.12 | 0.70 / 0.88 / 0.19 | 0.22 | 178.10 | 7.87 |
-| *Qwen3.5-9B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 45.66 | 21.88 | 2.08 / 11.69 / 0.35 | 0.56 | 196.51 | 13.03 |
-| &nbsp;&nbsp;Per-step Routing | 50.36 | 19.53 | 2.57 / 4.15 / 0.14 | 0.48 | 31.20 | 28.74 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 51.79 | 17.19 | 1.66 / 1.17 / 0.29 | 0.43 | 204.07 | 21.18 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 56.00 | 24.22 | 2.82 / 2.50 / 0.62 | 0.80 | 340.08 | 39.25 |
-| *Qwen3.5-27B* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 63.51 | 39.84 | 3.68 / 28.34 / 0.52 | 0.95 | 601.08 | 13.07 |
-| &nbsp;&nbsp;Per-step Routing | 67.24 | 42.97 | 3.96 / 8.47 / 0.27 | 0.78 | 85.38 | 38.47 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 67.11 | 41.41 | 2.34 / 1.45 / 0.47 | 0.63 | 605.25 | 46.19 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 69.50 | 46.09 | 1.73 / 1.31 / 0.55 | 0.59 | 636.49 | 49.02 |
-| *Qwen3.7-Plus* | | | | | | |
-| &nbsp;&nbsp;Query Routing | 73.88 | 60.16 | 4.07 / 14.97 / 0.48 | 0.94 | – | 12.67 |
-| &nbsp;&nbsp;Per-step Routing | 71.77 | 49.22 | 4.24 / 17.73 / 0.50 | 0.99 | – | 31.08 |
-| &nbsp;&nbsp;Edge-Ctrl. Delegation | 75.04 | 59.38 | 2.41 / 2.75 / 0.41 | 0.61 | – | 44.54 |
-| &nbsp;&nbsp;Edge-Ctrl. Advisory | 75.31 | 61.72 | 1.99 / 1.11 / 0.52 | 0.61 | – | 65.56 |
+<div align="center">
+<img src="assets/leaderboard-dsflash.png" width="95%" alt="EC²-Bench results with DeepSeek-V4.1-Flash as the cloud model (paper Table 11)"/>
+</div>
 
 </details>
 
