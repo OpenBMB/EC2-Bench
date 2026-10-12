@@ -9,8 +9,8 @@
 [![units](https://img.shields.io/badge/sensitivity_units-3385-6f42c1)](#tasks)
 [![strategies](https://img.shields.io/badge/collaboration_strategies-4-2ea44f)](#quick-start)
 [![harness](https://img.shields.io/badge/harness-OpenClaw-f08c00)](https://openclaw.ai/)
-[![page](https://img.shields.io/badge/project-page-0d9488)](https://passionate11.github.io/ace-bench-project-page/)
-[![paper](https://img.shields.io/badge/paper-PDF-b31b1b)](https://passionate11.github.io/ace-bench-project-page/paper.pdf)
+[![page](https://img.shields.io/badge/project-page-0d9488)](https://passionate11.github.io/ec2-bench-project-page/)
+[![paper](https://img.shields.io/badge/paper-PDF-b31b1b)](https://passionate11.github.io/ec2-bench-project-page/paper.pdf)
 [![license](https://img.shields.io/badge/license-MIT-e8b500)](LICENSE)
 
 > 128 executable tasks · 100 privacy-annotated · 4 collaboration strategies · Task Performance · Resource Usage · Privacy Exposure
@@ -31,7 +31,7 @@ EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grain
 ### Key Findings
 
 1. **Edge–cloud collaboration works for long-horizon agents (RQ1).** Partial cloud participation improves performance over edge-only execution at a fraction of cloud-only cost and exposure. With Qwen3.5-2B, Per-step Routing lifts completion from 12.75 to 39.97 at 22.7% of cloud-only cost, and many configurations beat a linear edge↔cloud interpolation.
-2. **Stronger edges close the performance gap, not the privacy gap (RQ2).** The best collaborative configuration climbs from 39.97 (2B) to 76.84 (Qwen3.7-Plus), approaching cloud-only's 82.70. The completion spread across strategies shrinks from 25.22 to 3.67 points, but privacy exposure stays strongly strategy-dependent (at 27B: 4.60 vs. 35.93 points).
+2. **Stronger edges close the performance gap, not the privacy gap (RQ2).** The best collaborative configuration climbs from 39.97 (2B) to 76.84 (Qwen3.7-Plus), approaching cloud-only's 82.70. The completion spread across strategies drops from 25.22 points (2B) to under 5 for 27B (4.60) and Qwen3.7-Plus (4.76), but privacy exposure stays strongly strategy-dependent (at 27B: 4.60 points in completion vs. 35.93 in exposure; at Qwen3.7-Plus the exposure range is 66.23 points).
 3. **The best collaboration mode shifts with edge capability (RQ3).** Weak edges benefit most from external routing and direct cloud execution; stronger edges benefit more from edge-controlled invocation and cloud advisory. Two edge-side abilities underlie the shift: **deciding when to invoke the cloud** (up to +4.4 over a matched random-invocation baseline) and **following cloud guidance** (instruction-following training raises advisory completion from 24.8 to 28.8).
 
 ### Design Highlights
@@ -144,7 +144,7 @@ Edge = **Qwen3.5-2B / 9B / 27B** and **Qwen3.7-Plus** (27B and Plus serve as pro
 
 </details>
 
-An interactive version, with a cost / privacy trade-off plot, is on the [project page](https://passionate11.github.io/ace-bench-project-page/#leaderboard).
+An interactive version, with a cost / privacy trade-off plot, is on the [project page](https://passionate11.github.io/ec2-bench-project-page/#leaderboard).
 
 ---
 
