@@ -188,7 +188,7 @@ Edge / cloud model endpoints (e.g. a local vLLM server) live in [`my_api.json`](
 bash script/prepare.sh
 ```
 
-**4. Run**: pick a strategy via `--run-mode`. All strategies share one task suite (more examples in [`script/run.sh`](script/run.sh)):
+**4. Run**: pick a strategy via `--run-mode`. All strategies share one task suite:
 
 | Strategy | `--run-mode` | Who decides when the cloud joins | What the cloud does |
 | --- | --- | --- | --- |
@@ -223,8 +223,8 @@ python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
   --models-config my_api.json \
   --output-dir output/query-routing/qwen3.5-27b_to_glm-5.3
 
-# Per-step Routing: tune GLIMPSE_ENTROPY_THRESHOLD per edge model to hit your target cloud-call rate
-GLIMPSE_ENTROPY_THRESHOLD=1.5 \
+# Per-step Routing: the entropy threshold defaults to a per-size calibrated value (1.3 for 27B, 1.7 otherwise);
+# set GLIMPSE_ENTROPY_THRESHOLD=<tau> to override it and hit your target cloud-call rate
 python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
   --run-mode step-router --no-redact \
   --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
@@ -255,6 +255,16 @@ Single-task runs (`--task tasks/ACE_Bench/ACE_Bench_task_44_ambiguous_contact_em
 ## Check the Results
 
 Per-task outputs land under `output/<run>/<task_id>/...` (scores, token/cost usage, agent trace, produced files). A per-category and global summary is generated automatically once the run finishes.
+
+Cloud costs in the paper are computed from the logged raw / cache-read / output token counts with OpenRouter prices (USD per million tokens):
+
+| Cloud model | Input | Cache input | Output |
+| --- | ---: | ---: | ---: |
+| GLM-5.3 | 1.40 | 0.26 | 4.40 |
+| DeepSeek-v4-Pro | 1.74 | 0.0145 | 3.48 |
+| DeepSeek-V4.1-Flash | 0.15 | 0.003 | 0.60 |
+
+The built-in price table in [`utils/grading.py`](utils/grading.py) does not cover these models yet. When you use them, compute the cost from the logged token counts with the prices above.
 
 ---
 
