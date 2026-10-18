@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+message: "If you use EC2-Bench, please cite the paper below."
+title: "EC2-Bench: Edge-Cloud Collaboration Benchmark for Long-Horizon LLM Agents"
+type: software
+repository-code: "https://github.com/OpenBMB/EC2-Bench"
+url: "https://passionate11.github.io/ec2-bench-project-page/"
+license: MIT
+keywords:
+  - EC2-Bench
+  - edge-cloud collaboration
+  - LLM agents
+  - agent benchmark
+  - privacy
+  - LLM routing
+authors:
+  - family-names: Huang
+    given-names: Pengcheng
+  - family-names: Liu
+    given-names: Zhenghao
+  - family-names: Ren
+    given-names: Shixin
+  - family-names: Yu
+    given-names: Shi
+  - family-names: Yao
+    given-names: Sijia
+  - family-names: Yan
+    given-names: Yukun
+  - family-names: Xiao
+    given-names: Chaojun
+  - family-names: Sun
+    given-names: Maosong
+preferred-citation:
+  type: article
+  title: "Empowering Edge Agents: A Systematic Analysis of Edge-Cloud Collaboration in LLM Agent Execution"
+  authors:
+    - family-names: Huang
+      given-names: Pengcheng
+    - family-names: Liu
+      given-names: Zhenghao
+    - family-names: Ren
+      given-names: Shixin
+    - family-names: Yu
+      given-names: Shi
+    - family-names: Yao
+      given-names: Sijia
+    - family-names: Yan
+      given-names: Yukun
+    - family-names: Xiao
+      given-names: Chaojun
+    - family-names: Sun
+      given-names: Maosong
+  journal: "arXiv preprint arXiv:2610.17816"
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2610.17816"
+      description: "arXiv preprint"
+  url: "https://arxiv.org/abs/2610.17816"
