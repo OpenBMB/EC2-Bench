@@ -15,6 +15,8 @@ keywords:
 authors:
   - family-names: Huang
     given-names: Pengcheng
+    affiliation: "Northeastern University, China"
+    orcid: "https://orcid.org/0009-0006-1236-5500"
   - family-names: Liu
     given-names: Zhenghao
   - family-names: Ren
@@ -51,7 +53,11 @@ preferred-citation:
       given-names: Maosong
   journal: "arXiv preprint arXiv:2610.17816"
   year: 2026
+  doi: "10.48550/arXiv.2610.17816"
   identifiers:
+    - type: doi
+      value: "10.48550/arXiv.2610.17816"
+      description: "arXiv DOI"
     - type: other
       value: "arXiv:2610.17816"
       description: "arXiv preprint"
