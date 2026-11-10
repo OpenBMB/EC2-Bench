@@ -238,7 +238,7 @@ DEFAULT_MODEL = os.environ.get('DEFAULT_MODEL', 'openrouter/anthropic/claude-son
 DEFAULT_PARALLEL = int(os.environ.get('DEFAULT_PARALLEL', '1'))
 OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY', '') or os.environ.get('JUDGE_API_KEY', '')
 MODELS_API_KEY_PLACEHOLDER = '${MY_PROXY_API_KEY}'
-ALL_CATEGORIES = ['ACE_Bench']
+ALL_CATEGORIES = ['EC2Bench']
 
 def _colors_enabled() -> bool:
     return sys.stderr.isatty() and (not os.environ.get('NO_COLOR'))
@@ -1314,7 +1314,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description='EC2-Bench evaluation entry point', formatter_class=argparse.RawDescriptionHelpFormatter, epilog='See README.md and configs/strategies.json for the six paper strategies.')
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument('--task', '-t', help='Path to a single task.md file')
-    mode.add_argument('--category', '-c', help='Task category; use ACE_Bench for the complete 128-task suite.')
+    mode.add_argument('--category', '-c', help='Task category; use EC2Bench for the complete 128-task suite.')
     parser.add_argument('--edge-model', default=None, help='Provider/model reference for the edge executor.')
     parser.add_argument('--parallel', '-p', type=int, default=DEFAULT_PARALLEL, metavar='N', help='Number of parallel containers (default: 1, i.e. sequential)')
     parser.add_argument('--max-retries', type=int, default=TASK_MAX_RETRIES, metavar='N', help=f'Retry recoverable execution failures up to N times (default: {TASK_MAX_RETRIES})')

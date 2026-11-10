@@ -15,7 +15,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('strategy', choices=list(strategies))
     p.add_argument('--data-root', type=Path, help='External dataset containing tasks/, workspace/ and optional skills/')
-    p.add_argument('--category', default='ACE_Bench')
+    p.add_argument('--category', default='EC2Bench')
     p.add_argument('--query-router-table', type=Path)
     p.add_argument('--runtime', choices=['e2b', 'docker'], default='e2b')
     p.add_argument('--edge-model', default='edge/Qwen/Qwen3.5-9B')

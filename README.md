@@ -41,7 +41,7 @@ EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grain
 
 ## Tasks
 
-**128 executable tasks** across **6 categories** (Chinese & English); **100** carry fine-grained privacy annotations. Each is a self-contained Markdown file under [`tasks/ACE_Bench/`](tasks/ACE_Bench/) containing a prompt, an inline `grade()` verifier, and a workspace path.
+**128 executable tasks** across **6 categories** (Chinese & English); **100** carry fine-grained privacy annotations. Each is a self-contained Markdown file under [`tasks/EC2Bench/`](tasks/EC2Bench/) containing a prompt, an inline `grade()` verifier, and a workspace path.
 
 | Category | # | Example tasks | Core challenges |
 | --- | --- | --- | --- |
@@ -207,21 +207,21 @@ In all collaborative modes, the cloud receives the task instruction plus the Ope
 
 ```bash
 # Edge-only baseline
-python3 eval/run_batch.py --category ACE_Bench --parallel 16 --repeat 3 \
+python3 eval/run_batch.py --category EC2Bench --parallel 16 --repeat 3 \
   --edge-model vllm/Qwen/Qwen3.5-27B --models-config my_api.json \
   --output-dir output/edge_only/qwen3.5-27b
 
 # Cloud-only baseline
-python3 eval/run_batch.py --category ACE_Bench --parallel 16 --repeat 3 \
+python3 eval/run_batch.py --category EC2Bench --parallel 16 --repeat 3 \
   --cloud-model your-provider/glm-5.3 --models-config my_api.json \
   --output-dir output/cloud_only/glm-5.3
 
 # Query Routing: first materialize a task-level route table (requires `pip install "routellm[serve,eval]"`),
 # calibrated to the target cloud ratio (≈15% in the paper; use --calibration-tasks-dir to calibrate on a held-out set)
-python3 utils/query_router.py build --category ACE_Bench --target-cloud-ratio 0.15 \
+python3 utils/query_router.py build --category EC2Bench --target-cloud-ratio 0.15 \
   --edge-label Qwen3.5-27B --cloud-label glm-5.3 \
   --output utils/query_router_routes.json
-python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
+python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
   --run-mode query-router --query-router-table utils/query_router_routes.json \
   --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
   --models-config my_api.json \
@@ -229,21 +229,21 @@ python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
 
 # Per-step Routing: the entropy threshold defaults to a per-size calibrated value (1.3 for 27B, 1.7 otherwise);
 # set GLIMPSE_ENTROPY_THRESHOLD=<tau> to override it and hit your target cloud-call rate
-python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
+python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
   --run-mode step-router --no-redact \
   --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
   --models-config my_api.json \
   --output-dir output/per-step-routing/qwen3.5-27b_to_glm-5.3
 
 # Edge-Controlled Cloud Advisory
-python3 eval/run_batch.py --category ACE_Bench --parallel 8 --repeat 3 \
+python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
   --run-mode advisor \
   --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
   --models-config my_api.json \
   --output-dir output/edge-ctrl-advisory/qwen3.5-27b_to_glm-5.3
 ```
 
-Single-task runs (`--task tasks/ACE_Bench/ACE_Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
+Single-task runs (`--task tasks/EC2Bench/ACE_Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
 
 <details>
 <summary>Other run modes in this codebase (not evaluated in the paper)</summary>
