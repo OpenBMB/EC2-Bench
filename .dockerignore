@@ -1,0 +1,12 @@
+workspace/
+data/
+.env
+.venv/
+.git/
+output/
+logs/
+__pycache__/
+**/__pycache__/
+*.pyc
+tasks/
+annotations/

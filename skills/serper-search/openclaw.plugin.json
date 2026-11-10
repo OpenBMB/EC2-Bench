@@ -1,0 +1,20 @@
+{
+  "id": "serper-search",
+  "contracts": {
+    "tools": ["web_search", "serper_search"]
+  },
+  "uiHints": {
+    "apiKey": {
+      "label": "SERPER API Key",
+      "help": "Serper API key for Google search (fallback: SERPER_API_KEY env var).",
+      "sensitive": true
+    }
+  },
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "apiKey": { "type": "string" }
+    }
+  }
+}

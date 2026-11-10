@@ -1,0 +1,20 @@
+{
+  "local-only": {
+    "run_mode": "local-only"
+  },
+  "cloud-only": {
+    "run_mode": "cloud-only"
+  },
+  "query-routing": {
+    "run_mode": "query-router"
+  },
+  "per-step-routing": {
+    "run_mode": "step-router-execute-glimpse"
+  },
+  "delegation": {
+    "run_mode": "agentic_executor_router"
+  },
+  "advisory": {
+    "run_mode": "agentic-advisor"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "providers": {
+    "edge": {
+      "baseUrl": "${EDGE_BASE_URL}",
+      "apiKey": "${EDGE_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Qwen/Qwen3.5-9B",
+          "name": "Qwen/Qwen3.5-9B",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 131072,
+          "maxTokens": 32768,
+          "compat": {
+            "supportsUsageInStreaming": true
+          }
+        }
+      ]
+    },
+    "cloud": {
+      "baseUrl": "${CLOUD_BASE_URL}",
+      "apiKey": "${CLOUD_API_KEY}",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "GLM-5.3",
+          "name": "GLM-5.3",
+          "reasoning": true,
+          "input": [
+            "text",
+            "image"
+          ],
+          "contextWindow": 131072,
+          "maxTokens": 32768,
+          "compat": {
+            "supportsUsageInStreaming": true
+          }
+        }
+      ]
+    }
+  }
+}

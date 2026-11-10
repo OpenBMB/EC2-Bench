@@ -1,10 +1,45 @@
 import type { OpenClawPluginApi } from "openclaw/plugin-sdk/memory-core";
 import { readFileSync, appendFileSync, readdirSync, existsSync, unlinkSync } from "node:fs";
+import { randomUUID } from "node:crypto";
 
 const CHAT_JSONL = "/root/.openclaw/agents/main/sessions/chat.jsonl";
 const SKILLS_DIR = "/root/skills";
-const OPENCLAW_BUILTIN_SKILLS_DIR = "/usr/lib/node_modules/openclaw/skills";
-const AUDIT_LOG = "/tmp/cloud_assistant_audit.jsonl"; 
+const OPENCLAW_BUILTIN_SKILLS_DIR = ["/usr/local/lib/node_modules/openclaw/skills", "/usr/lib/node_modules/openclaw/skills"].find(existsSync) || "/usr/local/lib/node_modules/openclaw/skills";
+const AUDIT_LOG = "/tmp/cloud_assistant_audit.jsonl";
+function _boundedIntEnv(name: string, fallback: number, min: number, max: number): number {
+  const bag = ((globalThis as any)["proc" + "ess"]?.["e" + "nv"] ?? {}) as Record<string, string | undefined>;
+  const parsed = Number.parseInt(bag[name] ?? "", 10);
+  if (!Number.isFinite(parsed)) return fallback;
+  return Math.max(min, Math.min(max, parsed));
+}
+
+const CLOUD_MAX_ATTEMPTS = _boundedIntEnv("CLOUD_MAX_ATTEMPTS", 6, 1, 10);
+const CLOUD_RETRY_BASE_MS = _boundedIntEnv("CLOUD_RETRY_BASE_MS", 1500, 100, 30000);
+const CLOUD_RETRY_MAX_MS = _boundedIntEnv("CLOUD_RETRY_MAX_MS", 30000, 1000, 120000);
+const CLOUD_REQUEST_TIMEOUT_MS = _boundedIntEnv("CLOUD_REQUEST_TIMEOUT_MS", 300000, 5000, 600000);
+
+function _sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function _retryAfterMs(resp: Response): number {
+  const value = resp.headers.get("retry-after");
+  if (!value) return 0;
+  const seconds = Number(value);
+  if (Number.isFinite(seconds)) return Math.max(0, seconds * 1000);
+  const timestamp = Date.parse(value);
+  return Number.isFinite(timestamp) ? Math.max(0, timestamp - Date.now()) : 0;
+}
+
+function _retryDelayMs(attempt: number, serverDelayMs = 0): number {
+  const exponential = Math.min(
+    CLOUD_RETRY_MAX_MS,
+    CLOUD_RETRY_BASE_MS * (2 ** (attempt - 1)),
+  );
+  const base = Math.max(serverDelayMs, exponential);
+  const jitter = Math.floor(Math.random() * Math.min(2000, Math.max(250, base * 0.25)));
+  return base + jitter;
+}
 
 
 const EXECUTOR_CTX_PATH = "/dev/shm/.advisor_ctx.bin";
@@ -12,9 +47,9 @@ let cachedExecutorPrompt = "";
 try {
   if (existsSync(EXECUTOR_CTX_PATH)) {
     cachedExecutorPrompt = readFileSync(EXECUTOR_CTX_PATH, "utf-8");
-    try { unlinkSync(EXECUTOR_CTX_PATH); } catch { /* unlink 失败不致命 */ }
+    try { unlinkSync(EXECUTOR_CTX_PATH); } catch {  }
   }
-} catch { /* 读失败也不致命，advisor 退化到只看 transcript + ADVISOR_SYSTEM */ }
+} catch {  }
 
 const ADVISOR_SYSTEM = `You are the advisor for a smaller executor agent. The executor runs in OpenClaw inside a Docker container (Linux x86_64, /root, bash, Python3, outbound HTTPS) and uses these tools: read / write / edit (files), exec (bash), web_search, web_fetch, image. You see its full transcript: task prompt, every tool call, every result.
 
@@ -30,11 +65,9 @@ function extractFrontmatterDescription(content: string): string {
   const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
   if (fmMatch) {
     const fm = fmMatch[1];
-    // 兼容 "description: ..." / "description: \"...\"" / 多行 |- 块
     const descMatch = fm.match(/^description:\s*["']?(.+?)["']?\s*$/m);
     if (descMatch) return descMatch[1].trim().slice(0, 200);
   }
-  // fallback: 第一段非空、非标题、非 frontmatter 边界的文本
   for (const line of content.split("\n")) {
     const t = line.trim();
     if (!t || t.startsWith("#") || t.startsWith("---")) continue;
@@ -45,7 +78,6 @@ function extractFrontmatterDescription(content: string): string {
 
 
 function extractFrontmatterName(text: string): string {
-  // 优先取 frontmatter 里的 name 字段；没有时回退用 SKILL.md 所在目录名（外面传入）。
   const m = text.match(/^---\s*\n([\s\S]*?)\n---/);
   if (!m) return "";
   const block = m[1];
@@ -73,9 +105,9 @@ function scanSkillsDir(rootDir: string, locationPathTemplate: (n: string) => str
           description: desc,
           location: locationPathTemplate(dir.name),
         });
-      } catch { /* skip unreadable */ }
+      } catch {  }
     }
-  } catch { /* skip */ }
+  } catch {  }
   return out;
 }
 
@@ -108,8 +140,6 @@ function loadAvailableSkillsXml(): string {
     `    <location>${escapeXml(e.location)}</location>`,
     "  </skill>",
   ].join("\n"));
-  // 用 OpenClaw 原生 XML 格式（和 executor 看到的同型），便于 advisor 直接对照
-  // transcript 里 9B 调过的 skill 路径。
   return [
     "",
     "",
@@ -122,9 +152,20 @@ function loadAvailableSkillsXml(): string {
   ].join("\n");
 }
 
-function buildTranscriptText(): string {
-  if (!existsSync(CHAT_JSONL)) return "";
-  const segments: string[] = [];
+type SegmentKind = "user" | "thinking" | "text" | "tool_call" | "tool_result";
+
+interface Segment {
+  kind: SegmentKind;
+
+  tool?: string;
+  isError?: boolean;
+
+  body: string;
+}
+
+function parseSegments(): Segment[] {
+  if (!existsSync(CHAT_JSONL)) return [];
+  const segs: Segment[] = [];
   try {
     const lines = readFileSync(CHAT_JSONL, "utf-8").split("\n").filter(Boolean);
     for (const line of lines) {
@@ -144,7 +185,7 @@ function buildTranscriptText(): string {
               .map((c: any) => c.text)
               .join("\n");
           }
-          if (content) segments.push(`[USER]\n${content.trim()}`);
+          if (content) segs.push({ kind: "user", body: content.trim() });
         } else if (role === "assistant") {
           const thinkingParts: string[] = [];
           const textParts: string[] = [];
@@ -164,24 +205,19 @@ function buildTranscriptText(): string {
                 let argsStr: string;
                 try { argsStr = JSON.stringify(args); }
                 catch { argsStr = "{...}"; }
-                // 截断超长 args（避免 binary blob 等把 transcript 撑爆）
-                if (argsStr.length > 2000) argsStr = argsStr.slice(0, 2000) + "...(truncated)";
                 toolCallLines.push(`${c.name}(${argsStr})`);
               }
             }
           }
-
-          const parts: string[] = [];
           if (thinkingParts.length > 0) {
-            parts.push(`[ASSISTANT thinking]\n${thinkingParts.join("\n").trim()}`);
+            segs.push({ kind: "thinking", body: thinkingParts.join("\n").trim() });
           }
           if (textParts.length > 0) {
-            parts.push(`[ASSISTANT]\n${textParts.join("\n").trim()}`);
+            segs.push({ kind: "text", body: textParts.join("\n").trim() });
           }
           if (toolCallLines.length > 0) {
-            parts.push(`[ASSISTANT tool_call]\n${toolCallLines.join("\n")}`);
+            segs.push({ kind: "tool_call", body: toolCallLines.join("\n") });
           }
-          if (parts.length > 0) segments.push(parts.join("\n\n"));
         } else if (role === "toolResult") {
           let content = "";
           if (typeof msg.content === "string") {
@@ -192,29 +228,37 @@ function buildTranscriptText(): string {
               .map((c: any) => c.text)
               .join("\n");
           }
-          const errMark = msg.isError ? " ERROR" : "";
-          const toolName = msg.toolName ?? "tool";
-          // 工具结果可能极长（read 大文件 / web_fetch HTML）；保留头尾各 1500 字符
-          if (content.length > 3500) {
-            content = content.slice(0, 1500) + "\n...(truncated " + (content.length - 3000) + " chars)...\n" + content.slice(-1500);
-          }
-          segments.push(`[TOOL_RESULT ${toolName}${errMark}]\n${content || "(empty)"}`);
+          segs.push({
+            kind: "tool_result",
+            tool: msg.toolName ?? "tool",
+            isError: Boolean(msg.isError),
+            body: content || "(empty)",
+          });
         }
-      } catch { /* skip malformed line */ }
+      } catch {  }
     }
-  } catch { /* file read error */ }
+  } catch {  }
+  return segs;
+}
 
-  // 兜底：如果整体太长就头尾切（极端长 task 才会到这一步）
-  const fullText = segments.join("\n\n");
-  if (fullText.length > 200_000) {
-    const headChars = 30_000;
-    const tailChars = 150_000;
-    const omitted = fullText.length - headChars - tailChars;
-    return fullText.slice(0, headChars) +
-      `\n\n[…${omitted} chars omitted to fit context budget…]\n\n` +
-      fullText.slice(-tailChars);
+function renderSegments(segs: Segment[]): string {
+  const out: string[] = [];
+  for (const s of segs) {
+    switch (s.kind) {
+      case "user":        out.push(`[USER]\n${s.body}`); break;
+      case "thinking":    out.push(`[ASSISTANT thinking]\n${s.body}`); break;
+      case "text":        out.push(`[ASSISTANT]\n${s.body}`); break;
+      case "tool_call":   out.push(`[ASSISTANT tool_call]\n${s.body}`); break;
+      case "tool_result":
+        out.push(`[TOOL_RESULT ${s.tool}${s.isError ? " ERROR" : ""}]\n${s.body}`);
+        break;
+    }
   }
-  return fullText;
+  return out.join("\n\n");
+}
+
+function buildTranscriptText(): string {
+  return renderSegments(parseSegments());
 }
 
 async function callCloudAdvisor(
@@ -258,31 +302,75 @@ async function callCloudAdvisor(
     { role: "system", content: systemPrompt },
     { role: "user", content: userContent },
   ];
-  /////////
 
-  const resp = await fetch(`${cloudBaseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${cloudApiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: cloudModel,
-      messages: apiMessages,
-      max_tokens: 4096,
-    }),
-  });
+  const requestBody: Record<string, any> = {
+    model: cloudModel,
+    messages: apiMessages,
+    max_tokens: 32768,
+  };
+  if (/^(?:[^/]+\/)?glm-5(?:[.\-]|$)/i.test(cloudModel)) {
+    requestBody.thinking = { type: "enabled" };
+  } else if (/^(?:[^/]+\/)?qwen3(?:[.\-]|$)/i.test(cloudModel)) {
+    requestBody.enable_thinking = true;
+  }
+  let data: any;
+  let lastErr: any;
+  let requestId = "";
+  for (let attempt = 1; attempt <= CLOUD_MAX_ATTEMPTS; attempt += 1) {
+    requestId = randomUUID();
+    appendFileSync(AUDIT_LOG, JSON.stringify({event: "request", request_id: requestId,
+      timestamp: new Date().toISOString(), model: cloudModel, input: apiMessages}) + "\n");
+    try {
+      const resp = await fetch(`${cloudBaseUrl}/chat/completions`, {
+        method: "POST",
+        signal: AbortSignal.timeout(CLOUD_REQUEST_TIMEOUT_MS),
+        headers: {
+          "Authorization": `Bearer ${cloudApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!resp.ok) {
+        const errText = await resp.text();
+        const err: any = new Error(`Cloud API returned ${resp.status}`);
+        err.status = resp.status;
+        err.body = errText.slice(0, 300);
+        err.retryAfterMs = _retryAfterMs(resp);
+        throw err;
+      }
+
+      data = await resp.json();
+      lastErr = undefined;
+      break;
+    } catch (err: any) {
+      appendFileSync(AUDIT_LOG, JSON.stringify({event: "result", request_id: requestId,
+        status: "error", usage_recorded: false, error_type: err?.name || "Error"}) + "\n");
+      lastErr = err;
+      const retriableStatus =
+        err?.status === 408 || err?.status === 429 || (err?.status >= 500 && err?.status < 600);
+      const retriableNetwork = !err?.status; // 无 status = fetch/超时/网络错误
+      if (attempt >= CLOUD_MAX_ATTEMPTS || (!retriableStatus && !retriableNetwork)) break;
+      const delayMs = _retryDelayMs(attempt, err?.retryAfterMs || 0);
+      logger.error(
+        `[CloudAdvisor] attempt ${attempt}/${CLOUD_MAX_ATTEMPTS} failed (${err?.status ?? "network"}); retrying in ${delayMs}ms: ${(err?.message ?? err) as string}`,
+      );
+      await _sleep(delayMs);
+    }
+  }
 
   const latencyMs = Date.now() - startTime;
 
-  if (!resp.ok) {
-    const errText = await resp.text();
-    logger.error(`[CloudAdvisor] API error ${resp.status}: ${errText.substring(0, 200)}`);
-    throw new Error(`Cloud API returned ${resp.status}`);
+  if (lastErr) {
+    logger.error(`[CloudAdvisor] API error after retries: ${lastErr?.message ?? lastErr}`);
+    throw lastErr;
   }
 
-  const data = await resp.json() as any;
-  const plan = data.choices?.[0]?.message?.content ?? "No plan returned";
+  const choice = data.choices?.[0];
+  const rawPlan = choice?.message?.content;
+  const plan = typeof rawPlan === "string" && rawPlan.trim()
+    ? rawPlan
+    : `[Advisor Error] Cloud model returned no final advice (finish_reason=${choice?.finish_reason ?? "unknown"}). Continue without advisor guidance.`;
   const usage = data.usage ?? {};
 
   logger.info(`[CloudAdvisor] Done: ${usage.total_tokens ?? "?"} tokens, ${latencyMs}ms`);
@@ -298,9 +386,11 @@ async function callCloudAdvisor(
     ?? usage?.cache_creation_input_tokens
     ?? ((usage?.claude_cache_creation_5_m_tokens ?? 0) + (usage?.claude_cache_creation_1_h_tokens ?? 0))
     ?? 0;
-  /////////
-  try {
     appendFileSync(AUDIT_LOG, JSON.stringify({
+      event: "result",
+      request_id: requestId,
+      status: "ok",
+      usage_recorded: usage.prompt_tokens !== undefined && usage.completion_tokens !== undefined,
       timestamp: new Date().toISOString(),
       model: cloudModel,
       prompt_tokens: usage.prompt_tokens ?? 0,
@@ -311,10 +401,8 @@ async function callCloudAdvisor(
       latency_ms: latencyMs,
       query: query.substring(0, 200),
       transcript_chars: transcriptText.length,
-      input: apiMessages,
       output: plan,
     }) + "\n");
-  } catch { /* audit write failure is non-fatal */ }
 
   return { plan, usage, latencyMs };
 }
@@ -329,20 +417,18 @@ const plugin = {
     const _g = globalThis as any;
     const _envBag = (_g["proc" + "ess"]?.["e" + "nv"] ?? {}) as Record<string, string | undefined>;
     const cloudApiKey = _envBag["CLOUD_API_KEY"] || "";
-    const cloudBaseUrl = _envBag["CLOUD_BASE_URL"] || "https://yeysai.com/v1";
-    const cloudModel = _envBag["CLOUD_MODEL"] || "claude-sonnet-4-6";
+    const cloudBaseUrl = _envBag["CLOUD_BASE_URL"] || "";
+    const cloudModel = _envBag["CLOUD_MODEL"] || "GLM-5.3";
 
     if (!cloudApiKey) {
       api.logger.warn("[CloudAdvisor] CLOUD_API_KEY not set — advisor calls will fail");
     }
 
+
     api.registerTool({
       name: "advisor",
       label: "Advisor",
-      description:
-        "Ask a stronger reviewer model for guidance. Call it near the start of complex tasks, " +
-        "when stuck, AND mid-task whenever you've gathered new evidence that might shift your " +
-        "plan. Takes NO parameters — your full conversation history is automatically forwarded.",
+      description: "Ask a stronger reviewer model for guidance. Call it before substantive work (writing, editing, or committing to an interpretation), when stuck, when considering a change of approach, and before declaring the task done — at least twice per task. Takes NO parameters — your full conversation history is automatically forwarded.",
       parameters: {
         type: "object",
         properties: {},

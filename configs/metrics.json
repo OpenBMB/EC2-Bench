@@ -1,0 +1,14 @@
+{
+  "cloud_price_snapshot": "Paper Table 12, August 2026; USD per million tokens",
+  "cloud_prices": {
+    "DeepSeek-v4-Pro": {"input": 1.74, "cache_read": 0.0145, "output": 3.48},
+    "DeepSeek-v4.1-Flash": {"input": 0.15, "cache_read": 0.003, "output": 0.6},
+    "GLM-5.3": {"input": 1.4, "cache_read": 0.26, "output": 4.4}
+  },
+  "edge_parameter_basis": "Nominal dense model sizes; use activated parameters per token for MoE models",
+  "edge_active_parameters": {
+    "Qwen3.5-2B": 2000000000,
+    "Qwen3.5-9B": 9000000000,
+    "Qwen3.5-27B": 27000000000
+  }
+}

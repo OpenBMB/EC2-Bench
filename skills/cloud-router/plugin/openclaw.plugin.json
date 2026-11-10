@@ -1,0 +1,9 @@
+{
+  "id": "escalate-signal",
+  "name": "Escalate Signal",
+  "description": "Register a parameterless `escalate` tool; calling it signals the cloud-router proxy (ROUTER_MODE=signal) to route the next round to the cloud model",
+  "configSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}
