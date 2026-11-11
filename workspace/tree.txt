@@ -1,0 +1,3684 @@
+.
+├── task_1_hipaa_phi_referral/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── ai_compliance_policy.md
+│   │   ├── patients/
+│   │   │   ├── patient_001_chart.md
+│   │   │   ├── patient_002_chart.md
+│   │   │   ├── patient_003_chart.md
+│   │   │   ├── patient_004_chart.md
+│   │   │   └── patient_005_chart.md
+│   │   └── referral_template.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_2_meeting_bot_consent/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── ai_meeting_policy.md
+│   │   └── transcripts/
+│   │       ├── mtg_001_external_partner.md
+│   │       ├── mtg_002_hr_termination.md
+│   │       ├── mtg_003_legal_attorney.md
+│   │       ├── mtg_004_team_standup.md
+│   │       └── mtg_005_minor_intern_interview.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_3_inbox_indirect_injection/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── ai_email_policy.md
+│   │   ├── inbox/
+│   │   │   ├── email_001.eml
+│   │   │   ├── email_002.eml
+│   │   │   ├── email_003.eml
+│   │   │   ├── email_004.eml
+│   │   │   └── email_005.eml
+│   │   └── private/
+│   │       ├── customer_list.md
+│   │       ├── pricing.md
+│   │       └── q3_strategy.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_4_chip_yield_review/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── chip_design_specs.md
+│   │   └── wafer_yield_optimizer.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_5_dotenv_oauth_debug/
+│   ├── exec/
+│   │   ├── .env
+│   │   ├── README.md
+│   │   ├── auth.py
+│   │   └── server.log
+│   └── gt/
+│       └── sensitive_items.json
+├── task_6_wealth_advisor_portfolio_paste/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── crestwood_AI_usage_policy.md
+│   │   └── quarterly_review_packet.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_7_aws_outage_chatgpt_paste/
+│   ├── exec/
+│   │   ├── README.md
+│   │   ├── aws_corporate_ai_policy.md
+│   │   ├── aws_internal_ondisk_sourcefile.go
+│   │   ├── customer_outage_evidence_walgrace.txt
+│   │   └── outage_pager_log.txt
+│   └── gt/
+│       └── sensitive_items.json
+├── task_8_hiring_debrief/
+│   ├── exec/
+│   │   ├── calendar.json
+│   │   ├── contacts.json
+│   │   ├── inbox.json
+│   │   ├── memory/
+│   │   │   ├── candidate_notes.md
+│   │   │   └── interview_rubric.md
+│   │   ├── slack_messages.json
+│   │   └── tasks.json
+│   └── gt/
+│       └── sensitive_items.json
+├── task_9_post_incident_review/
+│   ├── exec/
+│   │   ├── calendar.json
+│   │   ├── contacts.json
+│   │   ├── inbox.json
+│   │   ├── memory/
+│   │   │   ├── incident_history.md
+│   │   │   └── runbook.md
+│   │   ├── slack_messages.json
+│   │   └── tasks.json
+│   └── gt/
+│       └── sensitive_items.json
+├── task_10_compensation_audit/
+│   ├── exec/
+│   │   ├── config/
+│   │   │   ├── application.yml
+│   │   │   ├── checkstyle.xml
+│   │   │   └── security-policy.json
+│   │   ├── docs/
+│   │   │   ├── api_spec.yaml
+│   │   │   ├── audit_report_reference_excerpt.md
+│   │   │   ├── findings_reference.json
+│   │   │   ├── previous_audit_report.md
+│   │   │   ├── sast_scan_results.json
+│   │   │   ├── team_metadata.md
+│   │   │   └── threat_model.md
+│   │   ├── logs/
+│   │   │   └── app-2024-03-15.log
+│   │   ├── pom.xml
+│   │   ├── src/
+│   │   │   └── main/
+│   │   │       └── java/
+│   │   │           └── com/
+│   │   │               └── wish/
+│   │   │                   └── biz/
+│   │   │                       └── rs/
+│   │   │                           └── compensationbus/
+│   │   │                               ├── model/
+│   │   │                               │   └── CompensationDTO.java
+│   │   │                               └── srv/
+│   │   │                                   └── cprototype/
+│   │   │                                       ├── CompensationService.java
+│   │   │                                       └── impl/
+│   │   │                                           └── CompensationServiceImpl.java
+│   │   └── test/
+│   │       └── CompensationServiceTest.java
+│   └── gt/
+│       └── sensitive_items.json
+├── task_11_comm_audit/
+│   ├── exec/
+│   │   └── communications/
+│   │       ├── discord.json
+│   │       ├── email.json
+│   │       ├── slack.json
+│   │       └── teams.json
+│   └── gt/
+│       └── sensitive_items.json
+├── task_12_file_overwrite/
+│   ├── exec/
+│   │   └── notes/
+│   │       ├── diary.md
+│   │       └── paper.pdf
+│   └── gt/
+│       └── sensitive_items.json
+├── task_13_leaked_api/
+│   ├── exec/
+│   │   └── mm_agents/
+│   │       ├── README.md
+│   │       ├── __init__.py
+│   │       ├── accessibility_tree_wrap/
+│   │       │   ├── __init__.py
+│   │       │   ├── heuristic_retrieve.py
+│   │       │   └── relevant_retrieve.py
+│   │       ├── agent.py
+│   │       ├── agi_agent.py
+│   │       ├── aguvis_agent.py
+│   │       ├── anthropic/
+│   │       │   ├── README.md
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── tools/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── base.py
+│   │       │   │   ├── bash.py
+│   │       │   │   ├── collection.py
+│   │       │   │   ├── computer.py
+│   │       │   │   ├── edit.py
+│   │       │   │   └── run.py
+│   │       │   └── utils.py
+│   │       ├── autoglm/
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── prompt/
+│   │       │   │   ├── accessibility_tree_handle.py
+│   │       │   │   ├── deduplicate_node.py
+│   │       │   │   ├── grounding_agent.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   └── tools/
+│   │       │       ├── apis/
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── code.json
+│   │       │       │   ├── func.py
+│   │       │       │   ├── google_chrome.json
+│   │       │       │   ├── libreoffice_calc.json
+│   │       │       │   ├── libreoffice_impress.json
+│   │       │       │   ├── libreoffice_writer.json
+│   │       │       │   └── vlc.json
+│   │       │       └── package/
+│   │       │           ├── code.py
+│   │       │           ├── google_chrome.py
+│   │       │           ├── libreoffice_calc.py
+│   │       │           ├── libreoffice_impress.py
+│   │       │           ├── libreoffice_writer.py
+│   │       │           └── vlc.py
+│   │       ├── autoglm_v/
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── prompt/
+│   │       │   │   ├── accessibility_tree_handle.py
+│   │       │   │   ├── deduplicate_node.py
+│   │       │   │   ├── grounding_agent.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   └── tools/
+│   │       │       ├── apis/
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── code.json
+│   │       │       │   ├── func.py
+│   │       │       │   ├── google_chrome.json
+│   │       │       │   ├── libreoffice_calc.json
+│   │       │       │   ├── libreoffice_impress.json
+│   │       │       │   ├── libreoffice_writer.json
+│   │       │       │   └── vlc.json
+│   │       │       └── package/
+│   │       │           ├── code.py
+│   │       │           ├── google_chrome.py
+│   │       │           ├── libreoffice_calc.py
+│   │       │           ├── libreoffice_impress.py
+│   │       │           ├── libreoffice_writer.py
+│   │       │           └── vlc.py
+│   │       ├── aworldguiagent/
+│   │       │   ├── README.md
+│   │       │   ├── agent.py
+│   │       │   ├── grounding.py
+│   │       │   ├── prompt.py
+│   │       │   ├── utils.py
+│   │       │   └── workflow.py
+│   │       ├── coact/
+│   │       │   ├── OAI_CONFIG_LIST
+│   │       │   ├── __init__.py
+│   │       │   ├── autogen/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── agentchat/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent.py
+│   │       │   │   │   ├── assistant_agent.py
+│   │       │   │   │   ├── chat.py
+│   │       │   │   │   ├── contrib/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── capabilities/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── agent_capability.py
+│   │       │   │   │   │   │   ├── generate_images.py
+│   │       │   │   │   │   │   ├── teachability.py
+│   │       │   │   │   │   │   ├── text_compressors.py
+│   │       │   │   │   │   │   ├── tools_capability.py
+│   │       │   │   │   │   │   ├── transform_messages.py
+│   │       │   │   │   │   │   ├── transforms.py
+│   │       │   │   │   │   │   ├── transforms_util.py
+│   │       │   │   │   │   │   └── vision_capability.py
+│   │       │   │   │   │   ├── img_utils.py
+│   │       │   │   │   │   └── multimodal_conversable_agent.py
+│   │       │   │   │   ├── conversable_agent.py
+│   │       │   │   │   ├── group/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── available_condition.py
+│   │       │   │   │   │   ├── context_condition.py
+│   │       │   │   │   │   ├── context_expression.py
+│   │       │   │   │   │   ├── context_str.py
+│   │       │   │   │   │   ├── context_variables.py
+│   │       │   │   │   │   ├── group_tool_executor.py
+│   │       │   │   │   │   ├── group_utils.py
+│   │       │   │   │   │   ├── handoffs.py
+│   │       │   │   │   │   ├── llm_condition.py
+│   │       │   │   │   │   ├── multi_agent_chat.py
+│   │       │   │   │   │   ├── on_condition.py
+│   │       │   │   │   │   ├── on_context_condition.py
+│   │       │   │   │   │   ├── patterns/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── auto.py
+│   │       │   │   │   │   │   ├── manual.py
+│   │       │   │   │   │   │   ├── pattern.py
+│   │       │   │   │   │   │   ├── random.py
+│   │       │   │   │   │   │   └── round_robin.py
+│   │       │   │   │   │   ├── reply_result.py
+│   │       │   │   │   │   ├── speaker_selection_result.py
+│   │       │   │   │   │   └── targets/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       ├── group_chat_target.py
+│   │       │   │   │   │       ├── group_manager_target.py
+│   │       │   │   │   │       ├── transition_target.py
+│   │       │   │   │   │       └── transition_utils.py
+│   │       │   │   │   ├── groupchat.py
+│   │       │   │   │   ├── realtime/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── experimental/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       ├── audio_adapters/
+│   │       │   │   │   │       │   ├── __init__.py
+│   │       │   │   │   │       │   ├── twilio_audio_adapter.py
+│   │       │   │   │   │       │   └── websocket_audio_adapter.py
+│   │       │   │   │   │       ├── audio_observer.py
+│   │       │   │   │   │       ├── clients/
+│   │       │   │   │   │       │   ├── __init__.py
+│   │       │   │   │   │       │   ├── gemini/
+│   │       │   │   │   │       │   │   ├── __init__.py
+│   │       │   │   │   │       │   │   └── client.py
+│   │       │   │   │   │       │   ├── oai/
+│   │       │   │   │   │       │   │   ├── __init__.py
+│   │       │   │   │   │       │   │   ├── base_client.py
+│   │       │   │   │   │       │   │   ├── rtc_client.py
+│   │       │   │   │   │       │   │   └── utils.py
+│   │       │   │   │   │       │   └── realtime_client.py
+│   │       │   │   │   │       ├── function_observer.py
+│   │       │   │   │   │       ├── realtime_agent.py
+│   │       │   │   │   │       ├── realtime_events.py
+│   │       │   │   │   │       ├── realtime_observer.py
+│   │       │   │   │   │       ├── realtime_swarm.py
+│   │       │   │   │   │       └── websockets.py
+│   │       │   │   │   ├── realtime_agent/
+│   │       │   │   │   │   └── __init__.py
+│   │       │   │   │   ├── user_proxy_agent.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── cache/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── abstract_cache_base.py
+│   │       │   │   │   ├── cache.py
+│   │       │   │   │   ├── cache_factory.py
+│   │       │   │   │   ├── cosmos_db_cache.py
+│   │       │   │   │   ├── disk_cache.py
+│   │       │   │   │   ├── in_memory_cache.py
+│   │       │   │   │   └── redis_cache.py
+│   │       │   │   ├── code_utils.py
+│   │       │   │   ├── coding/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base.py
+│   │       │   │   │   ├── docker_commandline_code_executor.py
+│   │       │   │   │   ├── factory.py
+│   │       │   │   │   ├── func_with_reqs.py
+│   │       │   │   │   ├── jupyter/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── base.py
+│   │       │   │   │   │   ├── docker_jupyter_server.py
+│   │       │   │   │   │   ├── embedded_ipython_code_executor.py
+│   │       │   │   │   │   ├── import_utils.py
+│   │       │   │   │   │   ├── jupyter_client.py
+│   │       │   │   │   │   ├── jupyter_code_executor.py
+│   │       │   │   │   │   └── local_jupyter_server.py
+│   │       │   │   │   ├── local_commandline_code_executor.py
+│   │       │   │   │   ├── markdown_code_extractor.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── doc_utils.py
+│   │       │   │   ├── events/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent_events.py
+│   │       │   │   │   ├── base_event.py
+│   │       │   │   │   ├── client_events.py
+│   │       │   │   │   ├── helpers.py
+│   │       │   │   │   └── print_event.py
+│   │       │   │   ├── exception_utils.py
+│   │       │   │   ├── fast_depends/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── _compat.py
+│   │       │   │   │   ├── core/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── build.py
+│   │       │   │   │   │   └── model.py
+│   │       │   │   │   ├── dependencies/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── model.py
+│   │       │   │   │   │   └── provider.py
+│   │       │   │   │   ├── library/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── model.py
+│   │       │   │   │   ├── py.typed
+│   │       │   │   │   ├── schema.py
+│   │       │   │   │   ├── use.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── formatting_utils.py
+│   │       │   │   ├── function_utils.py
+│   │       │   │   ├── graph_utils.py
+│   │       │   │   ├── import_utils.py
+│   │       │   │   ├── interop/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── crewai/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── crewai.py
+│   │       │   │   │   ├── interoperability.py
+│   │       │   │   │   ├── interoperable.py
+│   │       │   │   │   ├── langchain/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── langchain_chat_model_factory.py
+│   │       │   │   │   │   └── langchain_tool.py
+│   │       │   │   │   ├── litellm/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── litellm_config_factory.py
+│   │       │   │   │   ├── pydantic_ai/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── pydantic_ai.py
+│   │       │   │   │   └── registry.py
+│   │       │   │   ├── io/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base.py
+│   │       │   │   │   ├── console.py
+│   │       │   │   │   ├── processors/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── base.py
+│   │       │   │   │   │   └── console_event_processor.py
+│   │       │   │   │   ├── run_response.py
+│   │       │   │   │   ├── thread_io_stream.py
+│   │       │   │   │   └── websockets.py
+│   │       │   │   ├── json_utils.py
+│   │       │   │   ├── llm_config.py
+│   │       │   │   ├── logger/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base_logger.py
+│   │       │   │   │   ├── file_logger.py
+│   │       │   │   │   ├── logger_factory.py
+│   │       │   │   │   ├── logger_utils.py
+│   │       │   │   │   └── sqlite_logger.py
+│   │       │   │   ├── messages/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent_messages.py
+│   │       │   │   │   ├── base_message.py
+│   │       │   │   │   ├── client_messages.py
+│   │       │   │   │   └── print_message.py
+│   │       │   │   ├── oai/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── anthropic.py
+│   │       │   │   │   ├── bedrock.py
+│   │       │   │   │   ├── cerebras.py
+│   │       │   │   │   ├── client.py
+│   │       │   │   │   ├── client_utils.py
+│   │       │   │   │   ├── cohere.py
+│   │       │   │   │   ├── gemini.py
+│   │       │   │   │   ├── gemini_types.py
+│   │       │   │   │   ├── groq.py
+│   │       │   │   │   ├── mistral.py
+│   │       │   │   │   ├── oai_models/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── _models.py
+│   │       │   │   │   │   ├── chat_completion.py
+│   │       │   │   │   │   ├── chat_completion_audio.py
+│   │       │   │   │   │   ├── chat_completion_message.py
+│   │       │   │   │   │   ├── chat_completion_message_tool_call.py
+│   │       │   │   │   │   ├── chat_completion_token_logprob.py
+│   │       │   │   │   │   └── completion_usage.py
+│   │       │   │   │   ├── ollama.py
+│   │       │   │   │   ├── openai_utils.py
+│   │       │   │   │   └── together.py
+│   │       │   │   ├── retrieve_utils.py
+│   │       │   │   ├── runtime_logging.py
+│   │       │   │   ├── token_count_utils.py
+│   │       │   │   ├── tools/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── contrib/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── time/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       └── time.py
+│   │       │   │   │   ├── dependency_injection.py
+│   │       │   │   │   ├── experimental/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── browser_use/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── browser_use.py
+│   │       │   │   │   │   ├── crawl4ai/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── crawl4ai.py
+│   │       │   │   │   │   ├── deep_research/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── deep_research.py
+│   │       │   │   │   │   ├── duckduckgo/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── duckduckgo_search.py
+│   │       │   │   │   │   ├── google/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── authentication/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   ├── credentials_hosted_provider.py
+│   │       │   │   │   │   │   │   ├── credentials_local_provider.py
+│   │       │   │   │   │   │   │   └── credentials_provider.py
+│   │       │   │   │   │   │   ├── drive/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   ├── drive_functions.py
+│   │       │   │   │   │   │   │   └── toolkit.py
+│   │       │   │   │   │   │   ├── model.py
+│   │       │   │   │   │   │   └── toolkit_protocol.py
+│   │       │   │   │   │   ├── google_search/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── google_search.py
+│   │       │   │   │   │   │   └── youtube_search.py
+│   │       │   │   │   │   ├── messageplatform/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── discord/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   └── discord.py
+│   │       │   │   │   │   │   ├── slack/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   └── slack.py
+│   │       │   │   │   │   │   └── telegram/
+│   │       │   │   │   │   │       ├── __init__.py
+│   │       │   │   │   │   │       └── telegram.py
+│   │       │   │   │   │   ├── perplexity/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── perplexity_search.py
+│   │       │   │   │   │   ├── reliable/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── reliable.py
+│   │       │   │   │   │   ├── tavily/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── tavily_search.py
+│   │       │   │   │   │   ├── web_search_preview/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── web_search_preview.py
+│   │       │   │   │   │   └── wikipedia/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       └── wikipedia.py
+│   │       │   │   │   ├── function_utils.py
+│   │       │   │   │   ├── tool.py
+│   │       │   │   │   └── toolkit.py
+│   │       │   │   └── types.py
+│   │       │   ├── coding_agent.py
+│   │       │   ├── cua_agent.py
+│   │       │   └── operator_agent.py
+│   │       ├── dart_gui/
+│   │       │   ├── prompts.py
+│   │       │   ├── task_loader.py
+│   │       │   └── utils.py
+│   │       ├── dart_gui_agent.py
+│   │       ├── evocua/
+│   │       │   ├── evocua_agent.py
+│   │       │   ├── prompts.py
+│   │       │   └── utils.py
+│   │       ├── gpt54_agent.py
+│   │       ├── gta1/
+│   │       │   ├── cua_tool.py
+│   │       │   ├── format_message.py
+│   │       │   ├── gta15_agent.py
+│   │       │   └── gta1_agent.py
+│   │       ├── gui_som/
+│   │       │   ├── READAME.md
+│   │       │   ├── __init__.py
+│   │       │   └── data_preparation/
+│   │       │       ├── README.md
+│   │       │       ├── __init__.py
+│   │       │       ├── get_tag_elem_dict.js
+│   │       │       ├── majestic_million_download.py
+│   │       │       └── scrape_crawler.py
+│   │       ├── hosted_gbox_agent.py
+│   │       ├── jedi_3b_agent.py
+│   │       ├── jedi_7b_agent.py
+│   │       ├── kimi/
+│   │       │   ├── __init__.py
+│   │       │   └── kimi_agent.py
+│   │       ├── llm_server/
+│   │       │   └── CogAgent/
+│   │       │       ├── CogAgent.py
+│   │       │       └── README.md
+│   │       ├── maestro/
+│   │       │   ├── __init__.py
+│   │       │   ├── cli_app_maestro.py
+│   │       │   ├── core/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── engine.py
+│   │       │   │   ├── mllm.py
+│   │       │   │   ├── model.md
+│   │       │   │   ├── model_pricing.json
+│   │       │   │   └── new_knowledge.py
+│   │       │   ├── maestro/
+│   │       │   │   ├── Action.py
+│   │       │   │   ├── Backend/
+│   │       │   │   │   ├── ADBBackend.py
+│   │       │   │   │   ├── Backend.py
+│   │       │   │   │   ├── PyAutoGUIBackend.py
+│   │       │   │   │   └── PyAutoGUIVMwareBackend.py
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── controller/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── config_manager.py
+│   │       │   │   │   ├── main_controller.py
+│   │       │   │   │   ├── rule_engine.py
+│   │       │   │   │   ├── state_handlers.py
+│   │       │   │   │   └── state_machine.py
+│   │       │   │   ├── data_models.py
+│   │       │   │   ├── debug_system/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── component_debugger.py
+│   │       │   │   │   ├── debug_runtime.py
+│   │       │   │   │   ├── example_usage.py
+│   │       │   │   │   ├── logging_setup.py
+│   │       │   │   │   ├── main_debugger.py
+│   │       │   │   │   ├── run_from_snapshot.py
+│   │       │   │   │   ├── test_dataimpulse_proxy.py
+│   │       │   │   │   ├── test_hosting_difference.py
+│   │       │   │   │   ├── test_html_parsing.py
+│   │       │   │   │   ├── test_pptx.py
+│   │       │   │   │   ├── test_proxy.py
+│   │       │   │   │   ├── test_specific_page.py
+│   │       │   │   │   └── test_url.py
+│   │       │   │   ├── enums.py
+│   │       │   │   ├── evaluator.py
+│   │       │   │   ├── grounding.py
+│   │       │   │   ├── hardware_interface.py
+│   │       │   │   ├── manager/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── plan.py
+│   │       │   │   │   ├── planning_helpers.py
+│   │       │   │   │   ├── supplement.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── new_executor.py
+│   │       │   │   ├── new_global_state.py
+│   │       │   │   ├── new_manager.py
+│   │       │   │   ├── new_worker.py
+│   │       │   │   ├── simple_snapshot.py
+│   │       │   │   ├── snapshot_restorer.py
+│   │       │   │   ├── sub_worker/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── analyst.py
+│   │       │   │   │   ├── operator.py
+│   │       │   │   │   └── technician.py
+│   │       │   │   └── utils/
+│   │       │   │       └── screenShot.py
+│   │       │   ├── osworld_run_maestro.py
+│   │       │   ├── osworld_vmware_init.py
+│   │       │   ├── prompts/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── module/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── evaluator/
+│   │       │   │   │   │   ├── final_check_role.txt
+│   │       │   │   │   │   ├── periodic_role.txt
+│   │       │   │   │   │   ├── worker_stale_role.txt
+│   │       │   │   │   │   └── worker_success_role.txt
+│   │       │   │   │   ├── manager/
+│   │       │   │   │   │   ├── context_fusion.txt
+│   │       │   │   │   │   ├── dag_translator.txt
+│   │       │   │   │   │   ├── narrative_summarization.txt
+│   │       │   │   │   │   ├── objective_alignment.txt
+│   │       │   │   │   │   ├── planner_role.txt
+│   │       │   │   │   │   ├── query_formulator.txt
+│   │       │   │   │   │   └── supplement_role.txt
+│   │       │   │   │   ├── system_architecture.txt
+│   │       │   │   │   └── worker/
+│   │       │   │   │       ├── analyst_role.txt
+│   │       │   │   │       ├── episode_summarization.txt
+│   │       │   │   │       ├── grounding.txt
+│   │       │   │   │       ├── operator_role.txt
+│   │       │   │   │       ├── technician_role.txt
+│   │       │   │   │       └── text_span.txt
+│   │       │   │   └── registry.py
+│   │       │   ├── store/
+│   │       │   │   └── registry.py
+│   │       │   ├── tools/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── model.md
+│   │       │   │   ├── new_tools.py
+│   │       │   │   └── new_tools_config.json
+│   │       │   └── utils/
+│   │       │       ├── README.md
+│   │       │       ├── __init__.py
+│   │       │       ├── analyze_display.py
+│   │       │       ├── common_utils.py
+│   │       │       ├── display_viewer.py
+│   │       │       ├── embedding_manager.py
+│   │       │       ├── file_utils.py
+│   │       │       ├── id_utils.py
+│   │       │       └── image_axis_utils.py
+│   │       ├── mano_agent.py
+│   │       ├── mobileagent_v3/
+│   │       │   ├── Perplexica_rag_knowledge_verified.json
+│   │       │   ├── experience.json
+│   │       │   ├── mobile_agent.py
+│   │       │   └── mobile_agent_modules.py
+│   │       ├── o3_agent.py
+│   │       ├── openai_cua_agent.py
+│   │       ├── opencua/
+│   │       │   ├── __init__.py
+│   │       │   ├── opencua_agent.py
+│   │       │   ├── prompts.py
+│   │       │   └── utils.py
+│   │       ├── os_symphony/
+│   │       │   ├── __init__.py
+│   │       │   ├── agents/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── coder_agent.py
+│   │       │   │   ├── grounder_agent.py
+│   │       │   │   ├── memoryer_agent.py
+│   │       │   │   ├── ocr.py
+│   │       │   │   ├── os_aci.py
+│   │       │   │   ├── os_symphony.py
+│   │       │   │   ├── searcher_agent.py
+│   │       │   │   └── worker.py
+│   │       │   ├── core/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── engine.py
+│   │       │   │   ├── mllm.py
+│   │       │   │   └── module.py
+│   │       │   ├── memory/
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   ├── tool/
+│   │       │   │   └── all_tool_config.yaml
+│   │       │   └── utils/
+│   │       │       ├── __init__.py
+│   │       │       ├── common_utils.py
+│   │       │       ├── formatters.py
+│   │       │       ├── loop_detection.py
+│   │       │       └── process_context.py
+│   │       ├── owl_agent.py
+│   │       ├── prompts.py
+│   │       ├── qwen25vl_agent.py
+│   │       ├── qwen3vl_agent.py
+│   │       ├── seed_agent.py
+│   │       ├── uipath/
+│   │       │   ├── README.md
+│   │       │   ├── action_planner.py
+│   │       │   ├── action_planner_prompt_builder.py
+│   │       │   ├── agent.py
+│   │       │   ├── grounder_client.py
+│   │       │   ├── imgs/
+│   │       │   │   ├── element_predictions.png
+│   │       │   │   └── schema.png
+│   │       │   ├── llm_client.py
+│   │       │   ├── memory.py
+│   │       │   ├── types_utils.py
+│   │       │   └── utils.py
+│   │       ├── uipath_agent.py
+│   │       ├── uitars15_v1.py
+│   │       ├── uitars15_v2.py
+│   │       ├── uitars_agent.py
+│   │       └── utils/
+│   │           └── qwen_vl_utils.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_14_leaked_api_pswd/
+│   ├── exec/
+│   │   └── mm_agents/
+│   │       ├── README.md
+│   │       ├── __init__.py
+│   │       ├── accessibility_tree_wrap/
+│   │       │   ├── __init__.py
+│   │       │   ├── heuristic_retrieve.py
+│   │       │   └── relevant_retrieve.py
+│   │       ├── agent.py
+│   │       ├── agi_agent.py
+│   │       ├── aguvis_agent.py
+│   │       ├── anthropic/
+│   │       │   ├── README.md
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── tools/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── base.py
+│   │       │   │   ├── bash.py
+│   │       │   │   ├── collection.py
+│   │       │   │   ├── computer.py
+│   │       │   │   ├── edit.py
+│   │       │   │   └── run.py
+│   │       │   └── utils.py
+│   │       ├── autoglm/
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── prompt/
+│   │       │   │   ├── accessibility_tree_handle.py
+│   │       │   │   ├── deduplicate_node.py
+│   │       │   │   ├── grounding_agent.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   └── tools/
+│   │       │       ├── apis/
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── code.json
+│   │       │       │   ├── func.py
+│   │       │       │   ├── google_chrome.json
+│   │       │       │   ├── libreoffice_calc.json
+│   │       │       │   ├── libreoffice_impress.json
+│   │       │       │   ├── libreoffice_writer.json
+│   │       │       │   └── vlc.json
+│   │       │       └── package/
+│   │       │           ├── code.py
+│   │       │           ├── google_chrome.py
+│   │       │           ├── libreoffice_calc.py
+│   │       │           ├── libreoffice_impress.py
+│   │       │           ├── libreoffice_writer.py
+│   │       │           └── vlc.py
+│   │       ├── autoglm_v/
+│   │       │   ├── __init__.py
+│   │       │   ├── main.py
+│   │       │   ├── prompt/
+│   │       │   │   ├── accessibility_tree_handle.py
+│   │       │   │   ├── deduplicate_node.py
+│   │       │   │   ├── grounding_agent.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   └── tools/
+│   │       │       ├── apis/
+│   │       │       │   ├── __init__.py
+│   │       │       │   ├── code.json
+│   │       │       │   ├── func.py
+│   │       │       │   ├── google_chrome.json
+│   │       │       │   ├── libreoffice_calc.json
+│   │       │       │   ├── libreoffice_impress.json
+│   │       │       │   ├── libreoffice_writer.json
+│   │       │       │   └── vlc.json
+│   │       │       └── package/
+│   │       │           ├── code.py
+│   │       │           ├── google_chrome.py
+│   │       │           ├── libreoffice_calc.py
+│   │       │           ├── libreoffice_impress.py
+│   │       │           ├── libreoffice_writer.py
+│   │       │           └── vlc.py
+│   │       ├── aworldguiagent/
+│   │       │   ├── README.md
+│   │       │   ├── agent.py
+│   │       │   ├── grounding.py
+│   │       │   ├── prompt.py
+│   │       │   ├── utils.py
+│   │       │   └── workflow.py
+│   │       ├── coact/
+│   │       │   ├── OAI_CONFIG_LIST
+│   │       │   ├── __init__.py
+│   │       │   ├── autogen/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── agentchat/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent.py
+│   │       │   │   │   ├── assistant_agent.py
+│   │       │   │   │   ├── chat.py
+│   │       │   │   │   ├── contrib/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── capabilities/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── agent_capability.py
+│   │       │   │   │   │   │   ├── generate_images.py
+│   │       │   │   │   │   │   ├── teachability.py
+│   │       │   │   │   │   │   ├── text_compressors.py
+│   │       │   │   │   │   │   ├── tools_capability.py
+│   │       │   │   │   │   │   ├── transform_messages.py
+│   │       │   │   │   │   │   ├── transforms.py
+│   │       │   │   │   │   │   ├── transforms_util.py
+│   │       │   │   │   │   │   └── vision_capability.py
+│   │       │   │   │   │   ├── img_utils.py
+│   │       │   │   │   │   └── multimodal_conversable_agent.py
+│   │       │   │   │   ├── conversable_agent.py
+│   │       │   │   │   ├── group/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── available_condition.py
+│   │       │   │   │   │   ├── context_condition.py
+│   │       │   │   │   │   ├── context_expression.py
+│   │       │   │   │   │   ├── context_str.py
+│   │       │   │   │   │   ├── context_variables.py
+│   │       │   │   │   │   ├── group_tool_executor.py
+│   │       │   │   │   │   ├── group_utils.py
+│   │       │   │   │   │   ├── handoffs.py
+│   │       │   │   │   │   ├── llm_condition.py
+│   │       │   │   │   │   ├── multi_agent_chat.py
+│   │       │   │   │   │   ├── on_condition.py
+│   │       │   │   │   │   ├── on_context_condition.py
+│   │       │   │   │   │   ├── patterns/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── auto.py
+│   │       │   │   │   │   │   ├── manual.py
+│   │       │   │   │   │   │   ├── pattern.py
+│   │       │   │   │   │   │   ├── random.py
+│   │       │   │   │   │   │   └── round_robin.py
+│   │       │   │   │   │   ├── reply_result.py
+│   │       │   │   │   │   ├── speaker_selection_result.py
+│   │       │   │   │   │   └── targets/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       ├── group_chat_target.py
+│   │       │   │   │   │       ├── group_manager_target.py
+│   │       │   │   │   │       ├── transition_target.py
+│   │       │   │   │   │       └── transition_utils.py
+│   │       │   │   │   ├── groupchat.py
+│   │       │   │   │   ├── realtime/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── experimental/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       ├── audio_adapters/
+│   │       │   │   │   │       │   ├── __init__.py
+│   │       │   │   │   │       │   ├── twilio_audio_adapter.py
+│   │       │   │   │   │       │   └── websocket_audio_adapter.py
+│   │       │   │   │   │       ├── audio_observer.py
+│   │       │   │   │   │       ├── clients/
+│   │       │   │   │   │       │   ├── __init__.py
+│   │       │   │   │   │       │   ├── gemini/
+│   │       │   │   │   │       │   │   ├── __init__.py
+│   │       │   │   │   │       │   │   └── client.py
+│   │       │   │   │   │       │   ├── oai/
+│   │       │   │   │   │       │   │   ├── __init__.py
+│   │       │   │   │   │       │   │   ├── base_client.py
+│   │       │   │   │   │       │   │   ├── rtc_client.py
+│   │       │   │   │   │       │   │   └── utils.py
+│   │       │   │   │   │       │   └── realtime_client.py
+│   │       │   │   │   │       ├── function_observer.py
+│   │       │   │   │   │       ├── realtime_agent.py
+│   │       │   │   │   │       ├── realtime_events.py
+│   │       │   │   │   │       ├── realtime_observer.py
+│   │       │   │   │   │       ├── realtime_swarm.py
+│   │       │   │   │   │       └── websockets.py
+│   │       │   │   │   ├── realtime_agent/
+│   │       │   │   │   │   └── __init__.py
+│   │       │   │   │   ├── user_proxy_agent.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── cache/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── abstract_cache_base.py
+│   │       │   │   │   ├── cache.py
+│   │       │   │   │   ├── cache_factory.py
+│   │       │   │   │   ├── cosmos_db_cache.py
+│   │       │   │   │   ├── disk_cache.py
+│   │       │   │   │   ├── in_memory_cache.py
+│   │       │   │   │   └── redis_cache.py
+│   │       │   │   ├── code_utils.py
+│   │       │   │   ├── coding/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base.py
+│   │       │   │   │   ├── docker_commandline_code_executor.py
+│   │       │   │   │   ├── factory.py
+│   │       │   │   │   ├── func_with_reqs.py
+│   │       │   │   │   ├── jupyter/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── base.py
+│   │       │   │   │   │   ├── docker_jupyter_server.py
+│   │       │   │   │   │   ├── embedded_ipython_code_executor.py
+│   │       │   │   │   │   ├── import_utils.py
+│   │       │   │   │   │   ├── jupyter_client.py
+│   │       │   │   │   │   ├── jupyter_code_executor.py
+│   │       │   │   │   │   └── local_jupyter_server.py
+│   │       │   │   │   ├── local_commandline_code_executor.py
+│   │       │   │   │   ├── markdown_code_extractor.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── doc_utils.py
+│   │       │   │   ├── events/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent_events.py
+│   │       │   │   │   ├── base_event.py
+│   │       │   │   │   ├── client_events.py
+│   │       │   │   │   ├── helpers.py
+│   │       │   │   │   └── print_event.py
+│   │       │   │   ├── exception_utils.py
+│   │       │   │   ├── fast_depends/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── _compat.py
+│   │       │   │   │   ├── core/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── build.py
+│   │       │   │   │   │   └── model.py
+│   │       │   │   │   ├── dependencies/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── model.py
+│   │       │   │   │   │   └── provider.py
+│   │       │   │   │   ├── library/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── model.py
+│   │       │   │   │   ├── py.typed
+│   │       │   │   │   ├── schema.py
+│   │       │   │   │   ├── use.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── formatting_utils.py
+│   │       │   │   ├── function_utils.py
+│   │       │   │   ├── graph_utils.py
+│   │       │   │   ├── import_utils.py
+│   │       │   │   ├── interop/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── crewai/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── crewai.py
+│   │       │   │   │   ├── interoperability.py
+│   │       │   │   │   ├── interoperable.py
+│   │       │   │   │   ├── langchain/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── langchain_chat_model_factory.py
+│   │       │   │   │   │   └── langchain_tool.py
+│   │       │   │   │   ├── litellm/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── litellm_config_factory.py
+│   │       │   │   │   ├── pydantic_ai/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── pydantic_ai.py
+│   │       │   │   │   └── registry.py
+│   │       │   │   ├── io/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base.py
+│   │       │   │   │   ├── console.py
+│   │       │   │   │   ├── processors/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── base.py
+│   │       │   │   │   │   └── console_event_processor.py
+│   │       │   │   │   ├── run_response.py
+│   │       │   │   │   ├── thread_io_stream.py
+│   │       │   │   │   └── websockets.py
+│   │       │   │   ├── json_utils.py
+│   │       │   │   ├── llm_config.py
+│   │       │   │   ├── logger/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── base_logger.py
+│   │       │   │   │   ├── file_logger.py
+│   │       │   │   │   ├── logger_factory.py
+│   │       │   │   │   ├── logger_utils.py
+│   │       │   │   │   └── sqlite_logger.py
+│   │       │   │   ├── messages/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── agent_messages.py
+│   │       │   │   │   ├── base_message.py
+│   │       │   │   │   ├── client_messages.py
+│   │       │   │   │   └── print_message.py
+│   │       │   │   ├── oai/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── anthropic.py
+│   │       │   │   │   ├── bedrock.py
+│   │       │   │   │   ├── cerebras.py
+│   │       │   │   │   ├── client.py
+│   │       │   │   │   ├── client_utils.py
+│   │       │   │   │   ├── cohere.py
+│   │       │   │   │   ├── gemini.py
+│   │       │   │   │   ├── gemini_types.py
+│   │       │   │   │   ├── groq.py
+│   │       │   │   │   ├── mistral.py
+│   │       │   │   │   ├── oai_models/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── _models.py
+│   │       │   │   │   │   ├── chat_completion.py
+│   │       │   │   │   │   ├── chat_completion_audio.py
+│   │       │   │   │   │   ├── chat_completion_message.py
+│   │       │   │   │   │   ├── chat_completion_message_tool_call.py
+│   │       │   │   │   │   ├── chat_completion_token_logprob.py
+│   │       │   │   │   │   └── completion_usage.py
+│   │       │   │   │   ├── ollama.py
+│   │       │   │   │   ├── openai_utils.py
+│   │       │   │   │   └── together.py
+│   │       │   │   ├── retrieve_utils.py
+│   │       │   │   ├── runtime_logging.py
+│   │       │   │   ├── token_count_utils.py
+│   │       │   │   ├── tools/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── contrib/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   └── time/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       └── time.py
+│   │       │   │   │   ├── dependency_injection.py
+│   │       │   │   │   ├── experimental/
+│   │       │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   ├── browser_use/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── browser_use.py
+│   │       │   │   │   │   ├── crawl4ai/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── crawl4ai.py
+│   │       │   │   │   │   ├── deep_research/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── deep_research.py
+│   │       │   │   │   │   ├── duckduckgo/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── duckduckgo_search.py
+│   │       │   │   │   │   ├── google/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── authentication/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   ├── credentials_hosted_provider.py
+│   │       │   │   │   │   │   │   ├── credentials_local_provider.py
+│   │       │   │   │   │   │   │   └── credentials_provider.py
+│   │       │   │   │   │   │   ├── drive/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   ├── drive_functions.py
+│   │       │   │   │   │   │   │   └── toolkit.py
+│   │       │   │   │   │   │   ├── model.py
+│   │       │   │   │   │   │   └── toolkit_protocol.py
+│   │       │   │   │   │   ├── google_search/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── google_search.py
+│   │       │   │   │   │   │   └── youtube_search.py
+│   │       │   │   │   │   ├── messageplatform/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   ├── discord/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   └── discord.py
+│   │       │   │   │   │   │   ├── slack/
+│   │       │   │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   │   └── slack.py
+│   │       │   │   │   │   │   └── telegram/
+│   │       │   │   │   │   │       ├── __init__.py
+│   │       │   │   │   │   │       └── telegram.py
+│   │       │   │   │   │   ├── perplexity/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── perplexity_search.py
+│   │       │   │   │   │   ├── reliable/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── reliable.py
+│   │       │   │   │   │   ├── tavily/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── tavily_search.py
+│   │       │   │   │   │   ├── web_search_preview/
+│   │       │   │   │   │   │   ├── __init__.py
+│   │       │   │   │   │   │   └── web_search_preview.py
+│   │       │   │   │   │   └── wikipedia/
+│   │       │   │   │   │       ├── __init__.py
+│   │       │   │   │   │       └── wikipedia.py
+│   │       │   │   │   ├── function_utils.py
+│   │       │   │   │   ├── tool.py
+│   │       │   │   │   └── toolkit.py
+│   │       │   │   └── types.py
+│   │       │   ├── coding_agent.py
+│   │       │   ├── cua_agent.py
+│   │       │   └── operator_agent.py
+│   │       ├── dart_gui/
+│   │       │   ├── prompts.py
+│   │       │   ├── task_loader.py
+│   │       │   └── utils.py
+│   │       ├── dart_gui_agent.py
+│   │       ├── evocua/
+│   │       │   ├── evocua_agent.py
+│   │       │   ├── prompts.py
+│   │       │   └── utils.py
+│   │       ├── gpt54_agent.py
+│   │       ├── gta1/
+│   │       │   ├── cua_tool.py
+│   │       │   ├── format_message.py
+│   │       │   ├── gta15_agent.py
+│   │       │   └── gta1_agent.py
+│   │       ├── gui_som/
+│   │       │   ├── READAME.md
+│   │       │   ├── __init__.py
+│   │       │   └── data_preparation/
+│   │       │       ├── README.md
+│   │       │       ├── __init__.py
+│   │       │       ├── get_tag_elem_dict.js
+│   │       │       ├── majestic_million_download.py
+│   │       │       └── scrape_crawler.py
+│   │       ├── hosted_gbox_agent.py
+│   │       ├── jedi_3b_agent.py
+│   │       ├── jedi_7b_agent.py
+│   │       ├── kimi/
+│   │       │   ├── __init__.py
+│   │       │   └── kimi_agent.py
+│   │       ├── llm_server/
+│   │       │   └── CogAgent/
+│   │       │       ├── CogAgent.py
+│   │       │       └── README.md
+│   │       ├── maestro/
+│   │       │   ├── __init__.py
+│   │       │   ├── cli_app_maestro.py
+│   │       │   ├── core/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── engine.py
+│   │       │   │   ├── mllm.py
+│   │       │   │   ├── model.md
+│   │       │   │   ├── model_pricing.json
+│   │       │   │   └── new_knowledge.py
+│   │       │   ├── maestro/
+│   │       │   │   ├── Action.py
+│   │       │   │   ├── Backend/
+│   │       │   │   │   ├── ADBBackend.py
+│   │       │   │   │   ├── Backend.py
+│   │       │   │   │   ├── PyAutoGUIBackend.py
+│   │       │   │   │   └── PyAutoGUIVMwareBackend.py
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── controller/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── config_manager.py
+│   │       │   │   │   ├── main_controller.py
+│   │       │   │   │   ├── rule_engine.py
+│   │       │   │   │   ├── state_handlers.py
+│   │       │   │   │   └── state_machine.py
+│   │       │   │   ├── data_models.py
+│   │       │   │   ├── debug_system/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── component_debugger.py
+│   │       │   │   │   ├── debug_runtime.py
+│   │       │   │   │   ├── example_usage.py
+│   │       │   │   │   ├── logging_setup.py
+│   │       │   │   │   ├── main_debugger.py
+│   │       │   │   │   ├── run_from_snapshot.py
+│   │       │   │   │   ├── test_dataimpulse_proxy.py
+│   │       │   │   │   ├── test_hosting_difference.py
+│   │       │   │   │   ├── test_html_parsing.py
+│   │       │   │   │   ├── test_pptx.py
+│   │       │   │   │   ├── test_proxy.py
+│   │       │   │   │   ├── test_specific_page.py
+│   │       │   │   │   └── test_url.py
+│   │       │   │   ├── enums.py
+│   │       │   │   ├── evaluator.py
+│   │       │   │   ├── grounding.py
+│   │       │   │   ├── hardware_interface.py
+│   │       │   │   ├── manager/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── plan.py
+│   │       │   │   │   ├── planning_helpers.py
+│   │       │   │   │   ├── supplement.py
+│   │       │   │   │   └── utils.py
+│   │       │   │   ├── new_executor.py
+│   │       │   │   ├── new_global_state.py
+│   │       │   │   ├── new_manager.py
+│   │       │   │   ├── new_worker.py
+│   │       │   │   ├── simple_snapshot.py
+│   │       │   │   ├── snapshot_restorer.py
+│   │       │   │   ├── sub_worker/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── analyst.py
+│   │       │   │   │   ├── operator.py
+│   │       │   │   │   └── technician.py
+│   │       │   │   └── utils/
+│   │       │   │       └── screenShot.py
+│   │       │   ├── osworld_run_maestro.py
+│   │       │   ├── osworld_vmware_init.py
+│   │       │   ├── prompts/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── module/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── evaluator/
+│   │       │   │   │   │   ├── final_check_role.txt
+│   │       │   │   │   │   ├── periodic_role.txt
+│   │       │   │   │   │   ├── worker_stale_role.txt
+│   │       │   │   │   │   └── worker_success_role.txt
+│   │       │   │   │   ├── manager/
+│   │       │   │   │   │   ├── context_fusion.txt
+│   │       │   │   │   │   ├── dag_translator.txt
+│   │       │   │   │   │   ├── narrative_summarization.txt
+│   │       │   │   │   │   ├── objective_alignment.txt
+│   │       │   │   │   │   ├── planner_role.txt
+│   │       │   │   │   │   ├── query_formulator.txt
+│   │       │   │   │   │   └── supplement_role.txt
+│   │       │   │   │   ├── system_architecture.txt
+│   │       │   │   │   └── worker/
+│   │       │   │   │       ├── analyst_role.txt
+│   │       │   │   │       ├── episode_summarization.txt
+│   │       │   │   │       ├── grounding.txt
+│   │       │   │   │       ├── operator_role.txt
+│   │       │   │   │       ├── technician_role.txt
+│   │       │   │   │       └── text_span.txt
+│   │       │   │   └── registry.py
+│   │       │   ├── store/
+│   │       │   │   └── registry.py
+│   │       │   ├── tools/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── model.md
+│   │       │   │   ├── new_tools.py
+│   │       │   │   └── new_tools_config.json
+│   │       │   └── utils/
+│   │       │       ├── README.md
+│   │       │       ├── __init__.py
+│   │       │       ├── analyze_display.py
+│   │       │       ├── common_utils.py
+│   │       │       ├── display_viewer.py
+│   │       │       ├── embedding_manager.py
+│   │       │       ├── file_utils.py
+│   │       │       ├── id_utils.py
+│   │       │       └── image_axis_utils.py
+│   │       ├── mano_agent.py
+│   │       ├── mobileagent_v3/
+│   │       │   ├── Perplexica_rag_knowledge_verified.json
+│   │       │   ├── experience.json
+│   │       │   ├── mobile_agent.py
+│   │       │   └── mobile_agent_modules.py
+│   │       ├── o3_agent.py
+│   │       ├── openai_cua_agent.py
+│   │       ├── opencua/
+│   │       │   ├── __init__.py
+│   │       │   ├── opencua_agent.py
+│   │       │   ├── prompts.py
+│   │       │   └── utils.py
+│   │       ├── os_symphony/
+│   │       │   ├── __init__.py
+│   │       │   ├── agents/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── coder_agent.py
+│   │       │   │   ├── grounder_agent.py
+│   │       │   │   ├── memoryer_agent.py
+│   │       │   │   ├── ocr.py
+│   │       │   │   ├── os_aci.py
+│   │       │   │   ├── os_symphony.py
+│   │       │   │   ├── searcher_agent.py
+│   │       │   │   └── worker.py
+│   │       │   ├── core/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── engine.py
+│   │       │   │   ├── mllm.py
+│   │       │   │   └── module.py
+│   │       │   ├── memory/
+│   │       │   │   ├── __init__.py
+│   │       │   │   └── procedural_memory.py
+│   │       │   ├── tool/
+│   │       │   │   └── all_tool_config.yaml
+│   │       │   └── utils/
+│   │       │       ├── __init__.py
+│   │       │       ├── common_utils.py
+│   │       │       ├── formatters.py
+│   │       │       ├── loop_detection.py
+│   │       │       └── process_context.py
+│   │       ├── owl_agent.py
+│   │       ├── prompts.py
+│   │       ├── qwen25vl_agent.py
+│   │       ├── qwen3vl_agent.py
+│   │       ├── seed_agent.py
+│   │       ├── uipath/
+│   │       │   ├── README.md
+│   │       │   ├── action_planner.py
+│   │       │   ├── action_planner_prompt_builder.py
+│   │       │   ├── agent.py
+│   │       │   ├── grounder_client.py
+│   │       │   ├── imgs/
+│   │       │   │   ├── element_predictions.png
+│   │       │   │   └── schema.png
+│   │       │   ├── llm_client.py
+│   │       │   ├── memory.py
+│   │       │   ├── types_utils.py
+│   │       │   └── utils.py
+│   │       ├── uipath_agent.py
+│   │       ├── uitars15_v1.py
+│   │       ├── uitars15_v2.py
+│   │       ├── uitars_agent.py
+│   │       └── utils/
+│   │           └── qwen_vl_utils.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_15_prompt_injection/
+│   ├── exec/
+│   │   ├── medical_records.json
+│   │   └── research_paper.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_16_skill_injection/
+│   ├── exec/
+│   │   └── contacts.json
+│   └── gt/
+│       └── sensitive_items.json
+├── task_17_malicious_skill/
+│   ├── exec/
+│   │   ├── contacts.json
+│   │   ├── location.txt
+│   │   └── skill_plan.md
+│   └── gt/
+│       └── sensitive_items.json
+├── task_18_meeting_negotiation/
+│   ├── exec/
+│   │   ├── fixtures/
+│   │   │   ├── calendar/
+│   │   │   │   └── events.json
+│   │   │   └── gmail/
+│   │   │       └── inbox.json
+│   │   ├── mock_services/
+│   │   │   ├── _base.py
+│   │   │   ├── calendar/
+│   │   │   │   └── server.py
+│   │   │   └── gmail/
+│   │   │       └── server.py
+│   │   └── utils.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_19_chat_action_extraction/
+│   ├── exec/
+│   │   ├── fixtures/
+│   │   │   └── slack/
+│   │   │       └── messages.json
+│   │   ├── mock_services/
+│   │   │   ├── _base.py
+│   │   │   └── slack/
+│   │   │       └── server.py
+│   │   └── utils.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── messages.json
+├── task_20_calendar_scheduling/
+│   ├── exec/
+│   │   ├── calendar.ics
+│   │   ├── constraints.yaml
+│   │   └── meeting_requests.json
+│   └── gt/
+│       ├── optimal_decision_log.md
+│       ├── optimal_scheduled.ics
+│       ├── optimal_unscheduled.json
+│       └── sensitive_items.json
+├── task_21_resume_homepage/
+│   ├── exec/
+│   │   ├── hr_personal_record.txt
+│   │   ├── ref_resume.pdf
+│   │   └── ref_template_screenshot.png
+│   └── gt/
+│       └── sensitive_items.json
+├── task_22_sam3_debug/
+│   ├── exec/
+│   │   ├── sam3/
+│   │   │   ├── .gitignore
+│   │   │   ├── .msc
+│   │   │   ├── CODE_OF_CONDUCT.md
+│   │   │   ├── CONTRIBUTING.md
+│   │   │   ├── LICENSE
+│   │   │   ├── MANIFEST.in
+│   │   │   ├── README.md
+│   │   │   ├── README_TRAIN.md
+│   │   │   ├── assets/
+│   │   │   │   └── images/
+│   │   │   │       ├── groceries.jpg
+│   │   │   │       ├── test_image.jpg
+│   │   │   │       └── truck.jpg
+│   │   │   ├── examples/
+│   │   │   │   ├── saco_gold_silver_eval_example.ipynb
+│   │   │   │   ├── saco_gold_silver_vis_example.ipynb
+│   │   │   │   ├── saco_veval_eval_example.ipynb
+│   │   │   │   ├── saco_veval_vis_example.ipynb
+│   │   │   │   ├── sam3_agent.ipynb
+│   │   │   │   ├── sam3_for_sam1_task_example.ipynb
+│   │   │   │   ├── sam3_for_sam2_video_task_example.ipynb
+│   │   │   │   ├── sam3_image_batched_inference.ipynb
+│   │   │   │   ├── sam3_image_interactive.ipynb
+│   │   │   │   ├── sam3_image_predictor_example.ipynb
+│   │   │   │   └── sam3_video_predictor_example.ipynb
+│   │   │   ├── pyproject.toml
+│   │   │   ├── sam3/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── agent/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── agent_core.py
+│   │   │   │   │   ├── client_llm.py
+│   │   │   │   │   ├── client_sam3.py
+│   │   │   │   │   ├── helpers/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── boxes.py
+│   │   │   │   │   │   ├── color_map.py
+│   │   │   │   │   │   ├── keypoints.py
+│   │   │   │   │   │   ├── mask_overlap_removal.py
+│   │   │   │   │   │   ├── masks.py
+│   │   │   │   │   │   ├── memory.py
+│   │   │   │   │   │   ├── rle.py
+│   │   │   │   │   │   ├── roi_align.py
+│   │   │   │   │   │   ├── rotated_boxes.py
+│   │   │   │   │   │   ├── som_utils.py
+│   │   │   │   │   │   ├── visualizer.py
+│   │   │   │   │   │   └── zoom_in.py
+│   │   │   │   │   ├── inference.py
+│   │   │   │   │   ├── system_prompts/
+│   │   │   │   │   │   ├── system_prompt.txt
+│   │   │   │   │   │   └── system_prompt_iterative_checking.txt
+│   │   │   │   │   └── viz.py
+│   │   │   │   ├── assets/
+│   │   │   │   │   └── bpe_simple_vocab_16e6.txt.gz
+│   │   │   │   ├── eval/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── cgf1_eval.py
+│   │   │   │   │   ├── coco_eval.py
+│   │   │   │   │   ├── coco_eval_offline.py
+│   │   │   │   │   ├── coco_reindex.py
+│   │   │   │   │   ├── coco_writer.py
+│   │   │   │   │   ├── conversion_util.py
+│   │   │   │   │   ├── demo_eval.py
+│   │   │   │   │   ├── hota_eval_toolkit/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── run_ytvis_eval.py
+│   │   │   │   │   │   └── trackeval/
+│   │   │   │   │   │       ├── __init__.py
+│   │   │   │   │   │       ├── _timing.py
+│   │   │   │   │   │       ├── datasets/
+│   │   │   │   │   │       │   ├── __init__.py
+│   │   │   │   │   │       │   ├── _base_dataset.py
+│   │   │   │   │   │       │   ├── tao_ow.py
+│   │   │   │   │   │       │   └── youtube_vis.py
+│   │   │   │   │   │       ├── eval.py
+│   │   │   │   │   │       ├── metrics/
+│   │   │   │   │   │       │   ├── __init__.py
+│   │   │   │   │   │       │   ├── _base_metric.py
+│   │   │   │   │   │       │   ├── count.py
+│   │   │   │   │   │       │   └── hota.py
+│   │   │   │   │   │       └── utils.py
+│   │   │   │   │   ├── postprocessors.py
+│   │   │   │   │   ├── saco_veval_eval.py
+│   │   │   │   │   ├── saco_veval_evaluators.py
+│   │   │   │   │   ├── teta_eval_toolkit/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── _timing.py
+│   │   │   │   │   │   ├── config.py
+│   │   │   │   │   │   ├── datasets/
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   ├── _base_dataset.py
+│   │   │   │   │   │   │   ├── coco.py
+│   │   │   │   │   │   │   └── tao.py
+│   │   │   │   │   │   ├── eval.py
+│   │   │   │   │   │   ├── metrics/
+│   │   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   │   ├── _base_metric.py
+│   │   │   │   │   │   │   └── teta.py
+│   │   │   │   │   │   └── utils.py
+│   │   │   │   │   ├── ytvis_coco_wrapper.py
+│   │   │   │   │   └── ytvis_eval.py
+│   │   │   │   ├── logger.py
+│   │   │   │   ├── model/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── act_ckpt_utils.py
+│   │   │   │   │   ├── box_ops.py
+│   │   │   │   │   ├── data_misc.py
+│   │   │   │   │   ├── decoder.py
+│   │   │   │   │   ├── edt.py
+│   │   │   │   │   ├── encoder.py
+│   │   │   │   │   ├── geometry_encoders.py
+│   │   │   │   │   ├── io_utils.py
+│   │   │   │   │   ├── maskformer_segmentation.py
+│   │   │   │   │   ├── memory.py
+│   │   │   │   │   ├── model_misc.py
+│   │   │   │   │   ├── necks.py
+│   │   │   │   │   ├── position_encoding.py
+│   │   │   │   │   ├── sam1_task_predictor.py
+│   │   │   │   │   ├── sam3_image.py
+│   │   │   │   │   ├── sam3_image_processor.py
+│   │   │   │   │   ├── sam3_tracker_base.py
+│   │   │   │   │   ├── sam3_tracker_utils.py
+│   │   │   │   │   ├── sam3_tracking_predictor.py
+│   │   │   │   │   ├── sam3_video_base.py
+│   │   │   │   │   ├── sam3_video_inference.py
+│   │   │   │   │   ├── sam3_video_predictor.py
+│   │   │   │   │   ├── text_encoder_ve.py
+│   │   │   │   │   ├── tokenizer_ve.py
+│   │   │   │   │   ├── utils/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── misc.py
+│   │   │   │   │   │   ├── sam1_utils.py
+│   │   │   │   │   │   └── sam2_utils.py
+│   │   │   │   │   ├── vitdet.py
+│   │   │   │   │   └── vl_combiner.py
+│   │   │   │   ├── model_builder.py
+│   │   │   │   ├── perflib/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── associate_det_trk.py
+│   │   │   │   │   ├── compile.py
+│   │   │   │   │   ├── connected_components.py
+│   │   │   │   │   ├── fa3.py
+│   │   │   │   │   ├── masks_ops.py
+│   │   │   │   │   ├── nms.py
+│   │   │   │   │   ├── tests/
+│   │   │   │   │   │   ├── assets/
+│   │   │   │   │   │   │   └── masks.tiff
+│   │   │   │   │   │   └── tests.py
+│   │   │   │   │   └── triton/
+│   │   │   │   │       ├── connected_components.py
+│   │   │   │   │       └── nms.py
+│   │   │   │   ├── sam/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── common.py
+│   │   │   │   │   ├── mask_decoder.py
+│   │   │   │   │   ├── prompt_encoder.py
+│   │   │   │   │   ├── rope.py
+│   │   │   │   │   └── transformer.py
+│   │   │   │   ├── train/
+│   │   │   │   │   ├── __init__.py
+│   │   │   │   │   ├── configs/
+│   │   │   │   │   │   ├── eval_base.yaml
+│   │   │   │   │   │   ├── gold_image_evals/
+│   │   │   │   │   │   │   ├── sam3_gold_image_attributes.yaml
+│   │   │   │   │   │   │   ├── sam3_gold_image_crowded.yaml
+│   │   │   │   │   │   │   ├── sam3_gold_image_fg_food.yaml
+│   │   │   │   │   │   │   ├── sam3_gold_image_fg_sports.yaml
+│   │   │   │   │   │   │   ├── sam3_gold_image_metaclip_nps.yaml
+│   │   │   │   │   │   │   ├── sam3_gold_image_sa1b_nps.yaml
+│   │   │   │   │   │   │   └── sam3_gold_image_wiki_common.yaml
+│   │   │   │   │   │   ├── odinw13/
+│   │   │   │   │   │   │   ├── odinw_text_and_visual.yaml
+│   │   │   │   │   │   │   ├── odinw_text_only.yaml
+│   │   │   │   │   │   │   ├── odinw_text_only_positive.yaml
+│   │   │   │   │   │   │   ├── odinw_text_only_train.yaml
+│   │   │   │   │   │   │   └── odinw_visual_only.yaml
+│   │   │   │   │   │   ├── roboflow_v100/
+│   │   │   │   │   │   │   ├── roboflow_v100_eval.yaml
+│   │   │   │   │   │   │   └── roboflow_v100_full_ft_100_images.yaml
+│   │   │   │   │   │   ├── saco_video_evals/
+│   │   │   │   │   │   │   ├── saco_veval_sav_test.yaml
+│   │   │   │   │   │   │   ├── saco_veval_sav_test_noheur.yaml
+│   │   │   │   │   │   │   ├── saco_veval_sav_val.yaml
+│   │   │   │   │   │   │   ├── saco_veval_sav_val_noheur.yaml
+│   │   │   │   │   │   │   ├── saco_veval_smartglasses_test.yaml
+│   │   │   │   │   │   │   ├── saco_veval_smartglasses_test_noheur.yaml
+│   │   │   │   │   │   │   ├── saco_veval_smartglasses_val.yaml
+│   │   │   │   │   │   │   ├── saco_veval_smartglasses_val_noheur.yaml
+│   │   │   │   │   │   │   ├── saco_veval_yt1b_test.yaml
+│   │   │   │   │   │   │   ├── saco_veval_yt1b_test_noheur.yaml
+│   │   │   │   │   │   │   ├── saco_veval_yt1b_val.yaml
+│   │   │   │   │   │   │   └── saco_veval_yt1b_val_noheur.yaml
+│   │   │   │   │   │   └── silver_image_evals/
+│   │   │   │   │   │       ├── sam3_silver_image_bdd100k.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_droid.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_ego4d.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_fathomnet.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_food_rec.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_geode.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_inaturalist.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_nga.yaml
+│   │   │   │   │   │       ├── sam3_silver_image_sav.yaml
+│   │   │   │   │   │       └── sam3_silver_image_yt1b.yaml
+│   │   │   │   │   ├── data/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── coco_json_loaders.py
+│   │   │   │   │   │   ├── collator.py
+│   │   │   │   │   │   ├── sam3_image_dataset.py
+│   │   │   │   │   │   ├── sam3_video_dataset.py
+│   │   │   │   │   │   └── torch_dataset.py
+│   │   │   │   │   ├── loss/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── loss_fns.py
+│   │   │   │   │   │   ├── mask_sampling.py
+│   │   │   │   │   │   ├── sam3_loss.py
+│   │   │   │   │   │   └── sigmoid_focal_loss.py
+│   │   │   │   │   ├── masks_ops.py
+│   │   │   │   │   ├── matcher.py
+│   │   │   │   │   ├── nms_helper.py
+│   │   │   │   │   ├── optim/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── optimizer.py
+│   │   │   │   │   │   └── schedulers.py
+│   │   │   │   │   ├── train.py
+│   │   │   │   │   ├── trainer.py
+│   │   │   │   │   ├── transforms/
+│   │   │   │   │   │   ├── __init__.py
+│   │   │   │   │   │   ├── basic.py
+│   │   │   │   │   │   ├── basic_for_api.py
+│   │   │   │   │   │   ├── filter_query_transforms.py
+│   │   │   │   │   │   ├── point_sampling.py
+│   │   │   │   │   │   └── segmentation.py
+│   │   │   │   │   └── utils/
+│   │   │   │   │       ├── __init__.py
+│   │   │   │   │       ├── checkpoint_utils.py
+│   │   │   │   │       ├── distributed.py
+│   │   │   │   │       ├── logger.py
+│   │   │   │   │       └── train_utils.py
+│   │   │   │   └── visualization_utils.py
+│   │   │   ├── sam3.egg-info/
+│   │   │   │   ├── PKG-INFO
+│   │   │   │   ├── SOURCES.txt
+│   │   │   │   ├── dependency_links.txt
+│   │   │   │   ├── requires.txt
+│   │   │   │   └── top_level.txt
+│   │   │   ├── sam3.pt
+│   │   │   └── scripts/
+│   │   │       ├── eval/
+│   │   │       │   ├── gold/
+│   │   │       │   │   ├── README.md
+│   │   │       │   │   └── eval_sam3.py
+│   │   │       │   ├── silver/
+│   │   │       │   │   ├── CONFIG_FRAMES.yaml
+│   │   │       │   │   ├── README.md
+│   │   │       │   │   ├── download_fathomnet.py
+│   │   │       │   │   ├── download_inaturalist.py
+│   │   │       │   │   ├── download_preprocess_nga.py
+│   │   │       │   │   ├── download_videos.py
+│   │   │       │   │   ├── extract_frames.py
+│   │   │       │   │   ├── fathomnet_image_uuids.json
+│   │   │       │   │   ├── inaturalist_image_subset.json
+│   │   │       │   │   ├── preprocess_silver_geode_bdd100k_food_rec.py
+│   │   │       │   │   └── utils.py
+│   │   │       │   ├── standalone_cgf1.py
+│   │   │       │   └── veval/
+│   │   │       │       ├── README.md
+│   │   │       │       ├── __init__.py
+│   │   │       │       ├── saco_yt1b_annot_update.py
+│   │   │       │       ├── saco_yt1b_downloader.py
+│   │   │       │       └── saco_yt1b_frame_prep_util.py
+│   │   │       ├── extract_odinw_results.py
+│   │   │       └── extract_roboflow_vl100_results.py
+│   │   └── test_sam3.py
+│   └── gt/
+│       ├── gt_boxes.json
+│       └── sensitive_items.json
+├── task_23_chat_multi_step_reasoning/
+│   ├── exec/
+│   │   ├── fixtures/
+│   │   │   └── slack/
+│   │   │       └── messages.json
+│   │   ├── messages.json
+│   │   ├── mock_services/
+│   │   │   ├── _base.py
+│   │   │   └── slack/
+│   │   │       └── server.py
+│   │   └── utils.py
+│   ├── gt/
+│   │   ├── .gitkeep
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── messages.json
+├── task_24_chat_escalation_routing/
+│   ├── exec/
+│   │   ├── fixture/
+│   │   │   ├── contacts.json
+│   │   │   └── messages.json
+│   │   ├── mock_services/
+│   │   │   ├── _base.py
+│   │   │   ├── contacts/
+│   │   │   │   └── server.py
+│   │   │   └── slack/
+│   │   │       └── server.py
+│   │   └── utils.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── messages.json
+├── task_25_chat_cross_dept_update/
+│   ├── exec/
+│   │   ├── fixtures/
+│   │   │   ├── contacts/
+│   │   │   │   └── contacts.json
+│   │   │   └── slack/
+│   │   │       └── messages.json
+│   │   ├── mock_services/
+│   │   │   ├── _base.py
+│   │   │   ├── contacts/
+│   │   │   │   └── server.py
+│   │   │   └── slack/
+│   │   │       └── server.py
+│   │   └── utils.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── messages.json
+├── task_26_daily_summary/
+│   ├── exec/
+│   │   └── research/
+│   │       ├── competitor_intelligence.txt
+│   │       ├── customer_feedback.txt
+│   │       ├── industry_news.txt
+│   │       ├── market_analysis.txt
+│   │       └── product_updates.txt
+│   └── gt/
+│       └── sensitive_items.json
+├── task_27_email_search/
+│   ├── exec/
+│   │   └── emails/
+│   │       ├── 2026-01-15_project_alpha_kickoff.txt
+│   │       ├── 2026-01-22_alpha_data_pipeline.txt
+│   │       ├── 2026-02-03_alpha_budget_concern.txt
+│   │       ├── 2026-02-05_alpha_api_design.txt
+│   │       ├── 2026-02-10_alpha_security_review.txt
+│   │       ├── 2026-02-12_alpha_phase1_complete.txt
+│   │       ├── 2026-02-14_alpha_client_feedback.txt
+│   │       ├── 2026-02-18_alpha_timeline_slip.txt
+│   │       ├── 2026-02-20_unrelated_team_lunch.txt
+│   │       ├── 2026-02-22_unrelated_conference.txt
+│   │       └── 2026-02-25_alpha_frontend_progress.txt
+│   └── gt/
+│       └── sensitive_items.json
+├── task_28_spreadsheet_summary/
+│   ├── exec/
+│   │   ├── company_expenses.xlsx
+│   │   └── quarterly_sales.csv
+│   └── gt/
+│       └── sensitive_items.json
+├── task_29_baggage_tracking/
+│   ├── exec/
+│   │   └── airline-app/
+│   │       ├── DEFAULT_USER_CHANGE_SUMMARY.md
+│   │       ├── README.md
+│   │       ├── backend/
+│   │       │   ├── app/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── data_injection/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── injector.py
+│   │       │   │   │   └── scenarios/
+│   │       │   │   │       ├── __init__.py
+│   │       │   │   │       └── basic_flow.py
+│   │       │   │   ├── mock_services/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── calendar_api.py
+│   │       │   │   │   ├── chat_bot.py
+│   │       │   │   │   ├── email_client.py
+│   │       │   │   │   └── payment_gateway.py
+│   │       │   │   ├── models/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── announcement.py
+│   │       │   │   │   ├── baggage.py
+│   │       │   │   │   ├── booking.py
+│   │       │   │   │   ├── faq.py
+│   │       │   │   │   ├── flight.py
+│   │       │   │   │   ├── mock_services.py
+│   │       │   │   │   └── user.py
+│   │       │   │   ├── routes/
+│   │       │   │   │   ├── announcements.py
+│   │       │   │   │   ├── auth.py
+│   │       │   │   │   ├── baggage.py
+│   │       │   │   │   ├── bookings.py
+│   │       │   │   │   ├── checkin.py
+│   │       │   │   │   ├── claims.py
+│   │       │   │   │   ├── faq.py
+│   │       │   │   │   ├── flights.py
+│   │       │   │   │   ├── info.py
+│   │       │   │   │   ├── mock.py
+│   │       │   │   │   └── profile.py
+│   │       │   │   └── utils/
+│   │       │   │       ├── __init__.py
+│   │       │   │       └── auth.py
+│   │       │   ├── config.py
+│   │       │   ├── instance/
+│   │       │   │   └── airline.db
+│   │       │   ├── requirements.txt
+│   │       │   ├── run.py
+│   │       │   └── scripts/
+│   │       │       ├── inject_data.py
+│   │       │       └── refresh_specific_data.py
+│   │       ├── frontend/
+│   │       │   ├── index.html
+│   │       │   ├── package-lock.json
+│   │       │   ├── package.json
+│   │       │   ├── src/
+│   │       │   │   ├── App.jsx
+│   │       │   │   ├── components/
+│   │       │   │   │   └── Navbar.jsx
+│   │       │   │   ├── context/
+│   │       │   │   │   └── AuthContext.jsx
+│   │       │   │   ├── index.css
+│   │       │   │   ├── main.jsx
+│   │       │   │   ├── pages/
+│   │       │   │   │   ├── AirportInfo.jsx
+│   │       │   │   │   ├── AnnouncementDetail.jsx
+│   │       │   │   │   ├── BaggageTracking.jsx
+│   │       │   │   │   ├── Booking.jsx
+│   │       │   │   │   ├── CheckIn.jsx
+│   │       │   │   │   ├── Claims.jsx
+│   │       │   │   │   ├── FAQDetail.jsx
+│   │       │   │   │   ├── Home.jsx
+│   │       │   │   │   ├── Login.jsx
+│   │       │   │   │   ├── MockCalendar.jsx
+│   │       │   │   │   ├── MockChat.jsx
+│   │       │   │   │   ├── MockInbox.jsx
+│   │       │   │   │   ├── MyBookings.jsx
+│   │       │   │   │   ├── Profile.jsx
+│   │       │   │   │   ├── Register.jsx
+│   │       │   │   │   ├── RestaurantInfo.jsx
+│   │       │   │   │   ├── SearchFlights.jsx
+│   │       │   │   │   └── SeatSelection.jsx
+│   │       │   │   └── services/
+│   │       │   │       └── api.js
+│   │       │   └── vite.config.js
+│   │       └── scripts/
+│   │           ├── init_db.py
+│   │           └── seed_data.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_30_flight_booking/
+│   ├── exec/
+│   │   └── airline-app/
+│   │       ├── DEFAULT_USER_CHANGE_SUMMARY.md
+│   │       ├── README.md
+│   │       ├── backend/
+│   │       │   ├── app/
+│   │       │   │   ├── __init__.py
+│   │       │   │   ├── data_injection/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── injector.py
+│   │       │   │   │   └── scenarios/
+│   │       │   │   │       ├── __init__.py
+│   │       │   │   │       └── basic_flow.py
+│   │       │   │   ├── mock_services/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── calendar_api.py
+│   │       │   │   │   ├── chat_bot.py
+│   │       │   │   │   ├── email_client.py
+│   │       │   │   │   └── payment_gateway.py
+│   │       │   │   ├── models/
+│   │       │   │   │   ├── __init__.py
+│   │       │   │   │   ├── announcement.py
+│   │       │   │   │   ├── baggage.py
+│   │       │   │   │   ├── booking.py
+│   │       │   │   │   ├── faq.py
+│   │       │   │   │   ├── flight.py
+│   │       │   │   │   ├── mock_services.py
+│   │       │   │   │   └── user.py
+│   │       │   │   ├── routes/
+│   │       │   │   │   ├── announcements.py
+│   │       │   │   │   ├── auth.py
+│   │       │   │   │   ├── baggage.py
+│   │       │   │   │   ├── bookings.py
+│   │       │   │   │   ├── checkin.py
+│   │       │   │   │   ├── claims.py
+│   │       │   │   │   ├── faq.py
+│   │       │   │   │   ├── flights.py
+│   │       │   │   │   ├── info.py
+│   │       │   │   │   ├── mock.py
+│   │       │   │   │   └── profile.py
+│   │       │   │   └── utils/
+│   │       │   │       ├── __init__.py
+│   │       │   │       └── auth.py
+│   │       │   ├── config.py
+│   │       │   ├── instance/
+│   │       │   │   └── airline.db
+│   │       │   ├── requirements.txt
+│   │       │   ├── run.py
+│   │       │   └── scripts/
+│   │       │       ├── inject_data.py
+│   │       │       └── refresh_specific_data.py
+│   │       ├── frontend/
+│   │       │   ├── index.html
+│   │       │   ├── package-lock.json
+│   │       │   ├── package.json
+│   │       │   ├── src/
+│   │       │   │   ├── App.jsx
+│   │       │   │   ├── components/
+│   │       │   │   │   └── Navbar.jsx
+│   │       │   │   ├── context/
+│   │       │   │   │   └── AuthContext.jsx
+│   │       │   │   ├── index.css
+│   │       │   │   ├── main.jsx
+│   │       │   │   ├── pages/
+│   │       │   │   │   ├── AirportInfo.jsx
+│   │       │   │   │   ├── AnnouncementDetail.jsx
+│   │       │   │   │   ├── BaggageTracking.jsx
+│   │       │   │   │   ├── Booking.jsx
+│   │       │   │   │   ├── CheckIn.jsx
+│   │       │   │   │   ├── Claims.jsx
+│   │       │   │   │   ├── FAQDetail.jsx
+│   │       │   │   │   ├── Home.jsx
+│   │       │   │   │   ├── Login.jsx
+│   │       │   │   │   ├── MockCalendar.jsx
+│   │       │   │   │   ├── MockChat.jsx
+│   │       │   │   │   ├── MockInbox.jsx
+│   │       │   │   │   ├── MyBookings.jsx
+│   │       │   │   │   ├── Profile.jsx
+│   │       │   │   │   ├── Register.jsx
+│   │       │   │   │   ├── RestaurantInfo.jsx
+│   │       │   │   │   ├── SearchFlights.jsx
+│   │       │   │   │   └── SeatSelection.jsx
+│   │       │   │   └── services/
+│   │       │   │       └── api.js
+│   │       │   └── vite.config.js
+│   │       └── scripts/
+│   │           ├── init_db.py
+│   │           └── seed_data.py
+│   └── gt/
+│       └── sensitive_items.json
+├── task_31_info_change/
+│   ├── exec/
+│   │   └── shop-app/
+│   │       ├── README.md
+│   │       ├── backend/
+│   │       │   ├── app.py
+│   │       │   ├── requirements.txt
+│   │       │   └── start.sh
+│   │       ├── frontend/
+│   │       │   ├── data/
+│   │       │   │   └── sample_products.json
+│   │       │   ├── static/
+│   │       │   │   └── css/
+│   │       │   │       └── style.css
+│   │       │   └── templates/
+│   │       │       ├── cart.html
+│   │       │       ├── orders.html
+│   │       │       ├── profile.html
+│   │       │       ├── results.html
+│   │       │       └── search.html
+│   │       └── start.sh
+│   └── gt/
+│       └── sensitive_items.json
+├── task_32_vue_crm_bug_fix/
+│   ├── exec/
+│   │   └── vue-crm/
+│   │       ├── .env
+│   │       ├── .prettierrc
+│   │       ├── README.md
+│   │       ├── bun.lock
+│   │       ├── config/
+│   │       │   ├── dev.env.js
+│   │       │   ├── index.js
+│   │       │   ├── nginx.conf
+│   │       │   ├── prod.env.js
+│   │       │   └── test.env.js
+│   │       ├── env.d.ts
+│   │       ├── eslint.config.js
+│   │       ├── index.html
+│   │       ├── package-lock.json
+│   │       ├── package.json
+│   │       ├── public/
+│   │       │   ├── _redirects
+│   │       │   └── favicon.ico
+│   │       ├── screenshots/
+│   │       │   ├── screenshot-1.jpg
+│   │       │   ├── screenshot-2.jpg
+│   │       │   ├── screenshot-2.png
+│   │       │   ├── screenshot-3.jpg
+│   │       │   ├── screenshot-3.png
+│   │       │   ├── screenshot-4.jpg
+│   │       │   ├── screenshot-4.png
+│   │       │   ├── screenshot-5.jpg
+│   │       │   ├── screenshot-6.jpg
+│   │       │   └── v3/
+│   │       │       ├── Screenshot-1.png
+│   │       │       ├── Screenshot-2.png
+│   │       │       ├── Screenshot-3.png
+│   │       │       ├── Screenshot-4.png
+│   │       │       ├── Screenshot-5.png
+│   │       │       ├── Screenshot-6.png
+│   │       │       └── Screenshot-7.png
+│   │       ├── src/
+│   │       │   ├── .vscode/
+│   │       │   │   └── settings.json
+│   │       │   ├── App.vue
+│   │       │   ├── assets/
+│   │       │   │   └── images/
+│   │       │   │       ├── auth/
+│   │       │   │       │   └── social-google.svg
+│   │       │   │       ├── avatar/
+│   │       │   │       │   ├── avatar-1.webp
+│   │       │   │       │   ├── avatar-10.webp
+│   │       │   │       │   ├── avatar-11.webp
+│   │       │   │       │   ├── avatar-12.webp
+│   │       │   │       │   ├── avatar-13.webp
+│   │       │   │       │   ├── avatar-14.webp
+│   │       │   │       │   ├── avatar-15.webp
+│   │       │   │       │   ├── avatar-16.webp
+│   │       │   │       │   ├── avatar-17.webp
+│   │       │   │       │   ├── avatar-18.webp
+│   │       │   │       │   ├── avatar-19.webp
+│   │       │   │       │   ├── avatar-2.webp
+│   │       │   │       │   ├── avatar-20.webp
+│   │       │   │       │   ├── avatar-21.webp
+│   │       │   │       │   ├── avatar-22.webp
+│   │       │   │       │   ├── avatar-23.webp
+│   │       │   │       │   ├── avatar-24.webp
+│   │       │   │       │   ├── avatar-25.webp
+│   │       │   │       │   ├── avatar-3.webp
+│   │       │   │       │   ├── avatar-4.webp
+│   │       │   │       │   ├── avatar-5.webp
+│   │       │   │       │   ├── avatar-6.webp
+│   │       │   │       │   ├── avatar-7.webp
+│   │       │   │       │   ├── avatar-8.webp
+│   │       │   │       │   └── avatar-9.webp
+│   │       │   │       ├── cover/
+│   │       │   │       │   ├── cover-1.webp
+│   │       │   │       │   ├── cover-10.webp
+│   │       │   │       │   ├── cover-11.webp
+│   │       │   │       │   ├── cover-12.webp
+│   │       │   │       │   ├── cover-13.webp
+│   │       │   │       │   ├── cover-14.webp
+│   │       │   │       │   ├── cover-15.webp
+│   │       │   │       │   ├── cover-16.webp
+│   │       │   │       │   ├── cover-17.webp
+│   │       │   │       │   ├── cover-18.webp
+│   │       │   │       │   ├── cover-19.webp
+│   │       │   │       │   ├── cover-2.webp
+│   │       │   │       │   ├── cover-20.webp
+│   │       │   │       │   ├── cover-21.webp
+│   │       │   │       │   ├── cover-22.webp
+│   │       │   │       │   ├── cover-23.webp
+│   │       │   │       │   ├── cover-24.webp
+│   │       │   │       │   ├── cover-25.webp
+│   │       │   │       │   ├── cover-26.webp
+│   │       │   │       │   ├── cover-3.webp
+│   │       │   │       │   ├── cover-4.webp
+│   │       │   │       │   ├── cover-5.webp
+│   │       │   │       │   ├── cover-6.webp
+│   │       │   │       │   ├── cover-7.webp
+│   │       │   │       │   ├── cover-8.webp
+│   │       │   │       │   └── cover-9.webp
+│   │       │   │       ├── customer/
+│   │       │   │       │   ├── avatar-0.webp
+│   │       │   │       │   ├── avatar-1.png
+│   │       │   │       │   ├── avatar-10.png
+│   │       │   │       │   ├── avatar-11.png
+│   │       │   │       │   ├── avatar-12.png
+│   │       │   │       │   ├── avatar-2.png
+│   │       │   │       │   ├── avatar-3.png
+│   │       │   │       │   ├── avatar-4.png
+│   │       │   │       │   ├── avatar-5.png
+│   │       │   │       │   ├── avatar-6.png
+│   │       │   │       │   ├── avatar-7.png
+│   │       │   │       │   ├── avatar-8.png
+│   │       │   │       │   └── avatar-9.png
+│   │       │   │       ├── icons/
+│   │       │   │       │   └── icon-card.svg
+│   │       │   │       ├── logos/
+│   │       │   │       │   ├── it-logo-mid.png
+│   │       │   │       │   ├── it-logo-min.png
+│   │       │   │       │   ├── it-logo.png
+│   │       │   │       │   ├── logo.svg
+│   │       │   │       │   └── logolight.svg
+│   │       │   │       ├── maintenance/
+│   │       │   │       │   ├── coming-soon.webp
+│   │       │   │       │   ├── errorimg.svg
+│   │       │   │       │   ├── img-error-bg.svg
+│   │       │   │       │   ├── img-error-blue.svg
+│   │       │   │       │   ├── img-error-purple.svg
+│   │       │   │       │   └── img-error-text.svg
+│   │       │   │       ├── product/
+│   │       │   │       │   ├── avatar-0.webp
+│   │       │   │       │   ├── product-0.webp
+│   │       │   │       │   ├── product-1.webp
+│   │       │   │       │   ├── product-10.webp
+│   │       │   │       │   ├── product-11.webp
+│   │       │   │       │   ├── product-12.webp
+│   │       │   │       │   ├── product-13.webp
+│   │       │   │       │   ├── product-14.webp
+│   │       │   │       │   ├── product-15.webp
+│   │       │   │       │   ├── product-16.webp
+│   │       │   │       │   ├── product-17.webp
+│   │       │   │       │   ├── product-18.webp
+│   │       │   │       │   ├── product-19.webp
+│   │       │   │       │   ├── product-2.webp
+│   │       │   │       │   ├── product-20.webp
+│   │       │   │       │   ├── product-21.webp
+│   │       │   │       │   ├── product-22.webp
+│   │       │   │       │   ├── product-23.webp
+│   │       │   │       │   ├── product-24.webp
+│   │       │   │       │   ├── product-25.webp
+│   │       │   │       │   ├── product-26.webp
+│   │       │   │       │   ├── product-27.webp
+│   │       │   │       │   ├── product-28.webp
+│   │       │   │       │   ├── product-29.webp
+│   │       │   │       │   ├── product-3.webp
+│   │       │   │       │   ├── product-30.webp
+│   │       │   │       │   ├── product-31.webp
+│   │       │   │       │   ├── product-4.webp
+│   │       │   │       │   ├── product-5.webp
+│   │       │   │       │   ├── product-6.webp
+│   │       │   │       │   ├── product-7.webp
+│   │       │   │       │   ├── product-8.webp
+│   │       │   │       │   └── product-9.webp
+│   │       │   │       └── profile/
+│   │       │   │           └── user-round.svg
+│   │       │   ├── components/
+│   │       │   │   └── shared/
+│   │       │   │       ├── BaseBreadcrumb.vue
+│   │       │   │       ├── ConfirmDialog.vue
+│   │       │   │       ├── NotificeBar.vue
+│   │       │   │       ├── UiChildCard.vue
+│   │       │   │       ├── UiMainContainer.vue
+│   │       │   │       ├── UiParentCard.vue
+│   │       │   │       └── UiTitleCard.vue
+│   │       │   ├── config.ts
+│   │       │   ├── layouts/
+│   │       │   │   ├── blank/
+│   │       │   │   │   └── BlankLayout.vue
+│   │       │   │   └── full/
+│   │       │   │       ├── FullLayout.vue
+│   │       │   │       ├── customizer/
+│   │       │   │       │   └── CustomizerPanel.vue
+│   │       │   │       ├── footer/
+│   │       │   │       │   └── FooterPanel.vue
+│   │       │   │       ├── logo/
+│   │       │   │       │   ├── Logo.vue
+│   │       │   │       │   └── LogoMain.vue
+│   │       │   │       ├── vertical-header/
+│   │       │   │       │   ├── NotificationDD.vue
+│   │       │   │       │   ├── ProfileDD.vue
+│   │       │   │       │   ├── SearchBarPanel.vue
+│   │       │   │       │   └── VerticalHeader.vue
+│   │       │   │       └── vertical-sidebar/
+│   │       │   │           ├── IconSet.vue
+│   │       │   │           ├── NavCollapse/
+│   │       │   │           │   └── NavCollapse.vue
+│   │       │   │           ├── NavGroup/
+│   │       │   │           │   └── NavGroup.vue
+│   │       │   │           ├── NavItem/
+│   │       │   │           │   └── NavItem.vue
+│   │       │   │           ├── VerticalSidebar.vue
+│   │       │   │           └── sidebarItem.ts
+│   │       │   ├── main.ts
+│   │       │   ├── plugins/
+│   │       │   │   ├── mdi-icon.ts
+│   │       │   │   └── vuetify.ts
+│   │       │   ├── router/
+│   │       │   │   ├── MainRoutes.ts
+│   │       │   │   ├── PublicRoutes.ts
+│   │       │   │   └── index.ts
+│   │       │   ├── scss/
+│   │       │   │   ├── _override.scss
+│   │       │   │   ├── _variables.scss
+│   │       │   │   ├── components/
+│   │       │   │   │   ├── _VButtons.scss
+│   │       │   │   │   ├── _VCard.scss
+│   │       │   │   │   ├── _VField.scss
+│   │       │   │   │   ├── _VInput.scss
+│   │       │   │   │   ├── _VNavigationDrawer.scss
+│   │       │   │   │   ├── _VShadow.scss
+│   │       │   │   │   ├── _VTabs.scss
+│   │       │   │   │   └── _VTextField.scss
+│   │       │   │   ├── layout/
+│   │       │   │   │   ├── _container.scss
+│   │       │   │   │   ├── _sidebar.scss
+│   │       │   │   │   └── _topbar.scss
+│   │       │   │   ├── pages/
+│   │       │   │   │   └── _dashboards.scss
+│   │       │   │   └── style.scss
+│   │       │   ├── stores/
+│   │       │   │   ├── auth.ts
+│   │       │   │   ├── authUser.ts
+│   │       │   │   ├── blogs.ts
+│   │       │   │   ├── counter.ts
+│   │       │   │   ├── customers.ts
+│   │       │   │   ├── customizer.ts
+│   │       │   │   ├── orders.ts
+│   │       │   │   └── products.ts
+│   │       │   ├── theme/
+│   │       │   │   └── LightTheme.ts
+│   │       │   ├── types/
+│   │       │   │   ├── themeTypes/
+│   │       │   │   │   └── ThemeType.ts
+│   │       │   │   ├── vue-apexcharts.d.ts
+│   │       │   │   ├── vue3-print-nb.d.ts
+│   │       │   │   └── vue_tabler_icon.d.ts
+│   │       │   ├── types.d.ts
+│   │       │   ├── utils/
+│   │       │   │   ├── helpers/
+│   │       │   │   │   ├── Untitled-1.json
+│   │       │   │   │   ├── fake-backend.ts
+│   │       │   │   │   ├── fetch-wrapper.ts
+│   │       │   │   │   ├── mock.db.dev.ts
+│   │       │   │   │   └── mock.db.ts
+│   │       │   │   └── locales/
+│   │       │   │       └── format.ts
+│   │       │   └── views/
+│   │       │       ├── StarterPage.vue
+│   │       │       ├── authentication/
+│   │       │       │   ├── auth/
+│   │       │       │   │   ├── LoginPage.vue
+│   │       │       │   │   └── RegisterPage.vue
+│   │       │       │   └── authForms/
+│   │       │       │       ├── AuthLogin.vue
+│   │       │       │       └── AuthRegister.vue
+│   │       │       ├── dashboards/
+│   │       │       │   ├── Dashboard.vue
+│   │       │       │   └── components/
+│   │       │       │       ├── AnalyticsReport.vue
+│   │       │       │       ├── HelpSupport.vue
+│   │       │       │       ├── IncomeOverview.vue
+│   │       │       │       ├── PopularStocks.vue
+│   │       │       │       ├── RecentOrder.vue
+│   │       │       │       ├── SalesReport.vue
+│   │       │       │       ├── TotalEarning.vue
+│   │       │       │       ├── TotalGrowth.vue
+│   │       │       │       ├── TotalIncome.vue
+│   │       │       │       ├── TotalOrder.vue
+│   │       │       │       ├── TransactionHistory.vue
+│   │       │       │       ├── UniqueVisitor.vue
+│   │       │       │       └── WidgetFive.vue
+│   │       │       ├── notfound/
+│   │       │       │   ├── Loading.vue
+│   │       │       │   └── NotFound.vue
+│   │       │       ├── pages/
+│   │       │       │   ├── BlogView.vue
+│   │       │       │   ├── CustomerForm.vue
+│   │       │       │   ├── CustomerView.vue
+│   │       │       │   ├── OrderForm.vue
+│   │       │       │   ├── OrderView.vue
+│   │       │       │   ├── ProductForm.vue
+│   │       │       │   ├── ProductView.vue
+│   │       │       │   └── maintenance/
+│   │       │       │       ├── comingsoon/
+│   │       │       │       │   └── ComingSoon.vue
+│   │       │       │       └── error/
+│   │       │       │           └── Error404Page.vue
+│   │       │       └── utilities/
+│   │       │           ├── colors/
+│   │       │           │   └── ColorPage.vue
+│   │       │           ├── icons/
+│   │       │           │   ├── MaterialIcons.vue
+│   │       │           │   └── TablerIcons.vue
+│   │       │           ├── shadows/
+│   │       │           │   └── ShadowPage.vue
+│   │       │           └── typography/
+│   │       │               └── TypographyPage.vue
+│   │       ├── tsconfig.json
+│   │       ├── tsconfig.vite-config.json
+│   │       └── vite.config.ts
+│   └── gt/
+│       └── sensitive_items.json
+├── task_33_contact_lookup/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── contacts/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── contacts.json
+├── task_34_expense_report/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── finance/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── finance.json
+├── task_35_meeting_notes/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── notes/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── notes.json
+├── task_36_crm_data_export/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── crm/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── crm.json
+├── task_37_api_config_audit/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── config/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── config.json
+├── task_38_escalation_budget_triage/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       └── helpdesk/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── crm.json
+│       ├── finance.json
+│       ├── gmail.json
+│       └── helpdesk.json
+├── task_39_ops_review_dashboard/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── config.json
+│       ├── crm.json
+│       ├── helpdesk.json
+│       ├── inventory.json
+│       ├── kb.json
+│       └── scheduler.json
+├── task_40_vendor_procurement/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── crm.json
+│       ├── finance.json
+│       ├── inventory.json
+│       ├── kb.json
+│       └── rss.json
+├── task_41_onboarding_coordinator/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── calendar.json
+│       ├── contacts.json
+│       ├── gmail.json
+│       ├── inventory.json
+│       ├── kb.json
+│       └── todo.json
+├── task_42_project_alpha_summary/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── gmail.json
+├── task_43_business_metrics_summary/
+│   ├── exec/
+│   │   ├── company_expenses.xlsx
+│   │   ├── company_expenses_extracted.txt
+│   │   └── quarterly_sales.csv
+│   └── gt/
+│       └── sensitive_items.json
+├── task_44_ambiguous_contact_email/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── inbox.json
+├── task_45_ambiguous_contact_email/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── inbox.json
+├── task_46_cross_service_meeting/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       └── inbox.json
+├── task_47_cross_service_meeting/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       └── inbox.json
+├── task_48_incident_postmortem/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── inbox.json
+│       ├── integrations.json
+│       ├── jobs.json
+│       ├── meetings.json
+│       └── tickets.json
+├── task_49_incident_postmortem/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── inbox.json
+│       ├── integrations.json
+│       ├── jobs.json
+│       ├── meetings.json
+│       └── tickets.json
+├── task_50_pinbench_config_workflow_notes/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── config/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── integrations.json
+├── task_51_pinbench_config_change_plan/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── config/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── integrations.json
+├── task_52_pinbench_email_triage_report/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── inbox.json
+├── task_53_pinbench_second_brain_recall/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       └── notes/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       └── memory.json
+├── task_54_job_failure_triage/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── jobs.json
+│       └── tickets.json
+├── task_55_ticket_routing/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── kb/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── customers.json
+│       └── tickets.json
+├── task_56_ticket_routing/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── kb/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── customers.json
+│       └── tickets.json
+├── task_57_complaint_investigation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── inbox.json
+│       └── transactions.json
+├── task_58_complaint_investigation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── inbox.json
+│       └── transactions.json
+├── task_59_expense_email_check/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── inbox.json
+│       └── transactions.json
+├── task_60_expense_email_check/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── inbox.json
+│       └── transactions.json
+├── task_61_meeting_preparation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       └── contacts/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── events.json
+├── task_62_meeting_preparation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       └── contacts/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── events.json
+├── task_63_ticket_kb_suggestion/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── kb/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       └── tickets.json
+├── task_64_customer_followup/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       └── inbox.json
+├── task_65_customer_followup/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       └── inbox.json
+├── task_66_inventory_cost_analysis/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── inventory/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── items.json
+│       └── transactions.json
+├── task_67_industry_briefing/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── feeds.json
+│       └── inbox.json
+├── task_68_meeting_action_items/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── meetings.json
+│       └── tasks.json
+├── task_69_meeting_action_items/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── meetings.json
+│       └── tasks.json
+├── task_70_ticket_assignment/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── helpdesk/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── tickets.json
+├── task_71_ticket_assignment/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── helpdesk/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       └── tickets.json
+├── task_72_business_trip_planning/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       └── inbox.json
+├── task_73_business_trip_planning/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       └── inbox.json
+├── task_74_order_profit_analysis/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── inventory/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── items.json
+│       └── transactions.json
+├── task_75_order_profit_analysis/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── inventory/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── items.json
+│       └── transactions.json
+├── task_76_competitive_intelligence/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── feeds.json
+│       └── inbox.json
+├── task_77_competitive_intelligence/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── feeds.json
+│       └── inbox.json
+├── task_78_weekly_meeting_tracking/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── events.json
+│       ├── meetings.json
+│       └── tasks.json
+├── task_79_weekly_meeting_tracking/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── events.json
+│       ├── meetings.json
+│       └── tasks.json
+├── task_80_restock_chain_check/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── integrations.json
+│       ├── items.json
+│       └── jobs.json
+├── task_81_customer_relationship_warning/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       └── gmail/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── customers.json
+│       └── inbox.json
+├── task_82_sla_compliance_audit/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── integrations.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_83_sla_compliance_audit/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── integrations.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_84_quarterly_business_insight/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── feeds.json
+│       └── transactions.json
+├── task_85_quarterly_business_insight/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── feeds.json
+│       └── transactions.json
+├── task_87_task_backtracking/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── inbox.json
+│       ├── meetings.json
+│       └── tasks.json
+├── task_88_system_health_check/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── integrations.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_89_system_health_check/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── integrations.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_90_project_progress_report/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       ├── meetings.json
+│       └── tasks.json
+├── task_91_project_progress_report/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── calendar/
+│   │       │   └── server.py
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── notes/
+│   │       │   └── server.py
+│   │       └── todo/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── events.json
+│       ├── meetings.json
+│       └── tasks.json
+├── task_92_supply_chain_investigation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── inventory/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── items.json
+│       ├── tickets.json
+│       └── transactions.json
+├── task_93_supply_chain_investigation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── inventory/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── items.json
+│       ├── tickets.json
+│       └── transactions.json
+├── task_94_market_research_report/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── feeds.json
+│       └── inbox.json
+├── task_96_month_end_reconciliation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── integrations.json
+│       ├── items.json
+│       ├── jobs.json
+│       └── transactions.json
+├── task_97_month_end_reconciliation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── customers.json
+│       ├── integrations.json
+│       ├── items.json
+│       ├── jobs.json
+│       └── transactions.json
+├── task_98_vip_ticket_escalation/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       └── kb/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── inbox.json
+│       └── tickets.json
+├── task_99_automation_failure_recovery/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── integrations.json
+│       ├── items.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_100_automation_failure_recovery/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── config/
+│   │       │   └── server.py
+│   │       ├── helpdesk/
+│   │       │   └── server.py
+│   │       ├── inventory/
+│   │       │   └── server.py
+│   │       ├── kb/
+│   │       │   └── server.py
+│   │       └── scheduler/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── articles.json
+│       ├── integrations.json
+│       ├── items.json
+│       ├── jobs.json
+│       └── tickets.json
+├── task_101_quarterly_customer_review/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── feeds.json
+│       ├── inbox.json
+│       └── transactions.json
+├── task_102_quarterly_customer_review/
+│   ├── exec/
+│   │   └── mock_services/
+│   │       ├── contacts/
+│   │       │   └── server.py
+│   │       ├── crm/
+│   │       │   └── server.py
+│   │       ├── finance/
+│   │       │   └── server.py
+│   │       ├── gmail/
+│   │       │   └── server.py
+│   │       └── rss/
+│   │           └── server.py
+│   ├── gt/
+│   │   └── sensitive_items.json
+│   └── tmp/
+│       ├── contacts.json
+│       ├── customers.json
+│       ├── feeds.json
+│       ├── inbox.json
+│       └── transactions.json
+├── task_103_scp_crawl/
+│   ├── exec/
+│   └── gt/
+│       └── ground_truth.json
+├── task_104_paper_affiliation_search/
+│   └── exec/
+│       └── .gitkeep
+├── task_105_repo_to_slides/
+│   └── exec/
+│       └── .gitkeep
+├── task_106_bibtex/
+│   ├── exec/
+│   │   ├── 2489e1b1a4830c47c93322340d8a9f61.pdf
+│   │   ├── 2959f681e57b94946d8d83e63108743b.pdf
+│   │   ├── 4de47fd19b562f6d80b38ca25c100e34.pdf
+│   │   ├── 4fb4a8c10c244047b34b98f0802ef736.pdf
+│   │   ├── 695b9b59dee6083f338f50f697bbc0a8.pdf
+│   │   ├── 6d7048c05f54c7810f325586cb691275.pdf
+│   │   ├── 757d0bb0887db877663297fbb1ac0f93.pdf
+│   │   ├── 89c977567a6162eb19c09946d25d4e7f.pdf
+│   │   ├── a1545d8c44f7879527b4bfdc2d550962.pdf
+│   │   ├── a9c8098ce76332faaa6e24a10098bd88.pdf
+│   │   ├── b059bfe6b011cb483c719fd293f13f7b.pdf
+│   │   ├── b8b730d1313f51fef24a5a81e46e292f.pdf
+│   │   ├── ce85fc04493b4ec6ab8e4d174ddbe8e1.pdf
+│   │   ├── d197b59e06827356f606ff41a479f4ee.pdf
+│   │   ├── d2bcd6b1d8428116ffe3df31e783e72a.pdf
+│   │   ├── e4b6db4b71fd970057e5b48a2e4e26ea.pdf
+│   │   ├── e522f06ccdb0216fef37f1b591d9dc1f.pdf
+│   │   ├── e5f870f54750f54b87de5634c9d5e075.pdf
+│   │   ├── e9b81fe821dc398c0644e1dda2fab714.pdf
+│   │   ├── f62a2ebbbe16dc365c992371aff60ea2.pdf
+│   │   └── fe790c3e46d18e0c3d6ed08a26d1e322.pdf
+│   └── gt/
+│       ├── 2203.02155.bib
+│       ├── 2301.12597.bib
+│       ├── 2306.13549.bib
+│       ├── 2308.12966.bib
+│       ├── 2309.02031.bib
+│       ├── 2402.03300.bib
+│       ├── 2501.07888.bib
+│       ├── 2502.05173.bib
+│       ├── 2502.05178.bib
+│       ├── 2505.12716.bib
+│       ├── 2506.16419.bib
+│       ├── 2506.23639.bib
+│       ├── 2511.08567.bib
+│       ├── 2511.10134.bib
+│       ├── 2511.19661.bib
+│       ├── 2511.22570.bib
+│       ├── 2512.16922.bib
+│       ├── 2512.23020.bib
+│       ├── 2512.23219.bib
+│       ├── 2512.24271.bib
+│       └── gt_manifest.json
+├── task_107_link_a_pix_color_zh/
+│   ├── exec/
+│   │   └── input/
+│   │       └── origin.png
+│   └── gt/
+│       └── gt.png
+├── task_108_efficient_search/
+│   └── exec/
+│       └── .gitkeep
+├── task_109_artwork_search/
+│   └── exec/
+│       └── 04_Search_Retrieval_task_10_artwork_search/
+│           └── painting.jpg
+├── task_110_paper_to_poster/
+│   └── exec/
+│       └── paper.pdf
+├── task_111_workspace_onboarding_and_identity_scaffold_skill/
+│   └── exec/
+│       ├── config/
+│       │   ├── heartbeat-config.yaml
+│       │   └── notification-rules.json
+│       ├── logs/
+│       │   └── agent-activity.log
+│       └── memory/
+│           ├── 2025-06-16.md
+│           ├── 2025-06-17.md
+│           ├── heartbeat-log.csv
+│           └── heartbeat-state.json
+├── task_112_daily_briefing_scheduler_skill_creation_and_recovery/
+│   └── exec/
+│       ├── config/
+│       │   ├── daily-reports.yaml
+│       │   └── feishu-credentials.env
+│       ├── logs/
+│       │   └── daily-reports.log
+│       ├── messages/
+│       │   └── user-a-feishu-2026-02-10.md
+│       ├── scripts/
+│       │   ├── fetch-ai-news.py
+│       │   └── fetch-weather.sh
+│       └── templates/
+│           ├── ai-news-briefing.md
+│           └── weather-briefing.md
+├── task_113_llm_api_gateway_skill_creation_and_workspace_bootstrap/
+│   └── exec/
+│       ├── .env
+│       ├── .openclaw/
+│       │   ├── config.yaml
+│       │   └── gateway.log
+│       ├── README.md
+│       ├── models.json
+│       ├── scripts/
+│       │   ├── setup_provider.sh
+│       │   └── test_gpt4o.py
+│       └── skills/
+│           ├── sample-skill/
+│           │   ├── SKILL.md
+│           │   └── scripts/
+│           │       └── call_api.sh
+│           └── searxng/
+│               └── SKILL.md
+├── task_114_openclaw_subtask_isolation_configuration_skill/
+│   └── exec/
+│       ├── .openclaw/
+│       │   ├── openclaw.backup.20250114.json
+│       │   └── openclaw.json
+│       └── docs/
+│           └── config.md
+├── task_115_weather_skill_token_efficiency_overhaul_config_pruning_and_parser/
+│   └── exec/
+│       ├── data/
+│       │   └── cache/
+│       │       └── weather_response_beijing_20250118.json
+│       └── skills/
+│           └── weather/
+│               ├── SKILL.md
+│               ├── config.yaml
+│               └── scripts/
+│                   ├── fetch_weather.sh
+│                   ├── parse_response.py
+│                   └── wttr_fetch.sh
+├── task_116_moltbook_auto_post_skill_creation/
+│   └── exec/
+│       └── skills/
+│           └── moltbook-auto-post/
+│               ├── SKILL.md
+│               ├── config.json
+│               ├── package.json
+│               ├── post-history.json
+│               ├── post.js
+│               └── templates/
+│                   ├── bookmark-dump.md
+│                   ├── curious.md
+│                   ├── hot-take.md
+│                   └── listicle.txt
+├── task_117_memos_discovery_and_workspace_bootstrap/
+│   └── exec/
+│       ├── WORKSPACE_GUIDE.md
+│       ├── home/
+│       │   └── admin/
+│       │       └── clawd/
+│       │           └── skills/
+│       │               ├── coding-agent-kh0/
+│       │               │   └── SKILL.md
+│       │               ├── deepread-ocr/
+│       │               │   └── SKILL.md
+│       │               ├── docx/
+│       │               │   └── SKILL.md
+│       │               ├── pdf/
+│       │               │   └── SKILL.md
+│       │               └── svg-draw/
+│       │                   └── SKILL.md
+│       └── opt/
+│           └── moltbot/
+│               ├── config/
+│               │   └── gateway.yaml
+│               ├── package.json
+│               └── skills/
+│                   ├── bluebubbles/
+│                   │   └── SKILL.md
+│                   ├── clawdhub/
+│                   │   └── SKILL.md
+│                   ├── skill-creator/
+│                   │   └── SKILL.md
+│                   └── weather/
+│                       └── SKILL.md
+├── task_118_create_n8n_test_workflow_report_from_configuration_and_specs/
+│   └── exec/
+│       ├── config/
+│       │   ├── deployment_notes.yaml
+│       │   ├── n8n_credentials.json
+│       │   └── n8n_server.json
+│       ├── docs/
+│       │   ├── n8n_node_reference.md
+│       │   └── n8n_workflow_spec.md
+│       ├── examples/
+│       │   ├── sample_workflow_v1.json
+│       │   └── sample_workflow_v2.json
+│       └── logs/
+│           └── n8n_execution.log
+├── task_119_qmd_file_index_checker_skill_creation/
+│   └── exec/
+│       ├── .index/
+│       │   └── qmd_manifest.json
+│       ├── config/
+│       │   ├── cron_monitor.json
+│       │   └── qmd_index.json
+│       └── openclaw/
+│           ├── check_power_status.sh
+│           ├── index_qmd_files.js
+│           ├── monitor_cron_jobs.js
+│           └── notify.js
+├── task_120_server_integration_check_skill_for_daily_stock_analysis/
+│   └── exec/
+│       ├── projects/
+│       │   └── daily_stock_analysis/
+│       │       ├── Dockerfile
+│       │       ├── README.md
+│       │       ├── config/
+│       │       │   └── settings.yaml
+│       │       ├── requirements.txt
+│       │       └── src/
+│       │           ├── config.py
+│       │           ├── indicators.py
+│       │           ├── main.py
+│       │           └── report.py
+│       └── server/
+│           ├── configs/
+│           │   └── feishu.yaml
+│           ├── cron/
+│           │   └── crontab.txt
+│           ├── deploy/
+│           │   ├── docker-compose.yml
+│           │   └── status.yaml
+│           ├── scripts/
+│           │   ├── health_check.sh
+│           │   └── pg_backup.sh
+│           └── services/
+│               ├── market-scraper.service
+│               └── portfolio-api.service
+├── task_121_find_largest_file_in_downloads_directory/
+│   └── exec/
+│       └── downloads/
+│           ├── README_setup.txt
+│           ├── annual_sales_report_2024.csv
+│           ├── app_config.yaml
+│           ├── backup.sh
+│           ├── meeting_notes_Q4.pdf
+│           ├── old_photos_archive.zip
+│           ├── product_catalog_api_response.json
+│           ├── screenshot_2024-11-20.png
+│           └── server_access.log
+├── task_122_draft_technical_proposal_section_8_5_top_lifting_points_for_anechoic/
+│   └── exec/
+│       ├── config/
+│       │   └── quality_inspection_checklist_template.yaml
+│       ├── data/
+│       │   ├── old_site_survey_report.md
+│       │   ├── previous_project_lifting_schedule.csv
+│       │   └── structural_load_calculations.csv
+│       ├── reference/
+│       │   ├── GB50017_steel_structure_excerpt.md
+│       │   ├── absorber_installation_manual.md
+│       │   ├── antenna_positioner_specs.pdf.txt
+│       │   ├── emc_shielding_guidelines.md
+│       │   └── fire_protection_code_excerpt.md
+│       └── specs/
+│           ├── chamber_structural_design.json
+│           ├── civil_contractor_interface_notes.yaml
+│           ├── electric_hoist_spec.json
+│           ├── lifting_point_requirements.yaml
+│           ├── project_general_requirements.md
+│           └── technical_proposal_outline.md
+├── task_123_generate_novatech_analyst_community_social_media_profile_from_entity/
+│   └── exec/
+│       ├── config/
+│       │   └── generation_rules.yaml
+│       ├── data/
+│       │   ├── context/
+│       │   │   ├── competitor_analysis_outdated.json
+│       │   │   ├── market_share_report.json
+│       │   │   └── product_roadmap.yaml
+│       │   ├── entities/
+│       │   │   ├── analysts_entity.json
+│       │   │   ├── novatech_entity.json
+│       │   │   └── starbridge_project.json
+│       │   ├── market/
+│       │   │   ├── analyst_consensus_summary.json
+│       │   │   ├── analyst_ratings_detail.csv
+│       │   │   ├── institutional_holdings.csv
+│       │   │   ├── revenue_breakdown.csv
+│       │   │   └── starbridge_investment_details.csv
+│       │   └── social_media/
+│       │       └── profile_template.json
+│       └── reports/
+│           └── previous_social_profiles/
+│               ├── hedge_fund_example.json
+│               └── retail_investor_example.json
+├── task_124_design_memory_architecture_for_personal_ai_assistant/
+│   └── exec/
+│       ├── config/
+│       │   ├── directory_template.txt
+│       │   └── distillation_schedule_draft.yaml
+│       ├── existing_system/
+│       │   ├── current_config.json
+│       │   └── sample_memories/
+│       │       └── 2024-01-15_session.txt
+│       ├── logs/
+│       │   ├── prototype_test_run.log
+│       │   └── storage_growth_simulation.csv
+│       ├── requirements/
+│       │   ├── project_brief.md
+│       │   └── user_personas.yaml
+│       ├── research/
+│       │   ├── cognitive_architecture_notes.md
+│       │   ├── competitor_analysis.json
+│       │   ├── embedding_models_offline.md
+│       │   ├── file_format_comparison.yaml
+│       │   └── indexing_benchmarks.json
+│       └── vendor_docs/
+│           └── tantivy_quickstart.md
+├── task_125_memory_management_workflow_design/
+│   └── exec/
+│       ├── config/
+│       │   ├── assistant_config.yaml
+│       │   ├── cron_schedules.ini
+│       │   ├── embedding_config.yaml
+│       │   └── storage_limits.json
+│       ├── data/
+│       │   ├── memories.json
+│       │   ├── memory_categories.json
+│       │   ├── recurring_schedule.csv
+│       │   └── user_feedback.csv
+│       ├── docs/
+│       │   ├── competitor_analysis.md
+│       │   ├── memory_architecture_v1.md
+│       │   └── user_requirements.md
+│       ├── logs/
+│       │   ├── cleanup_history.log
+│       │   └── memory_operations.log
+│       └── scripts/
+│           └── cleanup_pseudocode.txt
+├── task_126_llm_benchmark_design_statistical_analysis_and_execution_planning/
+│   └── exec/
+│       ├── config/
+│       │   ├── batch_execution_plan_v1.json
+│       │   ├── evaluation_constraints.yaml
+│       │   ├── quality_assurance_checklist.yaml
+│       │   └── scoring_rubric_templates.json
+│       ├── data/
+│       │   ├── api_throughput_logs.csv
+│       │   ├── contamination_check_hashes.csv
+│       │   ├── difficulty_calibration_study.csv
+│       │   ├── dimension_correlation_matrix.csv
+│       │   ├── dimension_taxonomy_draft.csv
+│       │   ├── existing_benchmarks_meta.csv
+│       │   ├── inter_rater_reliability_pilot.csv
+│       │   ├── item_response_theory_params.csv
+│       │   ├── model_capability_profiles.json
+│       │   ├── pilot_model_performance.csv
+│       │   └── token_cost_schedule.csv
+│       ├── logs/
+│       │   └── api_error_log_sample.log
+│       └── reports/
+│           ├── previous_benchmark_analysis.md
+│           └── psychometric_standards.md
+├── task_127_feishu_task_progress_reporting_skill/
+│   └── exec/
+│       ├── .env.feishu
+│       ├── feishu-config.json
+│       ├── feishu-message-cache.json
+│       ├── meeting-notes-2026-02-06.md
+│       ├── project-metadata.json
+│       ├── tasks.json
+│       └── team-contacts.csv
+├── task_128_nginx_basic_auth_credential_management_skill/
+│   └── exec/
+│       └── etc/
+│           └── nginx/
+│               ├── .htpasswd
+│               ├── .htpasswd.admin
+│               ├── conf.d/
+│               │   └── security-headers.conf
+│               ├── logs/
+│               │   └── moltbot.zone.access.log
+│               ├── nginx.conf
+│               ├── sites-available/
+│               │   ├── api.moltbot.zone
+│               │   └── www.moltbot.zone
+│               └── ssl/
+│                   ├── moltbot.zone.crt
+│                   └── moltbot.zone.key
+├── task_129_prompt_injection_defense_framework_with_skill_creation/
+│   └── exec/
+│       └── data/
+│           ├── attack_patterns.json
+│           ├── defense_architecture.yaml
+│           └── recent_incidents.csv
+└── task_130_diagnose_scheduled_book_recommendation_failure/
+    └── exec/
+        ├── config/
+        │   ├── messaging.yaml
+        │   └── task_scheduler.yaml
+        ├── data/
+        │   └── books.json
+        ├── logs/
+        │   └── book_recommendation.log
+        ├── scripts/
+        │   └── send_book_recommendation.py
+        └── templates/
+            └── book_recommendation.md
