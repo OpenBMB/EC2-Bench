@@ -10,14 +10,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable, Sequence
 logger = logging.getLogger(__name__)
-DEFAULT_ROUTE_TABLE = None
+DEFAULT_ROUTE_TABLE = Path(__file__).resolve().parents[1] / 'configs' / 'query_router_routes.json'
 DEFAULT_MF_MODEL = 'routellm/mf_gpt4_augmented'
 
 def load_route_table(path: str | os.PathLike[str] | None) -> dict[str, Any]:
     """Load the offline route table."""
-    if path is None:
-        raise ValueError('Supply an explicit external Query route table')
-    p = Path(path).expanduser()
+    p = Path(path if path is not None else DEFAULT_ROUTE_TABLE).expanduser()
     if not p.is_file():
         raise FileNotFoundError(f'query-router route table not found: {p}. Generate it first with `python -m utils.query_router build ...`.')
     try:

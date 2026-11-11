@@ -1,5 +1,5 @@
 FROM node:22-bookworm
-ARG OPENCLAW_VERSION
+ARG OPENCLAW_VERSION=2026.3.11
 RUN test -n "$OPENCLAW_VERSION"
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-pip python3-venv git curl ca-certificates wget jq unzip \

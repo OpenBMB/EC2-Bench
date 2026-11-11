@@ -36,7 +36,7 @@ def main():
         cmd += ['--edge-model', a.edge_model]
     if a.strategy != 'local-only':
         cmd += ['--cloud-model', a.cloud_model]
-    table = a.query_router_table or os.environ.get('QUERY_ROUTER_TABLE')
+    table = a.query_router_table or os.environ.get('QUERY_ROUTER_TABLE') or ROOT / 'configs/query_router_routes.json'
     if a.strategy == 'query-routing' and table:
         cmd += ['--query-router-table', str(Path(table).expanduser().resolve())]
     if a.limit:
@@ -57,11 +57,18 @@ def main():
         tasks_dir = ROOT / 'tasks'
     if not tasks_dir.is_dir():
         p.error('Task definitions must be present in the repository or external data root')
-    if a.strategy == 'query-routing' and (not table):
-        p.error('Query Routing requires --query-router-table PATH or QUERY_ROUTER_TABLE')
-    if a.strategy == 'per-step-routing' and (not os.environ.get('GLIMPSE_ENTROPY_THRESHOLD')):
-        p.error('Set GLIMPSE_ENTROPY_THRESHOLD after calibrating this edge endpoint')
     env = {**os.environ, 'EC2_DATA_ROOT': str(data_root), 'TASKS_SUBDIR': str(tasks_dir)}
+    if a.strategy == 'per-step-routing':
+        routing = json.loads((ROOT / 'configs/per_step_thresholds.json').read_text())
+        top_k = str(routing['glimpse_top_k'])
+        if not env.get('GLIMPSE_ENTROPY_THRESHOLD'):
+            if env.get('GLIMPSE_TOP_K', top_k) != top_k:
+                p.error('Set GLIMPSE_ENTROPY_THRESHOLD when overriding GLIMPSE_TOP_K')
+            threshold = routing['entropy_thresholds'].get(a.edge_model.rsplit('/', 1)[-1])
+            if threshold is None:
+                p.error('Set GLIMPSE_ENTROPY_THRESHOLD for this edge model')
+            env['GLIMPSE_ENTROPY_THRESHOLD'] = str(threshold)
+        env.setdefault('GLIMPSE_TOP_K', top_k)
     env.setdefault('ACEBENCH_SKILLS_PATH', str(data_root / 'skills'))
     print(shlex.join(cmd), flush=True)
     result = subprocess.run(cmd, cwd=ROOT, env=env)

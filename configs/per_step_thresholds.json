@@ -1,0 +1,8 @@
+{
+  "glimpse_top_k": 20,
+  "entropy_thresholds": {
+    "Qwen3.5-2B": 1.9040,
+    "Qwen3.5-9B": 2.0043,
+    "Qwen3.5-27B": 1.4550
+  }
+}

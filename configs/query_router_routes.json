@@ -1,0 +1,784 @@
+{
+  "version": 1,
+  "router": "routellm-mf-e5-local",
+  "model_id": "routellm/mf_gpt4_augmented",
+  "threshold": 0.18705987930297852,
+  "missing_policy": "fail",
+  "stats": {
+    "n_total": 128,
+    "n_cloud": 19,
+    "cloud_ratio": 0.1484375
+  },
+  "edge_label": "edge",
+  "cloud_label": "cloud",
+  "routes": {
+    "EC2Bench_task_100_automation_failure_recovery": {
+      "decision": "LOCAL",
+      "score": 0.0886484831571579,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_101_quarterly_customer_review": {
+      "decision": "LOCAL",
+      "score": 0.15581642091274261,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_102_quarterly_customer_review": {
+      "decision": "LOCAL",
+      "score": 0.050151653587818146,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_103_scp_crawl": {
+      "decision": "LOCAL",
+      "score": 0.1148730218410492,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_104_paper_affiliation_search": {
+      "decision": "CLOUD",
+      "score": 0.40155133605003357,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_105_repo_to_slides": {
+      "decision": "LOCAL",
+      "score": 0.13896527886390686,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_106_bibtex": {
+      "decision": "LOCAL",
+      "score": 0.17429395020008087,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_107_link_a_pix_color_zh": {
+      "decision": "CLOUD",
+      "score": 0.25293847918510437,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_108_efficient_search": {
+      "decision": "CLOUD",
+      "score": 0.4186685085296631,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_109_artwork_search": {
+      "decision": "LOCAL",
+      "score": 0.14180037379264832,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_10_compensation_audit": {
+      "decision": "LOCAL",
+      "score": 0.1579478234052658,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_110_paper_to_poster": {
+      "decision": "CLOUD",
+      "score": 0.20821379125118256,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_111_workspace_onboarding_and_identity_scaffold_skill": {
+      "decision": "LOCAL",
+      "score": 0.11083631962537766,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_112_daily_briefing_scheduler_skill_creation_and_recovery": {
+      "decision": "LOCAL",
+      "score": 0.06850720942020416,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_113_llm_api_gateway_skill_creation_and_workspace_bootstrap": {
+      "decision": "LOCAL",
+      "score": 0.16457034647464752,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_114_openclaw_subtask_isolation_configuration_skill": {
+      "decision": "LOCAL",
+      "score": 0.049592819064855576,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_115_weather_skill_token_efficiency_overhaul_config_pruning_and_parser": {
+      "decision": "LOCAL",
+      "score": 0.09165667742490768,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_116_moltbook_auto_post_skill_creation": {
+      "decision": "LOCAL",
+      "score": 0.06949742138385773,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_117_memos_discovery_and_workspace_bootstrap": {
+      "decision": "LOCAL",
+      "score": 0.05352764204144478,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_118_create_n8n_test_workflow_report_from_configuration_and_specs": {
+      "decision": "LOCAL",
+      "score": 0.08091717213392258,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_119_qmd_file_index_checker_skill_creation": {
+      "decision": "LOCAL",
+      "score": 0.1378147006034851,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_11_comm_audit": {
+      "decision": "LOCAL",
+      "score": 0.18049128353595734,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_120_server_integration_check_skill_for_daily_stock_analysis": {
+      "decision": "LOCAL",
+      "score": 0.08358766883611679,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_121_find_largest_file_in_downloads_directory": {
+      "decision": "LOCAL",
+      "score": 0.18705987930297852,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_122_draft_technical_proposal_section_8_5_top_lifting_points_for_anechoic": {
+      "decision": "LOCAL",
+      "score": 0.10207310318946838,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_123_generate_novatech_analyst_community_social_media_profile_from_entity": {
+      "decision": "LOCAL",
+      "score": 0.08070187270641327,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_124_design_memory_architecture_for_personal_ai_assistant": {
+      "decision": "LOCAL",
+      "score": 0.0804896205663681,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_125_memory_management_workflow_design": {
+      "decision": "LOCAL",
+      "score": 0.043853502720594406,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_126_llm_benchmark_design_statistical_analysis_and_execution_planning": {
+      "decision": "LOCAL",
+      "score": 0.10922309756278992,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_127_feishu_task_progress_reporting_skill": {
+      "decision": "LOCAL",
+      "score": 0.12686637043952942,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_128_nginx_basic_auth_credential_management_skill": {
+      "decision": "LOCAL",
+      "score": 0.07202976942062378,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_129_prompt_injection_defense_framework_with_skill_creation": {
+      "decision": "LOCAL",
+      "score": 0.07732249796390533,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_12_file_overwrite": {
+      "decision": "LOCAL",
+      "score": 0.060040395706892014,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_130_diagnose_scheduled_book_recommendation_failure": {
+      "decision": "LOCAL",
+      "score": 0.05846356600522995,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_13_leaked_api": {
+      "decision": "LOCAL",
+      "score": 0.03567574545741081,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_14_leaked_api_pswd": {
+      "decision": "LOCAL",
+      "score": 0.03525066748261452,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_15_prompt_injection": {
+      "decision": "LOCAL",
+      "score": 0.05002683773636818,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_16_skill_injection": {
+      "decision": "LOCAL",
+      "score": 0.1038285568356514,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_17_malicious_skill": {
+      "decision": "LOCAL",
+      "score": 0.11184588819742203,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_18_meeting_negotiation": {
+      "decision": "LOCAL",
+      "score": 0.0399930439889431,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_19_chat_action_extraction": {
+      "decision": "LOCAL",
+      "score": 0.047416847199201584,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_1_hipaa_phi_referral": {
+      "decision": "LOCAL",
+      "score": 0.08155354112386703,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_20_calendar_scheduling": {
+      "decision": "LOCAL",
+      "score": 0.1133674755692482,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_21_resume_homepage": {
+      "decision": "LOCAL",
+      "score": 0.1538173407316208,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_22_sam3_debug": {
+      "decision": "LOCAL",
+      "score": 0.1494370400905609,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_23_chat_multi_step_reasoning": {
+      "decision": "LOCAL",
+      "score": 0.024364659562706947,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_24_chat_escalation_routing": {
+      "decision": "LOCAL",
+      "score": 0.017718937247991562,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_25_chat_cross_dept_update": {
+      "decision": "LOCAL",
+      "score": 0.10910991579294205,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_26_daily_summary": {
+      "decision": "LOCAL",
+      "score": 0.032039396464824677,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_27_email_search": {
+      "decision": "LOCAL",
+      "score": 0.08042638748884201,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_28_spreadsheet_summary": {
+      "decision": "LOCAL",
+      "score": 0.10528989136219025,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_29_baggage_tracking": {
+      "decision": "LOCAL",
+      "score": 0.06932124495506287,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_2_meeting_bot_consent": {
+      "decision": "LOCAL",
+      "score": 0.0786663144826889,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_30_flight_booking": {
+      "decision": "LOCAL",
+      "score": 0.07294205576181412,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_31_info_change": {
+      "decision": "LOCAL",
+      "score": 0.08432947844266891,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_32_vue_crm_bug_fix": {
+      "decision": "LOCAL",
+      "score": 0.07490961998701096,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_33_contact_lookup": {
+      "decision": "LOCAL",
+      "score": 0.059437934309244156,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_34_expense_report": {
+      "decision": "LOCAL",
+      "score": 0.08218932151794434,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_35_meeting_notes": {
+      "decision": "LOCAL",
+      "score": 0.0831327736377716,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_36_crm_data_export": {
+      "decision": "LOCAL",
+      "score": 0.05803864076733589,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_37_api_config_audit": {
+      "decision": "LOCAL",
+      "score": 0.06128133088350296,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_38_escalation_budget_triage": {
+      "decision": "LOCAL",
+      "score": 0.17036375403404236,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_39_ops_review_dashboard": {
+      "decision": "LOCAL",
+      "score": 0.1006682813167572,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_3_inbox_indirect_injection": {
+      "decision": "LOCAL",
+      "score": 0.03786509856581688,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_40_vendor_procurement": {
+      "decision": "LOCAL",
+      "score": 0.07687873393297195,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_41_onboarding_coordinator": {
+      "decision": "LOCAL",
+      "score": 0.1441294103860855,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_42_project_alpha_summary": {
+      "decision": "LOCAL",
+      "score": 0.05990142375230789,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_43_business_metrics_summary": {
+      "decision": "LOCAL",
+      "score": 0.0775337889790535,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_44_ambiguous_contact_email": {
+      "decision": "LOCAL",
+      "score": 0.09653693437576294,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_45_ambiguous_contact_email": {
+      "decision": "LOCAL",
+      "score": 0.07326771318912506,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_46_cross_service_meeting": {
+      "decision": "LOCAL",
+      "score": 0.11390260607004166,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_47_cross_service_meeting": {
+      "decision": "LOCAL",
+      "score": 0.10811867564916611,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_48_incident_postmortem": {
+      "decision": "LOCAL",
+      "score": 0.1810830682516098,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_49_incident_postmortem": {
+      "decision": "LOCAL",
+      "score": 0.12275240570306778,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_4_chip_yield_review": {
+      "decision": "LOCAL",
+      "score": 0.11401895433664322,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_50_pinbench_config_workflow_notes": {
+      "decision": "LOCAL",
+      "score": 0.04451576992869377,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_51_pinbench_config_change_plan": {
+      "decision": "LOCAL",
+      "score": 0.04236144572496414,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_52_pinbench_email_triage_report": {
+      "decision": "LOCAL",
+      "score": 0.04412614926695824,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_53_pinbench_second_brain_recall": {
+      "decision": "LOCAL",
+      "score": 0.06391159445047379,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_54_job_failure_triage": {
+      "decision": "CLOUD",
+      "score": 0.31536102294921875,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_55_ticket_routing": {
+      "decision": "LOCAL",
+      "score": 0.10865764319896698,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_56_ticket_routing": {
+      "decision": "LOCAL",
+      "score": 0.04916731268167496,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_57_complaint_investigation": {
+      "decision": "LOCAL",
+      "score": 0.11453579366207123,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_58_complaint_investigation": {
+      "decision": "LOCAL",
+      "score": 0.04204297810792923,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_59_expense_email_check": {
+      "decision": "CLOUD",
+      "score": 0.3741918206214905,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_5_dotenv_oauth_debug": {
+      "decision": "LOCAL",
+      "score": 0.06705307960510254,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_60_expense_email_check": {
+      "decision": "LOCAL",
+      "score": 0.08042139559984207,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_61_meeting_preparation": {
+      "decision": "LOCAL",
+      "score": 0.15643730759620667,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_62_meeting_preparation": {
+      "decision": "LOCAL",
+      "score": 0.1414889693260193,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_63_ticket_kb_suggestion": {
+      "decision": "CLOUD",
+      "score": 0.30178478360176086,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_64_customer_followup": {
+      "decision": "LOCAL",
+      "score": 0.07321889698505402,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_65_customer_followup": {
+      "decision": "LOCAL",
+      "score": 0.048696327954530716,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_66_inventory_cost_analysis": {
+      "decision": "LOCAL",
+      "score": 0.10470230877399445,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_67_industry_briefing": {
+      "decision": "CLOUD",
+      "score": 0.2907167375087738,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_68_meeting_action_items": {
+      "decision": "CLOUD",
+      "score": 0.2557116746902466,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_69_meeting_action_items": {
+      "decision": "LOCAL",
+      "score": 0.10076182335615158,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_6_wealth_advisor_portfolio_paste": {
+      "decision": "LOCAL",
+      "score": 0.055450841784477234,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_70_ticket_assignment": {
+      "decision": "CLOUD",
+      "score": 0.3131836950778961,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_71_ticket_assignment": {
+      "decision": "LOCAL",
+      "score": 0.15832774341106415,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_72_business_trip_planning": {
+      "decision": "CLOUD",
+      "score": 0.314862996339798,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_73_business_trip_planning": {
+      "decision": "LOCAL",
+      "score": 0.08129491657018661,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_74_order_profit_analysis": {
+      "decision": "LOCAL",
+      "score": 0.12889364361763,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_75_order_profit_analysis": {
+      "decision": "LOCAL",
+      "score": 0.05938500538468361,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_76_competitive_intelligence": {
+      "decision": "CLOUD",
+      "score": 0.3491707444190979,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_77_competitive_intelligence": {
+      "decision": "LOCAL",
+      "score": 0.060390789061784744,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_78_weekly_meeting_tracking": {
+      "decision": "CLOUD",
+      "score": 0.27560853958129883,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_79_weekly_meeting_tracking": {
+      "decision": "LOCAL",
+      "score": 0.16148589551448822,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_7_aws_outage_chatgpt_paste": {
+      "decision": "LOCAL",
+      "score": 0.10089458525180817,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_80_restock_chain_check": {
+      "decision": "CLOUD",
+      "score": 0.21590282022953033,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_81_customer_relationship_warning": {
+      "decision": "LOCAL",
+      "score": 0.03786104544997215,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_82_sla_compliance_audit": {
+      "decision": "CLOUD",
+      "score": 0.22843772172927856,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_83_sla_compliance_audit": {
+      "decision": "LOCAL",
+      "score": 0.0785069465637207,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_84_quarterly_business_insight": {
+      "decision": "CLOUD",
+      "score": 0.22318889200687408,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_85_quarterly_business_insight": {
+      "decision": "LOCAL",
+      "score": 0.05560513958334923,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_87_task_backtracking": {
+      "decision": "LOCAL",
+      "score": 0.10331916064023972,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_88_system_health_check": {
+      "decision": "CLOUD",
+      "score": 0.19411858916282654,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_89_system_health_check": {
+      "decision": "LOCAL",
+      "score": 0.06090407073497772,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_8_hiring_debrief": {
+      "decision": "LOCAL",
+      "score": 0.0886101946234703,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_90_project_progress_report": {
+      "decision": "CLOUD",
+      "score": 0.33995506167411804,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_91_project_progress_report": {
+      "decision": "LOCAL",
+      "score": 0.08724954724311829,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_92_supply_chain_investigation": {
+      "decision": "LOCAL",
+      "score": 0.18061232566833496,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_93_supply_chain_investigation": {
+      "decision": "LOCAL",
+      "score": 0.03652903437614441,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_94_market_research_report": {
+      "decision": "CLOUD",
+      "score": 0.22837579250335693,
+      "threshold": 0.18705987930297852,
+      "reason": "score>tau"
+    },
+    "EC2Bench_task_96_month_end_reconciliation": {
+      "decision": "LOCAL",
+      "score": 0.16069281101226807,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_97_month_end_reconciliation": {
+      "decision": "LOCAL",
+      "score": 0.0795309841632843,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_98_vip_ticket_escalation": {
+      "decision": "LOCAL",
+      "score": 0.037373993545770645,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_99_automation_failure_recovery": {
+      "decision": "LOCAL",
+      "score": 0.1859940141439438,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    },
+    "EC2Bench_task_9_post_incident_review": {
+      "decision": "LOCAL",
+      "score": 0.13628582656383514,
+      "threshold": 0.18705987930297852,
+      "reason": "score<=tau"
+    }
+  }
+}
