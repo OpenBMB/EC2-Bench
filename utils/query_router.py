@@ -4,6 +4,7 @@ import argparse
 import json
 import logging
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -33,14 +34,20 @@ def _normalize_task_id(task_id: str) -> str:
     """Normalize a task id for lookup."""
     return (task_id or '').strip()
 
+def _task_lookup_key(task_id: str) -> str:
+    """Return the task-number-and-name suffix used for route lookup."""
+    match = re.search(r'(?:^|_)(task_\d+(?:_.*)?)$', task_id)
+    return match.group(1) if match else task_id
+
 def decide(task_id: str, table: dict[str, Any]) -> tuple[str, str, dict[str, Any]]:
     """Return ``(decision, reason, info)`` for ``task_id``."""
     routes = table.get('routes') or {}
     tid = _normalize_task_id(task_id)
     entry = routes.get(tid)
     if entry is None:
+        lookup_key = _task_lookup_key(tid)
         for (k, v) in routes.items():
-            if k.endswith(tid) or tid.endswith(k):
+            if k.endswith(tid) or tid.endswith(k) or _task_lookup_key(k) == lookup_key:
                 entry = v
                 break
     if entry is None:

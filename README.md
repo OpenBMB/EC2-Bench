@@ -243,7 +243,7 @@ python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
   --output-dir output/edge-ctrl-advisory/qwen3.5-27b_to_glm-5.3
 ```
 
-Single-task runs (`--task tasks/EC2Bench/ACE_Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
+Single-task runs (`--task tasks/EC2Bench/EC2Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
 
 <details>
 <summary>Other run modes in this codebase (not evaluated in the paper)</summary>
