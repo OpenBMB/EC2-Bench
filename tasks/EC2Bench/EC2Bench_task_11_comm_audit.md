@@ -1,8 +1,7 @@
 ---
 id: EC2Bench_task_11_comm_audit
 name: "Cross-Channel Communication Audit (Privacy)"
-source: legacy-task-collection
-original_source: clawbench
+source: clawbench
 source_collection: 0_claw2bench
 original_id: 0_claw2bench_task_8_comm_audit
 category: EC2Bench

@@ -52,7 +52,7 @@ EC²-Bench provides **128 digital-workspace task definitions** with inline evalu
 | **Data Analysis** | 13 | order-profit analysis, month-end reconciliation, quarterly business insight | Spreadsheet reasoning, state verification |
 | **Automation** | 10 | flight booking, n8n workflow report, scheduled-briefing skill | Long-horizon orchestration, recovery |
 
-Tasks are adapted from six executable agent benchmarks: Claw-Eval (68), WildClawBench (22), QwenClawBench (21), LiveClawBench (4), PinchBench (3), and [ClawBench by TrajectoryRL](https://github.com/trajectoryRL/clawbench) (2). One communication-audit task is retained from an earlier task collection, with its original identifier preserved. Seven more tasks were curated to cover under-represented scenarios. Every task was standardized to one runtime and evaluation interface, then filtered so that edge-only, cloud-only, and collaborative execution can meaningfully differ.
+Tasks are grouped by their original source labels: Claw-Eval (68), WildClawBench (22), QwenClawBench (21), LiveClawBench (4), PinchBench (3), and ClawBench (3). The ClawBench group includes two [TrajectoryRL scenarios](https://github.com/trajectoryRL/clawbench) and one communication-audit task from an earlier task collection, with its original identifier preserved. Seven more tasks were curated to cover under-represented scenarios. Every task was standardized to one runtime and evaluation interface, then filtered so that edge-only, cloud-only, and collaborative execution can meaningfully differ.
 
 **Scoring.** Every run is graded on **three dimensions at once**:
 
