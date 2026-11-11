@@ -216,16 +216,11 @@ python3 eval/run_batch.py --category EC2Bench --parallel 16 --repeat 3 \
   --cloud-model your-provider/glm-5.3 --models-config my_api.json \
   --output-dir output/cloud_only/glm-5.3
 
-# Query Routing: first materialize a task-level route table (requires `pip install "routellm[serve,eval]"`),
-# calibrated to the target cloud ratio (≈15% in the paper; use --calibration-tasks-dir to calibrate on a held-out set)
-python3 utils/query_router.py build --category EC2Bench --target-cloud-ratio 0.15 \
-  --edge-label Qwen3.5-27B --cloud-label glm-5.3 \
-  --output utils/query_router_routes.json
-python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
-  --run-mode query-router --query-router-table utils/query_router_routes.json \
-  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
-  --models-config my_api.json \
-  --output-dir output/query-routing/qwen3.5-27b_to_glm-5.3
+# Query Routing
+python3 scripts/run.py query-routing --data-root /path/to/dataset \
+  --query-router-table configs/query_router_routes.json \
+  --models-config configs/models.example.json --parallel 8 --repeat 3 \
+  --output-dir output/query-routing
 
 # Per-step Routing: the entropy threshold defaults to a per-size calibrated value (1.3 for 27B, 1.7 otherwise);
 # set GLIMPSE_ENTROPY_THRESHOLD=<tau> to override it and hit your target cloud-call rate
