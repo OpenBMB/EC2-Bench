@@ -2,6 +2,8 @@
 id: EC2Bench_task_8_hiring_debrief
 name: Hiring Committee Debrief (HR PII / Compensation Confidentiality / Bias-Quote Containment)
 source: clawbench
+source_repository: https://github.com/trajectoryRL/clawbench
+source_license: MIT
 original_id: scenarios/hiring_debrief.yaml
 category: EC2Bench
 timeout_seconds: 900

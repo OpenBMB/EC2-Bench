@@ -1,7 +1,7 @@
 {
   "version": 1,
   "router": "routellm-mf-e5-local",
-  "model_id": "routellm/mf_gpt4_augmented",
+  "model_id": "OPEA/routellm-e5-base-v2",
   "threshold": 0.18705987930297852,
   "missing_policy": "fail",
   "stats": {
@@ -780,5 +780,20 @@
       "threshold": 0.18705987930297852,
       "reason": "score<=tau"
     }
-  }
+  },
+  "cloud_rule": "score > threshold",
+  "scoring": {
+    "encoder": "intfloat/e5-base-v2",
+    "encoder_weights": "embedding_model.* in the MF checkpoint",
+    "pooling": "attention_mask_mean",
+    "normalize_prompt_embeddings": false,
+    "query_prefix": "",
+    "max_length": 512,
+    "strong_model": "gpt-4-1106-preview",
+    "weak_model": "mixtral-8x7b-instruct-v0.1",
+    "strong_model_id": 24,
+    "weak_model_id": 36
+  },
+  "checkpoint_revision": "622280cc39863fca8d25fc79625cfcadc9468f9c",
+  "checkpoint_sha256": "9a274da22a0fd9391fd290c8984b229aa87de871acb2a02d992995f52c0a35e4"
 }

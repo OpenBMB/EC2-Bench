@@ -70,6 +70,7 @@ def _estimate_message_cost(pricing: dict, input_tokens: int, cache_read: int, ou
 
 def _attach_resource_metrics(summary: dict, model_name: str, repeat: int=1, *, edge_model_name: str | None=None, cloud_model_name: str | None=None, results: list[dict] | None=None) -> None:
     """Attach resource metrics to single-run, repeated and global summaries."""
+    summary['resource_usage_scope'] = 'retained_attempt_per_task_repeat'
     cloud_only = _is_cloud_only_model(model_name)
     edge_model_name = edge_model_name or (None if cloud_only else model_name)
     cloud_model_name = cloud_model_name or model_name
@@ -796,7 +797,7 @@ def print_avg_summary(per_run_results: list[list[dict]], category: str, output_d
             pass_at_n_count += 1
         if all_passed:
             pass_pow_n_count += 1
-        entry = {'overall_avg': round(avg_val, 4), 'overall_std': round(std_val, 4), 'overall_bar': make_bar(avg_val), f'pass@{repeat}': any_passed, f'pass^{repeat}': all_passed, 'runs': [round(v, 4) for v in runs], 'n_runs': len(runs)}
+        entry = {'overall_avg': round(avg_val, 4), 'overall_std': round(std_val, 4), 'overall_std_axis': 'repeats', 'overall_bar': make_bar(avg_val), f'pass@{repeat}': any_passed, f'pass^{repeat}': all_passed, 'runs': [round(v, 4) for v in runs], 'n_runs': len(runs)}
         p_runs = task_privacy_runs.get(tkey)
         if p_runs:
             entry['privacy_avg'] = round(statistics.mean(p_runs), 4)
@@ -814,6 +815,9 @@ def print_avg_summary(per_run_results: list[list[dict]], category: str, output_d
     total_tasks = len(task_runs)
     global_avg = statistics.mean(all_task_avgs) if all_task_avgs else 0.0
     global_std = statistics.stdev(all_task_avgs) if len(all_task_avgs) > 1 else 0.0
+    repeat_overall_scores = [statistics.mean(runs[i] for runs in task_runs.values())
+                             for i in range(len(per_run_results))] if task_runs else []
+    repeat_overall_std = statistics.stdev(repeat_overall_scores) if len(repeat_overall_scores) > 1 else 0.0
     pass_at_n_rate = pass_at_n_count / total_tasks if total_tasks else 0.0
     pass_pow_n_rate = pass_pow_n_count / total_tasks if total_tasks else 0.0
     privacy_avgs = [e['privacy_avg'] for e in final_scores_table.values() if 'privacy_avg' in e]
@@ -849,6 +853,9 @@ def print_avg_summary(per_run_results: list[list[dict]], category: str, output_d
     summary_path = output_dir / f'0_summary_{model_name}_avg@{repeat}_{date_tag}.json'
     summary_path.parent.mkdir(parents=True, exist_ok=True)
     summary_data = {'category': category, 'model': model_name, 'repeat': repeat, 'total_tasks': total_tasks, f'overall_avg@{repeat}': round(global_avg, 4), 'overall_std': round(global_std, 4), 'overall_bar': make_bar(global_avg), 'pass_threshold': PASS_THRESHOLD, f'pass@{repeat}': pass_at_n_count, f'pass@{repeat}_rate': round(pass_at_n_rate, 4), f'pass^{repeat}': pass_pow_n_count, f'pass^{repeat}_rate': round(pass_pow_n_rate, 4), f'privacy_exposure_avg@{repeat}': round(1 - privacy_global, 4) if privacy_global is not None else None, f'privacy_avg@{repeat}': round(privacy_global, 4) if privacy_global is not None else None, 'usage': {'per_run_avg': avg_usage, 'all_runs_total': total_usage}}
+    summary_data['overall_std_axis'] = 'task_means'
+    summary_data['repeat_overall_scores'] = [round(value, 4) for value in repeat_overall_scores]
+    summary_data['repeat_overall_std'] = round(repeat_overall_std, 4)
     if total_probe_usage:
         summary_data['probe_usage'] = total_probe_usage
         print(f"  路由探针(未计入 usage): {total_probe_usage['total_calls']} 次调用, 输入 {total_probe_usage['total_input_tokens']:,} tokens ({total_probe_usage['input_vs_edge_ratio']}× 端侧输入)")

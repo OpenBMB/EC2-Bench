@@ -9,7 +9,7 @@
 [![dataset](https://img.shields.io/badge/%F0%9F%A4%97%20dataset-EC2--Bench-ffbf00)](https://huggingface.co/datasets/chengpingan/EC2-Bench)
 [![license](https://img.shields.io/badge/license-MIT-e8b500)](LICENSE)
 
-> 128 executable tasks · 100 privacy-annotated · 4 collaboration strategies · Task Performance · Resource Usage · Privacy Exposure
+> 128 executable task definitions · task-level privacy notes · 4 collaboration strategies · Task Performance · Resource Usage · Privacy Exposure
 
 <img src="assets/overview.png" width="95%" alt="EC²-Bench overview: a long-horizon edge-cloud collaborative trajectory, four collaboration strategies, and three research questions"/>
 
@@ -19,7 +19,7 @@
 
 **EC²-Bench** (EC2-Bench; **E**dge–**C**loud **C**ollaborative Agent Benchmark) is a benchmark for **edge–cloud collaboration in long-horizon LLM agent execution**. Edge-side models keep data local and cost little but are weak at demanding planning and tool use. Cloud-hosted frontier models are far more capable, but they are expensive and see everything they are sent. Prior edge–cloud systems coordinate the two **once per query**. In long-horizon agent execution, cloud participation is instead **interleaved throughout the trajectory**. That creates trajectory-level effects: each cloud call shapes later steps, accumulates cost, and decides how much workspace information leaves the device.
 
-EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grained **sensitivity annotations**) with a unified [OpenClaw](https://openclaw.ai/) execution and evaluation environment. It scores every run on three axes at once: **task performance**, **resource usage**, and **privacy exposure**. We use it to study four representative collaboration strategies across edge models of increasing capability.
+EC²-Bench provides **128 digital-workspace task definitions** with inline evaluation checks and task-level privacy notes, together with a unified [OpenClaw](https://openclaw.ai/) execution and evaluation environment. It scores every run on three axes at once: **task performance**, **resource usage**, and **privacy exposure**. We use it to study four representative collaboration strategies across edge models of increasing capability.
 
 ### Key Findings
 
@@ -41,7 +41,7 @@ EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grain
 
 ## Tasks
 
-**128 executable tasks** across **6 categories** (Chinese & English); **100** carry fine-grained privacy annotations. Each is a self-contained Markdown file under [`tasks/EC2Bench/`](tasks/EC2Bench/) containing a prompt, an inline `grade()` verifier, and a workspace path.
+**128 executable task definitions** across **6 categories** (Chinese & English). Each Markdown file under [`tasks/EC2Bench/`](tasks/EC2Bench/) contains a prompt, an inline `grade()` verifier, a workspace path, and a descriptive `privacy_note`. Sensitive-unit evaluation reads `gt/sensitive_items.json` under each task workspace.
 
 | Category | # | Example tasks | Core challenges |
 | --- | --- | --- | --- |
@@ -52,7 +52,7 @@ EC²-Bench pairs **128 executable digital-workspace tasks** (100 with fine-grain
 | **Data Analysis** | 13 | order-profit analysis, month-end reconciliation, quarterly business insight | Spreadsheet reasoning, state verification |
 | **Automation** | 10 | flight booking, n8n workflow report, scheduled-briefing skill | Long-horizon orchestration, recovery |
 
-Tasks are adapted from six executable agent benchmarks: Claw-Eval (68), WildClawBench (22), QwenClawBench (21), LiveClawBench (4), PinchBench (3), and ClawBench (3). Seven more tasks were curated to cover under-represented scenarios. Every task was standardized to one runtime and evaluation interface, then filtered so that edge-only, cloud-only, and collaborative execution can meaningfully differ.
+Tasks are adapted from six executable agent benchmarks: Claw-Eval (68), WildClawBench (22), QwenClawBench (21), LiveClawBench (4), PinchBench (3), and [ClawBench by TrajectoryRL](https://github.com/trajectoryRL/clawbench) (2). One communication-audit task is retained from an earlier task collection, with its original identifier preserved. Seven more tasks were curated to cover under-represented scenarios. Every task was standardized to one runtime and evaluation interface, then filtered so that edge-only, cloud-only, and collaborative execution can meaningfully differ.
 
 **Scoring.** Every run is graded on **three dimensions at once**:
 
@@ -284,6 +284,10 @@ If you find EC²-Bench useful, please cite:
 
 EC²-Bench stands on the shoulders of a remarkable open-source agent community, and we are deeply grateful for it. The **OpenClaw** harness gives us a real, full-featured agent runtime (tools, skills, and a live workspace) to build on. Our tasks and evaluation design draw inspiration and adapted material from a series of outstanding agent benchmarks: **Claw-Eval**, **WildClawBench**, **QwenClawBench**, **LiveClawBench**, **PinchBench**, and **ClawBench**. Their task curation, grading, and reproducible harness design set the bar for trustworthy agent evaluation and made the privacy-aware, edge–cloud extension in EC²-Bench possible.
 
+Query Routing uses the bundled `configs/query_router_routes.json`, scored with `OPEA/routellm-e5-base-v2` and E5 mean pooling. The cloud is selected when `score > threshold`; equality selects the edge. Install `requirements-routing.txt` to score new prompts. `--scores-json` also accepts the bundled table to rebuild routes from saved scores.
+
+`overall_std` is the sample SD across task means; `repeat_overall_std` is the sample SD across repeat means. Resource totals aggregate the retained execution attempt for each task and repeat.
+
 ## License
 
-Released under the [MIT License](LICENSE). Adapted tasks are used under the licenses of their source benchmarks: Claw-Eval, WildClawBench, QwenClawBench, LiveClawBench, and PinchBench are MIT-licensed, and ClawBench is Apache-2.0. Attribution to the original benchmarks is preserved.
+Released under the [MIT License](LICENSE). Adapted tasks are used under the licenses of their source benchmarks: Claw-Eval, WildClawBench, QwenClawBench, LiveClawBench, and PinchBench are MIT-licensed, and the TrajectoryRL ClawBench scenarios (tasks 8 and 9) are MIT-licensed. Applicable upstream copyright and license notices are preserved in [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES).

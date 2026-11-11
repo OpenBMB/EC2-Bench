@@ -1,4 +1,4 @@
-"""Task-level routing using the published RouteLLM matrix-factorization router."""
+"""Task-level routing using the E5-backed RouteLLM matrix-factorization scorer."""
 from __future__ import annotations
 import argparse
 import json
@@ -11,7 +11,20 @@ from pathlib import Path
 from typing import Any, Iterable, Sequence
 logger = logging.getLogger(__name__)
 DEFAULT_ROUTE_TABLE = Path(__file__).resolve().parents[1] / 'configs' / 'query_router_routes.json'
-DEFAULT_MF_MODEL = 'routellm/mf_gpt4_augmented'
+DEFAULT_MF_MODEL = 'OPEA/routellm-e5-base-v2'
+DEFAULT_ENCODER = 'intfloat/e5-base-v2'
+SCORING_CONFIG = {
+    'encoder': DEFAULT_ENCODER,
+    'encoder_weights': 'embedding_model.* in the MF checkpoint',
+    'pooling': 'attention_mask_mean',
+    'normalize_prompt_embeddings': False,
+    'query_prefix': '',
+    'max_length': 512,
+    'strong_model': 'gpt-4-1106-preview',
+    'weak_model': 'mixtral-8x7b-instruct-v0.1',
+    'strong_model_id': 24,
+    'weak_model_id': 36,
+}
 
 def load_route_table(path: str | os.PathLike[str] | None) -> dict[str, Any]:
     """Load the offline route table."""
@@ -67,7 +80,7 @@ def build_router_usage_record(decision: str, reason: str, info: dict[str, Any]) 
     return {'judge': dict(zero), 'total': dict(zero), 'router': 'routellm-mf-query-level', 'decision': decision, 'reason': reason, 'score': info.get('score'), 'threshold': info.get('threshold'), 'note': 'Query-level routing decision pre-computed offline; no per-task cloud/judge call at run time.'}
 
 def calibrate_threshold_for_target_ratio(scores: Sequence[float], target_cloud_ratio: float) -> float:
-    """Pick the threshold τ such that exactly ``target_cloud_ratio`` of the"""
+    """Select a score quantile for the target cloud-participation ratio."""
     if not 0.0 < target_cloud_ratio < 1.0:
         raise ValueError(f'target_cloud_ratio must be in (0, 1), got {target_cloud_ratio!r}')
     sorted_scores = sorted((float(s) for s in scores))
@@ -77,7 +90,7 @@ def calibrate_threshold_for_target_ratio(scores: Sequence[float], target_cloud_r
     idx = max(0, min(len(sorted_scores) - 1, idx))
     return sorted_scores[idx]
 
-def build_route_table_from_scores(task_scores: Iterable[tuple[str, float]], *, threshold: float | None=None, target_cloud_ratio: float | None=None, edge_label: str='edge', cloud_label: str='cloud', router_name: str='routellm-mf', model_id: str=DEFAULT_MF_MODEL, missing_policy: str='fail', extra_meta: dict[str, Any] | None=None) -> dict[str, Any]:
+def build_route_table_from_scores(task_scores: Iterable[tuple[str, float]], *, threshold: float | None=None, target_cloud_ratio: float | None=None, edge_label: str='edge', cloud_label: str='cloud', router_name: str='routellm-mf-e5-local', model_id: str=DEFAULT_MF_MODEL, missing_policy: str='fail', extra_meta: dict[str, Any] | None=None) -> dict[str, Any]:
     """Materialize a route table dict from ``(task_id, score)`` pairs."""
     if (threshold is None) == (target_cloud_ratio is None):
         raise ValueError('build_route_table_from_scores: pass exactly one of threshold or target_cloud_ratio')
@@ -89,11 +102,13 @@ def build_route_table_from_scores(task_scores: Iterable[tuple[str, float]], *, t
     routes: dict[str, dict[str, Any]] = {}
     n_cloud = 0
     for (tid, score) in pairs:
-        decision = 'CLOUD' if score >= threshold else 'LOCAL'
+        decision = 'CLOUD' if score > threshold else 'LOCAL'
         if decision == 'CLOUD':
             n_cloud += 1
-        routes[tid] = {'decision': decision, 'score': score, 'threshold': threshold, 'reason': f"score{('>=' if decision == 'CLOUD' else '<')}tau"}
+        routes[tid] = {'decision': decision, 'score': score, 'threshold': threshold, 'reason': f"score{('>' if decision == 'CLOUD' else '<=')}tau"}
     table: dict[str, Any] = {'version': 1, 'router': router_name, 'model_id': model_id, 'threshold': threshold, 'edge_label': edge_label, 'cloud_label': cloud_label, 'missing_policy': missing_policy, 'generated_at': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'stats': {'n_total': len(pairs), 'n_cloud': n_cloud, 'cloud_ratio': n_cloud / len(pairs)}, 'routes': routes}
+    table['cloud_rule'] = 'score > threshold'
+    table['scoring'] = dict(SCORING_CONFIG)
     if extra_meta:
         table['meta'] = dict(extra_meta)
     return table
@@ -125,20 +140,20 @@ def _cli_collect_tasks(tasks_dir: Path, category: str | None, task_filter: str |
             out.append((t['task_id'], t['prompt']))
     return out
 
-def score_with_routellm(tasks, checkpoint=DEFAULT_MF_MODEL):
-    from routellm.routers.routers import MatrixFactorizationRouter
-    router = MatrixFactorizationRouter(checkpoint_path=checkpoint)
-    return [(tid, float(router.calculate_strong_win_rate(prompt))) for (tid, prompt) in tasks]
+def score_with_routellm(tasks, checkpoint=DEFAULT_MF_MODEL, encoder=DEFAULT_ENCODER):
+    from utils.routellm_local_mf import score_tasks
+    return score_tasks(tasks, checkpoint, encoder, SCORING_CONFIG)
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='Build an external Query Routing table with RouteLLM MF.')
+    parser = argparse.ArgumentParser(description='Build a Query Routing table with the E5-backed RouteLLM MF scorer.')
     sub = parser.add_subparsers(dest='command', required=True)
     build = sub.add_parser('build')
     build.add_argument('--tasks-dir', type=Path, required=True)
     build.add_argument('--category', default='all')
     build.add_argument('--task-filter', default=None)
     build.add_argument('--mf-checkpoint', default=DEFAULT_MF_MODEL)
-    build.add_argument('--scores-json', type=Path, help='External map of task IDs to RouteLLM MF scores.')
+    build.add_argument('--encoder', default=DEFAULT_ENCODER)
+    build.add_argument('--scores-json', type=Path, help='Task-score map or an existing route table containing scores.')
     group = build.add_mutually_exclusive_group(required=True)
     group.add_argument('--threshold', type=float)
     group.add_argument('--target-cloud-ratio', type=float)
@@ -152,11 +167,13 @@ def main(argv=None):
     if not pairs:
         parser.error('No evaluation tasks matched')
     score_map = json.loads(args.scores_json.read_text()) if args.scores_json else None
+    if score_map is not None and 'routes' in score_map:
+        score_map = {tid: entry['score'] for tid, entry in score_map['routes'].items()}
 
     def score(tasks):
         if score_map is not None:
             return [(tid, float(score_map[tid])) for (tid, _) in tasks]
-        return score_with_routellm(tasks, args.mf_checkpoint)
+        return score_with_routellm(tasks, args.mf_checkpoint, args.encoder)
     threshold = args.threshold
     if args.target_cloud_ratio is not None:
         calibration = _cli_collect_tasks(args.calibration_tasks_dir, args.calibration_category, None)

@@ -2,6 +2,8 @@
 id: EC2Bench_task_9_post_incident_review
 name: Post-Incident Review (HR-PIP / Legal-SLA / Customer-Facing Section Containment)
 source: clawbench
+source_repository: https://github.com/trajectoryRL/clawbench
+source_license: MIT
 original_id: scenarios/post_incident_review.yaml
 category: EC2Bench
 timeout_seconds: 900
