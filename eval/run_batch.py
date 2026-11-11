@@ -227,7 +227,7 @@ def _try_recover_crashed_result(result: dict, task_id_ori: str, run_idx: int, ba
     return True
 
 def write_run_invocation(output_dir: Path, args: argparse.Namespace, *, batch_timestamp: str | None=None, category: str | None=None, summary_category: str | None=None) -> None:
-    """Persist the exact run_batch invocation for reproducibility."""
+    """Save the run_batch invocation and command."""
     output_dir.mkdir(parents=True, exist_ok=True)
     cwd = Path.cwd()
     command = shlex.join([sys.executable, *sys.argv])
@@ -1311,7 +1311,7 @@ def _ramp_release() -> None:
 
 def main() -> None:
     _configure_compact_logging()
-    parser = argparse.ArgumentParser(description='EC2-Bench evaluation entry point', formatter_class=argparse.RawDescriptionHelpFormatter, epilog='See README.md and configs/strategies.json for the six paper strategies.')
+    parser = argparse.ArgumentParser(description='EC2-Bench evaluation entry point', formatter_class=argparse.RawDescriptionHelpFormatter, epilog='See README.md and configs/strategies.json for the six evaluation strategies.')
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument('--task', '-t', help='Path to a single task.md file')
     mode.add_argument('--category', '-c', help='Task category; use EC2Bench for the complete 128-task suite.')
@@ -1329,7 +1329,7 @@ def main() -> None:
     parser.add_argument('--limit', type=int, default=0, help='Only run the first N tasks per category (0 = all)')
     parser.add_argument('--task-filter', default=None, help="Regex pattern to filter task filenames, e.g. 'task_9|task_10|task_11'")
     parser.add_argument('--repeat', type=int, default=1, metavar='N', help='Run each task N times and compute avg@N (default: 1, single run)')
-    parser.add_argument('--run-mode', default='local-only', choices=['local-only', 'cloud-only', 'query-router', 'step-router-execute-glimpse', 'agentic_executor_router', 'agentic-advisor'], help='Six paper strategies; see README.md for definitions.')
+    parser.add_argument('--run-mode', default='local-only', choices=['local-only', 'cloud-only', 'query-router', 'step-router-execute-glimpse', 'agentic_executor_router', 'agentic-advisor'], help='Six evaluation strategies; see README.md for definitions.')
     parser.add_argument('--cloud-model', default=None, help='Provider/model reference for the cloud collaborator or cloud-only executor.')
     parser.add_argument('--query-router-table', default=None, help=f'(query-router only) Path to the offline RouteLLM-MF route table JSON. If omitted, falls back to env QUERY_ROUTER_TABLE, then to {_QR_DEFAULT_ROUTE_TABLE}. Generate with `python -m utils.query_router build --output ...`.')
     parser.add_argument('--skip-preflight', action='store_true', help='Skip the pre-launch endpoint health check for the edge / cloud / judge models. By default every endpoint is probed once and the run aborts immediately if any is unreachable.')

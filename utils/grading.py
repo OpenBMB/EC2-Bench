@@ -69,7 +69,7 @@ def _estimate_message_cost(pricing: dict, input_tokens: int, cache_read: int, ou
     return (input_tokens * p['input'] + cache_read * p['cache_read'] + output_tokens * p['output']) / 1000000
 
 def _attach_resource_metrics(summary: dict, model_name: str, repeat: int=1, *, edge_model_name: str | None=None, cloud_model_name: str | None=None, results: list[dict] | None=None) -> None:
-    """Attach paper resource metrics to single-run, repeated and global summaries."""
+    """Attach resource metrics to single-run, repeated and global summaries."""
     cloud_only = _is_cloud_only_model(model_name)
     edge_model_name = edge_model_name or (None if cloud_only else model_name)
     cloud_model_name = cloud_model_name or model_name
@@ -136,8 +136,7 @@ def _attach_resource_metrics(summary: dict, model_name: str, repeat: int=1, *, e
     unified['edge_usage'] = {'model': edge_model_name, 'active_parameters': active_parameters, 'action_tokens': action_tokens, 'probe_tokens': probe_tokens, 'compute_tokens': edge_tokens, 'flops': flops, 'petaflops': flops / 1e15 if flops is not None else None}
     if repeat > 1:
         unified['edge_usage']['per_run_avg'] = {'compute_tokens': edge_tokens / repeat, 'flops': flops / repeat if flops is not None else None, 'petaflops': flops / repeat / 1e15 if flops is not None else None}
-    # The paper reports monetary cost for cloud computation only. Retain the
-    # existing executor-chat usage separately from this paper-facing cost.
+    # Use cloud usage for monetary cost and keep executor-chat usage separately.
     unified['usage'].update(cost_usd=cloud_cost, cost_scope='cloud', token_scope='executor_chat')
     usage_total['cost_scope'] = 'executor_chat'
     if 'per_run_avg' in unified['usage']:
