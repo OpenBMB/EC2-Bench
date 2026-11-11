@@ -10,8 +10,7 @@ __pycache__/
 *.py[cod]
 .DS_Store
 
-# Dataset material is managed outside this code repository.
-/tasks/
+# External workspace data is managed separately.
 /data/
 /annotations/
 /skills/task*/

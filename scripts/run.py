@@ -50,13 +50,18 @@ def main():
     if a.data_root is None:
         p.error('Supply --data-root PATH; this repository contains code only')
     data_root = a.data_root.expanduser().resolve()
-    if not (data_root / 'tasks').is_dir():
-        p.error('External data root must contain tasks/')
+    if not data_root.is_dir():
+        p.error('External data root must be an existing directory')
+    tasks_dir = data_root / 'tasks'
+    if not tasks_dir.is_dir():
+        tasks_dir = ROOT / 'tasks'
+    if not tasks_dir.is_dir():
+        p.error('Task definitions must be present in the repository or external data root')
     if a.strategy == 'query-routing' and (not table):
         p.error('Query Routing requires --query-router-table PATH or QUERY_ROUTER_TABLE')
     if a.strategy == 'per-step-routing' and (not os.environ.get('GLIMPSE_ENTROPY_THRESHOLD')):
         p.error('Set GLIMPSE_ENTROPY_THRESHOLD after calibrating this edge endpoint')
-    env = {**os.environ, 'EC2_DATA_ROOT': str(data_root), 'TASKS_SUBDIR': str(data_root / 'tasks')}
+    env = {**os.environ, 'EC2_DATA_ROOT': str(data_root), 'TASKS_SUBDIR': str(tasks_dir)}
     env.setdefault('ACEBENCH_SKILLS_PATH', str(data_root / 'skills'))
     print(shlex.join(cmd), flush=True)
     result = subprocess.run(cmd, cwd=ROOT, env=env)
