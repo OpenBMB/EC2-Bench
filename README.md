@@ -21,6 +21,8 @@
 
 EC²-Bench provides **128 digital-workspace task definitions** with inline evaluation checks and task-level privacy notes, together with a unified [OpenClaw](https://openclaw.ai/) execution and evaluation environment. It scores every run on three axes at once: **task performance**, **resource usage**, and **privacy exposure**. We use it to study four representative collaboration strategies across edge models of increasing capability.
 
+[Inspect the 128-task index](https://huggingface.co/datasets/chengpingan/EC2-Bench/viewer/default/test) · [Try one spreadsheet task](#quick-start) · [Compare against the paper results](#leaderboard) · [Cite the paper](#citation)
+
 ### Key Findings
 
 1. **Edge–cloud collaboration works for long-horizon agents (RQ1).** Partial cloud participation improves performance over edge-only execution at a fraction of cloud-only cost and exposure. With Qwen3.5-2B, Per-step Routing lifts completion from 12.75 to 39.97 at 22.7% of cloud-only cost, and many configurations beat a linear edge↔cloud interpolation.
@@ -154,122 +156,65 @@ Edge = **Qwen3.5-2B / 9B / 27B** and **Qwen3.7-Plus** (27B and Plus serve as pro
 
 ## Quick Start
 
-EC²-Bench runs each task in an isolated Docker container bundling the OpenClaw harness and per-task mock services.
+Use the [Hugging Face task index](https://huggingface.co/datasets/chengpingan/EC2-Bench/viewer/default/test) to browse the task mix and annotations without running models. The [leaderboard](#leaderboard) contains the reported results from Tables 2 and 11 of [arXiv v2](https://arxiv.org/abs/2610.17816v2).
 
-**1. Install dependencies & load the image**
+### Check one task
 
-The prebuilt container image is hosted on Hugging Face as a `docker save` tarball. Hugging Face is not a Docker registry, so download it and `docker load` instead of `docker pull`:
-
-```bash
-cd EC2-Bench
-conda create -n ec2bench python=3.13 -y
-pip install -r requirements.txt
-# download the image
-hf download chengpingan/EC2-Bench \
-    Images/acebench-openclaw-v1.0.tar.gz --repo-type dataset --local-dir .
-
-# download the workspaces (single tarball) and extract
-hf download chengpingan/EC2-Bench \
-    workspace/ACE_Bench.tar.gz --repo-type dataset --local-dir .
-tar -xzf workspace/ACE_Bench.tar.gz      # extracts into workspace/ACE_Bench/
-
-docker load -i Images/acebench-openclaw-v1.0.tar.gz   # loads acebench-openclaw:v1.0 (must match DOCKER_IMAGE in .env)
-```
-
-**2. Configure keys**: copy `.env.example` to `.env` and fill in:
+The example below selects a single spreadsheet summarization task. Start in the repository root with Python 3.13 and an active virtual environment. If `hf` is unavailable after installation, activate the same environment before downloading the data. The dry run checks the runner's argument wiring without starting Docker or calling a model endpoint.
 
 ```bash
-OPENROUTER_API_KEY=...                 # cloud collaborator (any OpenAI-compatible provider)
-JUDGE_API_KEY=...                      # LLM-as-a-judge for task checks & privacy exposure
-JUDGE_MODEL=gpt-5.4-mini
+python -m pip install -r requirements.txt huggingface_hub
+python scripts/run.py local-only --runtime docker \
+  --task-filter '^EC2Bench_task_28_' --repeat 1 --parallel 1 --dry-run
 ```
 
-Edge / cloud model endpoints (e.g. a local vLLM server) live in [`my_api.json`](my_api.json) and are passed via `--models-config`.
-
-**3. Prepare task assets**
+To execute the same task, use Docker, an OpenAI-compatible edge-model endpoint reachable from the container, and a judge endpoint. Download just the example workspace and build the runtime from this checkout:
 
 ```bash
-bash script/prepare.sh
+hf download chengpingan/EC2-Bench --repo-type dataset \
+  --revision 12f9107ff7cb05969f667282438592b3687ed29b \
+  --include 'workspace/ACE_Bench/task_28_spreadsheet_summary/**' \
+  --local-dir ./ec2bench-data
+docker build -f runtime/Dockerfile -t ec2-bench-runtime:review .
 ```
 
-**4. Run**: pick a strategy via `--run-mode`. All strategies share one task suite:
+Set `EDGE_BASE_URL`, `EDGE_API_KEY`, `JUDGE_BASE_URL`, `JUDGE_API_KEY`, and `JUDGE_MODEL` in your local environment (see [`.env.example`](.env.example)). Pass a models config with an `edge` provider and the matching model ID, following [`configs/models.example.json`](configs/models.example.json). The bundled example config also expands `CLOUD_BASE_URL` and `CLOUD_API_KEY` because it contains both providers. With only an edge endpoint, use a copy of the example containing just the `edge` provider. Keep the environment placeholders in the config.
 
-| Strategy | `--run-mode` | Who decides when the cloud joins | What the cloud does |
+```bash
+python scripts/run.py local-only --runtime docker --data-root ./ec2bench-data \
+  --task-filter '^EC2Bench_task_28_' --repeat 1 --parallel 1 \
+  --edge-model edge/Qwen/Qwen3.5-9B --models-config /path/to/local-models.json \
+  --output-dir output/spreadsheet-smoke
+```
+
+This single run checks your setup. The paper compares configurations over the full benchmark with three repeats.
+
+### Choose a comparison strategy
+
+The first argument to [`scripts/run.py`](scripts/run.py) selects a strategy. The wrapper maps each strategy to a runner mode listed in [`configs/strategies.json`](configs/strategies.json).
+
+| Strategy | `scripts/run.py` argument | `eval/run_batch.py --run-mode` | Cloud role |
 | --- | --- | --- | --- |
-| **Edge-only** | `local-only` | (never) | Nothing; every action comes from the edge model |
-| **Cloud-only** | `cloud-only` | (always) | Generates every action; capability upper bound, highest exposure |
-| **Query Routing** | `query-router` | External router, once per task (RouteLLM MF over the task instruction) | Runs the whole trajectory when the task is routed to it |
-| **Per-step Routing** | `step-router` | External router, every step (edge next-token entropy, GlimpRouter-style) | Generates the routed steps |
-| **Edge-Ctrl. Cloud Delegation** | *not included in this release* | Edge agent, via a delegation tool | Generates the delegated step, then hands control back |
-| **Edge-Ctrl. Cloud Advisory** | `advisor` | Edge agent, via an advisor tool | Returns plans / suggestions / corrections; the edge still acts |
+| Edge-only | `local-only` | `local-only` | No cloud collaborator |
+| Cloud-only | `cloud-only` | `cloud-only` | Runs the entire task |
+| Query Routing | `query-routing` | `query-router` | An external router selects cloud execution for the entire task |
+| Per-step Routing | `per-step-routing` | `step-router-execute-glimpse` | An external router sends selected steps to the cloud |
+| Edge-controlled Delegation | `delegation` | `agentic_executor_router` | The edge requests execution of a step |
+| Edge-controlled Advisory | `advisory` | `agentic-advisor` | The edge requests advice and continues to execute |
 
-In all collaborative modes, the cloud receives the task instruction plus the OpenClaw execution history (previous actions, tool calls, observations). No redaction is applied, matching the paper's setting.
-
-```bash
-# Edge-only baseline
-python3 eval/run_batch.py --category EC2Bench --parallel 16 --repeat 3 \
-  --edge-model vllm/Qwen/Qwen3.5-27B --models-config my_api.json \
-  --output-dir output/edge_only/qwen3.5-27b
-
-# Cloud-only baseline
-python3 eval/run_batch.py --category EC2Bench --parallel 16 --repeat 3 \
-  --cloud-model your-provider/glm-5.3 --models-config my_api.json \
-  --output-dir output/cloud_only/glm-5.3
-
-# Query Routing
-python3 scripts/run.py query-routing --data-root /path/to/dataset \
-  --query-router-table configs/query_router_routes.json \
-  --models-config configs/models.example.json --parallel 8 --repeat 3 \
-  --output-dir output/query-routing
-
-# Per-step Routing: the entropy threshold defaults to a per-size calibrated value (1.3 for 27B, 1.7 otherwise);
-# set GLIMPSE_ENTROPY_THRESHOLD=<tau> to override it and hit your target cloud-call rate
-python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
-  --run-mode step-router --no-redact \
-  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
-  --models-config my_api.json \
-  --output-dir output/per-step-routing/qwen3.5-27b_to_glm-5.3
-
-# Edge-Controlled Cloud Advisory
-python3 eval/run_batch.py --category EC2Bench --parallel 8 --repeat 3 \
-  --run-mode advisor \
-  --edge-model vllm/Qwen/Qwen3.5-27B --cloud-model your-provider/glm-5.3 \
-  --models-config my_api.json \
-  --output-dir output/edge-ctrl-advisory/qwen3.5-27b_to_glm-5.3
-```
-
-Single-task runs (`--task tasks/EC2Bench/EC2Bench_task_44_ambiguous_contact_email.md`), task filters (`--task-filter`), and privacy-judge timing (`--privacy-judge-mode {inline,deferred,off}`) are also supported.
-
-<details>
-<summary>Other run modes in this codebase (not evaluated in the paper)</summary>
-
-- `pipeline-plan-executor`: the cloud drafts a task-level sketch once, and the edge executes locally.
-- `on-demand`: the edge agent queries a cloud assistant through a shell helper (`ask_cloud.sh`) for guidance.
-- `orchestrator-v1`: the cloud model acts as the main agent / orchestrator and dispatches work to an edge worker.
-
-</details>
-
----
+Query Routing defaults to the bundled [RouteLLM route table](configs/query_router_routes.json), scored with `OPEA/routellm-e5-base-v2` and E5 mean pooling. It selects the cloud when `score > threshold`. Install `requirements-routing.txt` to score new prompts. The route builder also accepts saved scores through `--scores-json`. Per-step Routing uses the [published configuration](configs/per_step_thresholds.json) for supported model IDs. For an unlisted model, the wrapper requires `GLIMPSE_ENTROPY_THRESHOLD`. Collaborative modes require both model references. Pass `--runtime docker` to use the local image, or select `--runtime e2b` with your own compatible template as described in [`.env.example`](.env.example).
 
 ## Check the Results
 
-Per-task outputs land under `output/<run>/<task_id>/...` (scores, token/cost usage, agent trace, produced files). A per-category and global summary is generated automatically once the run finishes.
+The runner writes task outputs (including scores and usage) and `0_summary_*.json` under a timestamped directory inside `--output-dir`. For a paper comparison, report the **task subset, runner commit, dataset revision, runtime, model and judge IDs, strategy, and repeat count**. Read completion and Pass³ alongside the cloud-resource and privacy fields. Match the task set and repeat count when comparing against [Table 2 or Table 11](#leaderboard).
 
-Cloud costs in the paper are computed from the logged raw / cache-read / output token counts with OpenRouter prices (USD per million tokens):
-
-| Cloud model | Input | Cache input | Output |
-| --- | ---: | ---: | ---: |
-| GLM-5.3 | 1.40 | 0.26 | 4.40 |
-| DeepSeek-v4-Pro | 1.74 | 0.0145 | 3.48 |
-| DeepSeek-V4.1-Flash | 0.15 | 0.003 | 0.60 |
-
-The built-in price table in [`utils/grading.py`](utils/grading.py) does not cover these models yet. When you use them, compute the cost from the logged token counts with the prices above.
+Cloud token prices used by the runner are declared in [`configs/metrics.json`](configs/metrics.json). The defaults are the snapshot from the paper's Table 12; `MODEL_PRICING_FILE` can supply prices for a new model. Record the pricing snapshot with any reported dollar estimates. Privacy exposure measures annotated data disclosed to the cloud collaborator along the trajectory. The score depends on the annotations and protocol used here. `overall_std` is the sample SD across task means, while `repeat_overall_std` is the sample SD across repeat means. Resource totals aggregate the retained execution attempt for each task and repeat.
 
 ---
 
 ## Citation
 
-If you find EC²-Bench useful, please cite:
+If you use the task suite, compare against the reported results, or build on the evaluation protocol, cite the [paper](https://arxiv.org/abs/2610.17816). When reporting a run, also record the code commit and the dataset revision so others can reproduce your setup.
 
 ```bibtex
 @article{huang2026ec2bench,
@@ -284,9 +229,6 @@ If you find EC²-Bench useful, please cite:
 
 EC²-Bench stands on the shoulders of a remarkable open-source agent community, and we are deeply grateful for it. The **OpenClaw** harness gives us a real, full-featured agent runtime (tools, skills, and a live workspace) to build on. Our tasks and evaluation design draw inspiration and adapted material from a series of outstanding agent benchmarks: **Claw-Eval**, **WildClawBench**, **QwenClawBench**, **LiveClawBench**, **PinchBench**, and **ClawBench**. Their task curation, grading, and reproducible harness design set the bar for trustworthy agent evaluation and made the privacy-aware, edge–cloud extension in EC²-Bench possible.
 
-Query Routing uses the bundled `configs/query_router_routes.json`, scored with `OPEA/routellm-e5-base-v2` and E5 mean pooling. The cloud is selected when `score > threshold`; equality selects the edge. Install `requirements-routing.txt` to score new prompts. `--scores-json` also accepts the bundled table to rebuild routes from saved scores.
-
-`overall_std` is the sample SD across task means; `repeat_overall_std` is the sample SD across repeat means. Resource totals aggregate the retained execution attempt for each task and repeat.
 
 ## License
 
